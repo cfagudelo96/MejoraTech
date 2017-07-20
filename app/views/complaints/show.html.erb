@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @complaint.product_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @complaint.description %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @complaint.employee_id %>
+</p>
+
+<p>
+  <strong>Classification:</strong>
+  <%= @complaint.classification %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @complaint.source %>
+</p>
+
+<p>
+  <strong>Batch number:</strong>
+  <%= @complaint.batch_number %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @complaint.expiration_date %>
+</p>
+
+<p>
+  <strong>Effective date:</strong>
+  <%= @complaint.effective_date %>
+</p>
+
+<p>
+  <strong>Pending:</strong>
+  <%= @complaint.pending %>
+</p>
+
+<p>
+  <strong>Review date:</strong>
+  <%= @complaint.review_date %>
+</p>
+
+<%= link_to 'Edit', edit_complaint_path(@complaint) %> |
+<%= link_to 'Back', complaints_path %>

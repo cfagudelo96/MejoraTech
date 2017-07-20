@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  description: MyString
+  employee_id: 1
+  classification: 1
+  source: MyString
+  batch_number: MyString
+  expiration_date: 2017-07-20
+  effective_date: 2017-07-20
+  pending: false
+  review_date: 2017-07-20
+
+two:
+  product_id: 1
+  description: MyString
+  employee_id: 1
+  classification: 1
+  source: MyString
+  batch_number: MyString
+  expiration_date: 2017-07-20
+  effective_date: 2017-07-20
+  pending: false
+  review_date: 2017-07-20

@@ -1,0 +1,67 @@
+<%= form_with(model: complaint, local: true) do |form| %>
+  <% if complaint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+
+      <ul>
+      <% complaint.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.number_field :product_id, id: :complaint_product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :complaint_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= form.number_field :employee_id, id: :complaint_employee_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :classification %>
+    <%= form.number_field :classification, id: :complaint_classification %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= form.text_field :source, id: :complaint_source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :batch_number %>
+    <%= form.text_field :batch_number, id: :complaint_batch_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiration_date %>
+    <%= form.date_select :expiration_date, id: :complaint_expiration_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :effective_date %>
+    <%= form.date_select :effective_date, id: :complaint_effective_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pending %>
+    <%= form.check_box :pending, id: :complaint_pending %>
+  </div>
+
+  <div class="field">
+    <%= form.label :review_date %>
+    <%= form.date_select :review_date, id: :complaint_review_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
