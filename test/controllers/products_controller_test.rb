@@ -10,6 +10,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'index should retrieve products' do
+    get products_url
+    @products = assigns(:products)
+    assert_not_nil @products
+    assert_equal @products.size, Product.count
+  end
+
   test 'should get new' do
     get new_product_url
     assert_response :success
