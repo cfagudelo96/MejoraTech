@@ -27,7 +27,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       post products_url, params: { product: { code: 1, name: 'Test' } }
     end
 
-    assert_redirected_to product_url(Product.last)
+    assert_redirected_to products_url
   end
 
   test 'should get edit' do
@@ -35,10 +35,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'edit should retrieve the product' do
+    get edit_product_url(@product)
+    assert_equal assigns(:product), @product
+  end
+
   test 'should update product' do
     patch product_url(@product), params: { product: { code: @product.code,
                                                       name: @product.name } }
-    assert_redirected_to product_url(@product)
+    assert_redirected_to products_url
   end
 
   test 'should destroy product' do

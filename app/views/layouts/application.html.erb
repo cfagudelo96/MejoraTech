@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span><%= fa_icon 'bars' %></span>
+          </button>
+          <a class="navbar-brand" href="#">MejoraTech</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Products', products_path %></li>
+            <li><%= link_to 'Complaints', complaints_path %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <% if notice.present? %>
         <div id="notice" class="alert alert-info fade in">
