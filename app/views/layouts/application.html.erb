@@ -30,7 +30,9 @@
       <% if notice.present? %>
         <div id="notice" class="alert alert-info fade in">
           <%= notice %>
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            <%= fa_icon 'times' %>
+          </a>
         </div>
       <% end %>
       <%= yield %>
