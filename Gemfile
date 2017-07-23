@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap3-datetimepicker-rails'
 gem 'font-awesome-rails'
+gem 'momentjs-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 gem 'rails-controller-testing'

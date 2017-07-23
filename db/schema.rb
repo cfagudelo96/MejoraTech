@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720211049) do
+ActiveRecord::Schema.define(version: 20170722223843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "complaints", force: :cascade do |t|
     t.integer "product_id"
-    t.string "description"
+    t.text "description"
     t.integer "employee_id"
     t.integer "classification"
     t.string "source"
     t.string "batch_number"
     t.date "expiration_date"
     t.date "effective_date"
-    t.boolean "pending"
+    t.boolean "pending", default: true
     t.date "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

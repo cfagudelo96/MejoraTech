@@ -1,6 +1,6 @@
 <%= form_with(model: complaint, local: true) do |form| %>
   <% if complaint.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
 
       <ul>
@@ -11,57 +11,105 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.number_field :product_id, id: :complaint_product_id %>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :complaint_source, required: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :effective_date %>
+        <div class="input-group date" id="effective-date-picker">
+          <%= form.text_field :effective_date, id: :complaint_effective_date, required: true, class: 'form-control' %>
+          <span class="input-group-addon">
+            <%= fa_icon 'calendar' %>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :complaint_description, rows: 5, required: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :review_date %>
+        <div class="input-group date" id="review-date-picker">
+          <%= form.text_field :review_date, id: :complaint_review_date, required: true, class: 'form-control' %>
+          <span class="input-group-addon">
+            <%= fa_icon 'calendar' %>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :product_id %>
+        <%= form.collection_select :product_id, Product.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :batch_number %>
+        <%= form.text_field :batch_number, id: :complaint_batch_number, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :expiration_date %>
+        <div class="input-group date" id="expiration-date-picker">
+          <%= form.text_field :expiration_date, id: :complaint_expiration_date, class: 'form-control' %>
+          <span class="input-group-addon">
+            <%= fa_icon 'calendar' %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :classification %>
+        <%= form.select :classification, Complaint.classifications.map { |c| [c[0].humanize, c[0]] }, {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :employee_id, 'Employee in charge' %>
+        <%= form.collection_select :employee_id, Employee.all, :id, :to_s, {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :employee_id, 'Employee in charge' %>
+        <div class="input-group">
+          <%= text_field_tag 'filter', nil, placeholder: 'Search for employee', onkeyup: 'filterEmployees()', class: 'form-control' %>
+          <span class="input-group-addon"><%= fa_icon('search') %></span>
+        </div>
+      </div>
+
+      <div class="list-group overflowing-box" id="employees-list">
+        <% Employee.all.each do |employee| %>
+          <%= button_tag employee.to_s,
+                         type: 'button',
+                         onclick: "selectEmployee(this, #{employee.id})",
+                         class: 'list-group-item compact' %>
+        <% end %>
+      </div>
+
+      <%= form.hidden_field :employee_id, id: :complaint_employee_id %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :complaint_description %>
+  <div>
+    <%= form.submit class: 'btn btn-default pull-right' %>
   </div>
 
-  <div class="field">
-    <%= form.label :employee_id %>
-    <%= form.number_field :employee_id, id: :complaint_employee_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :classification %>
-    <%= form.number_field :classification, id: :complaint_classification %>
-  </div>
-
-  <div class="field">
-    <%= form.label :source %>
-    <%= form.text_field :source, id: :complaint_source %>
-  </div>
-
-  <div class="field">
-    <%= form.label :batch_number %>
-    <%= form.text_field :batch_number, id: :complaint_batch_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :expiration_date %>
-    <%= form.date_select :expiration_date, id: :complaint_expiration_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :effective_date %>
-    <%= form.date_select :effective_date, id: :complaint_effective_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pending %>
-    <%= form.check_box :pending, id: :complaint_pending %>
-  </div>
-
-  <div class="field">
-    <%= form.label :review_date %>
-    <%= form.date_select :review_date, id: :complaint_review_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <script type="text/javascript">
+      $(function () {
+          $('#effective-date-picker').datetimepicker({
+              format: 'YYYY-MM-DD'
+          });
+          $('#review-date-picker').datetimepicker({
+              format: 'YYYY-MM-DD'
+          });
+          $('#expiration-date-picker').datetimepicker({
+              format: 'YYYY-MM-DD'
+          });
+      });
+  </script>
 <% end %>
