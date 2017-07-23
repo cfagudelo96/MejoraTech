@@ -44,6 +44,17 @@
       </div>
 
       <div class="form-group">
+        <%= form.label :classification %>
+        <%= form.select :classification, Complaint.classifications.map { |c| [c[0].humanize, c[0]] }, {}, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :employee_id, 'Employee in charge' %>
+        <%= form.collection_select :employee_id, Employee.all, :id, :to_s, {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= form.label :product_id %>
         <%= form.collection_select :product_id, Product.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
       </div>
@@ -62,36 +73,6 @@
           </span>
         </div>
       </div>
-    </div>
-    <div class="col-md-6 col-xs-12">
-      <div class="form-group">
-        <%= form.label :classification %>
-        <%= form.select :classification, Complaint.classifications.map { |c| [c[0].humanize, c[0]] }, {}, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :employee_id, 'Employee in charge' %>
-        <%= form.collection_select :employee_id, Employee.all, :id, :to_s, {}, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :employee_id, 'Employee in charge' %>
-        <div class="input-group">
-          <%= text_field_tag 'filter', nil, placeholder: 'Search for employee', onkeyup: 'filterEmployees()', class: 'form-control' %>
-          <span class="input-group-addon"><%= fa_icon('search') %></span>
-        </div>
-      </div>
-
-      <div class="list-group overflowing-box" id="employees-list">
-        <% Employee.all.each do |employee| %>
-          <%= button_tag employee.to_s,
-                         type: 'button',
-                         onclick: "selectEmployee(this, #{employee.id})",
-                         class: 'list-group-item compact' %>
-        <% end %>
-      </div>
-
-      <%= form.hidden_field :employee_id, id: :complaint_employee_id %>
     </div>
   </div>
 
