@@ -5,7 +5,8 @@ class ComplaintTest < ActiveSupport::TestCase
     complaint = Complaint.new(employee_id: 1,
                               classification: 1,
                               source: 'Test',
-                              effective_date: Time.now)
+                              effective_date: Time.now,
+                              review_date: Time.now)
     assert_not complaint.save
   end
 
@@ -13,7 +14,8 @@ class ComplaintTest < ActiveSupport::TestCase
     complaint = Complaint.new(description: 'Test',
                               employee_id: 1,
                               classification: 1,
-                              effective_date: Time.now)
+                              effective_date: Time.now,
+                              review_date: Time.now)
     assert_not complaint.save
   end
 
@@ -21,7 +23,17 @@ class ComplaintTest < ActiveSupport::TestCase
     complaint = Complaint.new(description: 'Test',
                               employee_id: 1,
                               classification: 1,
-                              source: 'Test')
+                              source: 'Test',
+                              review_date: Time.now)
+    assert_not complaint.save
+  end
+
+  test 'should not save without review date' do
+    complaint = Complaint.new(description: 'Test',
+                              employee_id: 1,
+                              classification: 1,
+                              source: 'Test',
+                              effective_date: Time.now)
     assert_not complaint.save
   end
 
@@ -30,7 +42,8 @@ class ComplaintTest < ActiveSupport::TestCase
                               employee_id: 1,
                               classification: 1,
                               source: 'Test',
-                              effective_date: Time.now)
+                              effective_date: Time.now,
+                              review_date: Time.now)
     assert complaint.save
   end
 end

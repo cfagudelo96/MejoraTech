@@ -11,4 +11,5 @@ class Complaint < ApplicationRecord
   validates :description, presence: true
   validates :source, presence: true
   validates :effective_date, presence: true
+  validates :review_date, presence: true
 end

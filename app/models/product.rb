@@ -5,6 +5,6 @@ class Product < ApplicationRecord
   validates :code, presence: true, uniqueness: true
 
   def to_s
-    name
+    "(#{code}) #{name}"
   end
 end
