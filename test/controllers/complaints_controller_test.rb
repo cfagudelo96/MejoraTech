@@ -10,6 +10,11 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'index should retrieve complaints' do
+    get complaints_url
+    assert_not_nil assigns(:complaints)
+  end
+
   test 'should get new' do
     get new_complaint_url
     assert_response :success

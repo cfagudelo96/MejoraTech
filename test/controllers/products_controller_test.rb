@@ -14,7 +14,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get products_url
     @products = assigns(:products)
     assert_not_nil @products
-    assert_equal @products.size, Product.count
   end
 
   test 'should show product' do

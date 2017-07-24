@@ -15,7 +15,18 @@ one:
 
 two:
   id: 2
-  product_id: 1
+  description: MyString
+  employee_id: 1
+  classification: 1
+  source: MyString
+  expiration_date: 2017-07-20
+  effective_date: 2017-07-20
+  pending: false
+  review_date: 2017-07-20
+
+three:
+  id: 3
+  product_id: 99
   description: MyString
   employee_id: 1
   classification: 1

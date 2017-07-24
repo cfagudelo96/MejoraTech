@@ -1,45 +1,45 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Complaints</h1>
 
-<table>
-  <thead>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
     <tr>
       <th>Product</th>
-      <th>Description</th>
-      <th>Employee</th>
-      <th>Classification</th>
-      <th>Source</th>
       <th>Batch number</th>
-      <th>Expiration date</th>
       <th>Effective date</th>
+      <th>Classification</th>
+      <th>Description</th>
+      <th>Source</th>
       <th>Pending</th>
       <th>Review date</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @complaints.each do |complaint| %>
       <tr>
-        <td><%= complaint.product_id %></td>
-        <td><%= complaint.description %></td>
-        <td><%= complaint.employee_id %></td>
-        <td><%= complaint.classification %></td>
-        <td><%= complaint.source %></td>
+        <td><%= complaint.product_name %></td>
         <td><%= complaint.batch_number %></td>
-        <td><%= complaint.expiration_date %></td>
         <td><%= complaint.effective_date %></td>
-        <td><%= complaint.pending %></td>
+        <td><%= complaint.classification.humanize %></td>
+        <td><%= complaint.description %></td>
+        <td><%= complaint.source %></td>
+        <td><%= complaint.pending ? 'Pending' : 'Closed' %></td>
         <td><%= complaint.review_date %></td>
-        <td><%= link_to 'Show', complaint %></td>
-        <td><%= link_to 'Edit', edit_complaint_path(complaint) %></td>
-        <td><%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <span class="pull-right">
+            <%= link_to 'Show', complaint, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_complaint_path(complaint), class: 'btn btn-default' %>
+            <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+          </span>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Complaint', new_complaint_path %>
+<%= link_to 'New Complaint', new_complaint_path, class: 'btn btn-default' %>
