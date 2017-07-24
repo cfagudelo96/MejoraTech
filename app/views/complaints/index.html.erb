@@ -13,6 +13,8 @@
       <th>Pending</th>
       <th>Review date</th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
     </thead>
 
@@ -27,13 +29,9 @@
         <td><%= complaint.source %></td>
         <td><%= complaint.pending ? 'Pending' : 'Closed' %></td>
         <td><%= complaint.review_date %></td>
-        <td>
-          <span class="pull-right">
-            <%= link_to 'Show', complaint, class: 'btn btn-default' %>
-            <%= link_to 'Edit', edit_complaint_path(complaint), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
-          </span>
-        </td>
+        <td><%= link_to 'Show', complaint, class: 'btn btn-default' %></td>
+        <td><%= link_to 'Edit', edit_complaint_path(complaint), class: 'btn btn-default' %></td>
+        <td><%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %></td>
       </tr>
     <% end %>
     </tbody>
