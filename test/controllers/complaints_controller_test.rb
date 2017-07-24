@@ -33,6 +33,11 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'show should retrieve the complaint' do
+    get complaint_url(@complaint)
+    assert_equal @complaint, assigns(:complaint)
+  end
+
   test 'should get edit' do
     get edit_complaint_url(@complaint)
     assert_response :success
