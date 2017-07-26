@@ -43,6 +43,11 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'edit should retrieve the complaint' do
+    get edit_complaint_url(@complaint)
+    assert_equal @complaint, assigns(:complaint)
+  end
+
   test 'should update complaint' do
     patch complaint_url(@complaint), params: { complaint: { batch_number: @complaint.batch_number, classification: @complaint.classification, description: @complaint.description, effective_date: @complaint.effective_date, employee_id: @complaint.employee_id, expiration_date: @complaint.expiration_date, pending: @complaint.pending, product_id: @complaint.product_id, review_date: @complaint.review_date, source: @complaint.source } }
     assert_redirected_to complaint_url(@complaint)
