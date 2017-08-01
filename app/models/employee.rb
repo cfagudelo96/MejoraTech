@@ -4,7 +4,7 @@ class Employee < ApplicationRecord
   # :registerable
   devise :database_authenticatable, :confirmable,
          :recoverable, :rememberable,
-         :trackable, :validatable, :registerable
+         :trackable, :validatable
 
   def to_s
     "#{name} (C.C. #{identification})"
