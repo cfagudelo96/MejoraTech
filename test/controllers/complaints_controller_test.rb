@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class ComplaintsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @complaint = complaints(:one)
+    sign_in employees(:admin)
   end
 
   test 'should get index' do

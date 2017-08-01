@@ -1,0 +1,19 @@
+<h2>Welcome to MejoraTech, <%= @resource.name %>!</h2>
+
+<p>An account associated with this email has been created for you.</p>
+
+<p>You can confirm your account through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<% if @resource.password.present? %>
+  <p>After you confirm your account, you can access the platform with
+    the following password: <strong><%= @resource.password %></strong></p>
+
+  <p>Once your account is confirmed, you can change your password inside the platform.</p>
+<% else %>
+  <p>If you don't remember your password or didn't get an auto generated password,
+    you can access the option to recover your account through the link below:</p>
+
+    <p><%= link_to 'Forgot your password?', new_password_url(@resource) %></p>
+<% end %>

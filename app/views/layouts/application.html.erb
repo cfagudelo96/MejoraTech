@@ -21,6 +21,14 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'Products', products_path %></li>
             <li><%= link_to 'Complaints', complaints_path %></li>
+            <li><%= link_to 'Employees', employees_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <% if employee_signed_in? %>
+            <li><%= link_to 'Logout', destroy_employee_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Login', new_employee_session_path %></li>
+          <% end %>
           </ul>
         </div>
       </div>
@@ -30,6 +38,14 @@
       <% if notice.present? %>
         <div id="notice" class="alert alert-info fade in">
           <%= notice %>
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            <%= fa_icon 'times' %>
+          </a>
+        </div>
+      <% end %>
+      <% if alert.present? %>
+        <div id="alert" class="alert alert-warning fade in">
+          <%= alert %>
           <a href="#" class="close" data-dismiss="alert" aria-label="close">
             <%= fa_icon 'times' %>
           </a>

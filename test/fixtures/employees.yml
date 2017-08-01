@@ -4,14 +4,22 @@ one:
   id: 1
   name: MyString
   identification: 1
-  email: MyString
-  password: MyString
+  email: test1@test.com
   position: MyString
+  confirmed_at: <%= Time.now %>
 
 two:
   id: 2
   name: MyString
-  identification: 1
-  email: MyString
-  password: MyString
+  identification: 2
+  email: test2@test.com
   position: MyString
+  confirmed_at: <%= Time.now %>
+
+admin:
+  id: 3
+  name: admin
+  identification: 3
+  email: admin@test.com
+  position: Admin
+  confirmed_at: <%= Time.now %>

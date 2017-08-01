@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.paginate(page: params[:page])
   end
 
   # GET /employees/1
@@ -25,6 +25,7 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
+    @employee.password = Devise.friendly_token
 
     respond_to do |format|
       if @employee.save
@@ -62,13 +63,14 @@ class EmployeesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_employee
-      @employee = Employee.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def employee_params
-      params.require(:employee).permit(:name, :identification, :email, :password, :position)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_employee
+    @employee = Employee.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def employee_params
+    params.require(:employee).permit(:name, :identification, :email, :position)
+  end
 end

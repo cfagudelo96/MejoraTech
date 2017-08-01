@@ -1,35 +1,37 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Employees</h1>
 
-<table>
-  <thead>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
     <tr>
       <th>Name</th>
       <th>Identification</th>
       <th>Email</th>
-      <th>Password</th>
       <th>Position</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.name %></td>
         <td><%= employee.identification %></td>
         <td><%= employee.email %></td>
-        <td><%= employee.password %></td>
         <td><%= employee.position %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <span class="pull-right">
+            <%= link_to 'Show', employee, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_employee_path(employee), class: 'btn btn-default' %>
+            <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+          </span>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to 'New Employee', new_employee_path, class: 'btn btn-default' %>

@@ -1,29 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @employee.name %></h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
+<h4>Identification</h4>
+<p>C.C. <%= @employee.identification %></p>
 
-<p>
-  <strong>Identification:</strong>
-  <%= @employee.identification %>
-</p>
+<h4>Email</h4>
+<p><%= @employee.email %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @employee.email %>
-</p>
+<h4>Position</h4>
+<p><%= @employee.position %></p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @employee.password %>
-</p>
-
-<p>
-  <strong>Position:</strong>
-  <%= @employee.position %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to 'Back', employees_path, class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_employee_path(@employee), class: 'btn btn-default pull-right' %>

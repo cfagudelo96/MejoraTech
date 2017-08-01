@@ -1,7 +1,7 @@
 <%= form_with(model: employee, local: true) do |form| %>
   <% if employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(employee.errors.count, 'error') %> prohibited this employee from being saved:</h2>
 
       <ul>
       <% employee.errors.full_messages.each do |message| %>
@@ -11,32 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :employee_name %>
+    <%= form.text_field :name, id: :employee_name, required: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :identification %>
-    <%= form.number_field :identification, id: :employee_identification %>
+    <%= form.number_field :identification, id: :employee_identification, required: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :employee_email %>
+    <%= form.email_field :email, id: :employee_email, required: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password, id: :employee_password %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :position %>
-    <%= form.text_field :position, id: :employee_position %>
+    <%= form.text_field :position, id: :employee_position, required: true, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-default pull-right' %>
   </div>
 <% end %>
