@@ -14,11 +14,6 @@
   <div class="row">
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
-        <%= form.label :source %>
-        <%= form.text_field :source, id: :complaint_source, required: true, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
         <%= form.label :effective_date %>
         <div class="input-group date" id="effective-date-picker">
           <%= form.text_field :effective_date, id: :complaint_effective_date, required: true, class: 'form-control' %>
@@ -44,19 +39,44 @@
       </div>
 
       <div class="form-group">
-        <%= form.label :classification %>
-        <%= form.select :classification, Complaint.classifications.map { |c| [c[0].humanize, c[0]] }, {}, class: 'form-control' %>
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :complaint_source, required: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :source_email %>
+        <%= form.email_field :source_email, id: :complaint_source_email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :source_contact_info %>
+        <%= form.text_area :source_contact_info, id: :complaint_source_contact_info, rows: 3, class: 'form-control' %>
       </div>
     </div>
     <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :classification %>
+        <%= form.select :classification, Complaint.classifications.map { |c| [c[0].humanize, c[0]] }, {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :company %>
+        <%= form.select :company, Complaint.companies.map { |c| [c[0].humanize, c[0]] }, {}, class: 'form-control' %>
+      </div>
+
       <div class="form-group">
         <%= form.label :employee_id, 'Employee in charge' %>
         <%= form.collection_select :employee_id, Employee.all, :id, :to_s, {}, class: 'form-control' %>
       </div>
 
       <div class="form-group">
+        <%= form.label :contact_employee_id, 'Contact employee' %>
+        <%= form.collection_select :contact_employee_id, Employee.all, :id, :to_s, { prompt: 'Please select if needed' }, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= form.label :product_id %>
-        <%= form.collection_select :product_id, Product.all, :id, :to_s, { prompt: true }, { class: 'form-control' } %>
+        <%= form.collection_select :product_id, Product.all, :id, :to_s, { prompt: 'Please select if needed' }, { class: 'form-control' } %>
       </div>
 
       <div class="form-group">

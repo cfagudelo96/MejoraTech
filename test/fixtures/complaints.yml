@@ -5,34 +5,47 @@ one:
   product_id: 1
   description: MyString
   employee_id: 1
+  contact_employee_id: 2
   classification: 1
   source: MyString
+  source_email: MyString
+  source_contact_info: MyString
+  contact_employee_id: 1
   batch_number: MyString
   expiration_date: 2017-07-20
   effective_date: 2017-07-20
-  pending: false
   review_date: 2017-07-20
+  code: 001
+  company: <%= Complaint.companies[:farmatech] %>
+  status: <%= Complaint.statuses[:researching] %>
 
 two:
   id: 2
   description: MyString
   employee_id: 1
+  contact_employee_id: 2
   classification: 1
   source: MyString
   expiration_date: 2017-07-20
   effective_date: 2017-07-20
-  pending: false
   review_date: 2017-07-20
+  code: 002
+  company: <%= Complaint.companies[:humax] %>
+  status: <%= Complaint.statuses[:researching] %>
+
 
 three:
   id: 3
   product_id: 99
   description: MyString
   employee_id: 1
+  contact_employee_id: 2
   classification: 1
   source: MyString
   batch_number: MyString
   expiration_date: 2017-07-20
   effective_date: 2017-07-20
-  pending: false
   review_date: 2017-07-20
+  code: 003
+  company: <%= Complaint.companies[:cambridge] %>
+  status: <%= Complaint.statuses[:researching] %>

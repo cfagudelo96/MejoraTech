@@ -15,6 +15,7 @@ class ComplaintsController < ApplicationController
   # GET /complaints/new
   def new
     @complaint = Complaint.new
+    @complaint.review_date = 7.days.from_now
   end
 
   # GET /complaints/1/edit
@@ -25,6 +26,7 @@ class ComplaintsController < ApplicationController
   # POST /complaints.json
   def create
     @complaint = Complaint.new(complaint_params)
+    @complaint.assign_create_attributes
 
     respond_to do |format|
       if @complaint.save
@@ -72,7 +74,8 @@ class ComplaintsController < ApplicationController
   def complaint_params
     params.require(:complaint).permit(:product_id, :description, :employee_id,
                                       :classification, :source, :batch_number,
-                                      :expiration_date, :effective_date, :pending,
-                                      :review_date)
+                                      :expiration_date, :effective_date, :review_date,
+                                      :source_email, :source_contact_info,
+                                      :contact_employee_id, :company)
   end
 end

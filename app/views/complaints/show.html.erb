@@ -1,37 +1,56 @@
-<h1>Complaint details</h1>
+<h1>Complaint <%= @complaint %></h1>
 
 <div class="row">
   <div class="col-md-6 col-xs-12">
-    <h4>Source</h4>
-    <p><%= @complaint.source %></p>
-
-    <h4>Description</h4>
-    <p><%= @complaint.description %></p>
-
     <h4>Classification</h4>
     <p><%= @complaint.classification.humanize %></p>
+
+    <h4>Status</h4>
+    <p><%= @complaint.status.humanize %></p>
 
     <h4>Effective date</h4>
     <p><%= @complaint.effective_date %></p>
 
-    <h4>State</h4>
-    <p><%= @complaint.pending ? 'Pending' : 'Closed' %></p>
+    <h4>Description</h4>
+    <p><%= @complaint.description %></p>
 
     <h4>Review date</h4>
     <p><%= @complaint.review_date %></p>
+
+    <h4>Source</h4>
+    <p><%= @complaint.source %></p>
+
+    <% if @complaint.source_email.present? %>
+      <h4>Source email</h4>
+      <p><%= @complaint.source_email %></p>
+  <% end %>
+
+    <% if @complaint.source_contact_info.present? %>
+      <h4>Source contact info</h4>
+      <p><%= @complaint.source_contact_info %></p>
+    <% end %>
   </div>
   <div class="col-md-6 col-xs-12">
+    <h4>Employee in charge</h4>
+    <p><%= @complaint.employee %></p>
+
+    <% if @complaint.contact_employee.present? %>
+      <h4>Contact employee</h4>
+      <p><%= @complaint.contact_employee %></p>
+    <% end %>
+
     <h4>Product</h4>
     <p><%= @complaint.product_name %></p>
 
-    <h4>Batch number</h4>
-    <p><%= @complaint.batch_number %></p>
+    <% if @complaint.batch_number.present? %>
+      <h4>Batch number</h4>
+      <p><%= @complaint.batch_number %></p>
+    <% end %>
 
-    <h4>Expiration date</h4>
-    <p><%= @complaint.expiration_date %></p>
-
-    <h4>Employee in charge</h4>
-    <p><%= @complaint.employee %></p>
+    <% if @complaint.expiration_date.present? %>
+      <h4>Expiration date</h4>
+      <p><%= @complaint.expiration_date %></p>
+    <% end %>
   </div>
 </div>
 

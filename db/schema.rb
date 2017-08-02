@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731165513) do
+ActiveRecord::Schema.define(version: 20170802125225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,15 @@ ActiveRecord::Schema.define(version: 20170731165513) do
     t.string "batch_number"
     t.date "expiration_date"
     t.date "effective_date"
-    t.boolean "pending", default: true
     t.date "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source_email"
+    t.text "source_contact_info"
+    t.integer "contact_employee_id"
+    t.string "code"
+    t.integer "company"
+    t.integer "status"
   end
 
   create_table "employees", force: :cascade do |t|

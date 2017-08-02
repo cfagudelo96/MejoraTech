@@ -20,7 +20,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create employee' do
     assert_difference('Employee.count') do
-      post create_employee_url, params: { employee: { email: 'test@test.com', identification: @employee.identification, name: @employee.name, position: @employee.position } }
+      post employees_url, params: { employee: { email: 'test@test.com', identification: @employee.identification, name: @employee.name, position: @employee.position } }
     end
 
     assert_redirected_to employee_url(Employee.last)
