@@ -6,6 +6,8 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable,
          :trackable, :validatable
 
+  has_many :complaints
+
   def to_s
     "#{name} (C.C. #{identification})"
   end

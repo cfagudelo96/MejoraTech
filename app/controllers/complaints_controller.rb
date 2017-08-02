@@ -1,10 +1,16 @@
 class ComplaintsController < ApplicationController
   before_action :set_complaint, only: [:show, :edit, :update, :destroy]
+  before_action :restrict_access_to_admin, except: [:index, :show]
+  before_action :restrict_access_to_employee, only: [:show]
 
   # GET /complaints
   # GET /complaints.json
   def index
-    @complaints = Complaint.paginate(page: params[:page])
+    @complaints = if current_employee.admin
+                    Complaint.paginate(page: params[:page])
+                  else
+                    current_employee.complaints
+                  end
   end
 
   # GET /complaints/1
@@ -83,5 +89,11 @@ class ComplaintsController < ApplicationController
                                       :expiration_date, :effective_date, :review_date,
                                       :source_email, :source_contact_info,
                                       :contact_employee_id, :company)
+  end
+
+  def restrict_access_to_employee
+    unless current_employee.admin || current_employee.id == @complaint.employee_id
+      redirect_to complaints_path, alert: "You don't have permission to access this complaint"
+    end
   end
 end

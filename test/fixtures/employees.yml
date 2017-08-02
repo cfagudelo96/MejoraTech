@@ -22,4 +22,5 @@ admin:
   identification: 3
   email: admin@test.com
   position: Admin
+  admin: true
   confirmed_at: <%= Time.now %>

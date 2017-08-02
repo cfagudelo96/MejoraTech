@@ -30,8 +30,10 @@
         <td>
           <span class="pull-right">
             <%= link_to 'Show', complaint, class: 'btn btn-default' %>
-            <%= link_to 'Edit', edit_complaint_path(complaint), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+            <% if current_employee.admin %>
+              <%= link_to 'Edit', edit_complaint_path(complaint), class: 'btn btn-default' %>
+              <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+            <% end %>
           </span>
         </td>
       </tr>
@@ -42,4 +44,6 @@
 
 <br>
 
-<%= link_to 'New Complaint', new_complaint_path, class: 'btn btn-default' %>
+<% if current_employee.admin %>
+  <%= link_to 'New Complaint', new_complaint_path, class: 'btn btn-default' %>
+<% end %>

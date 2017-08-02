@@ -19,9 +19,11 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Products', products_path %></li>
             <li><%= link_to 'Complaints', complaints_path %></li>
-            <li><%= link_to 'Employees', employees_path %></li>
+            <% if employee_signed_in? && current_employee.admin %>
+              <li><%= link_to 'Products', products_path %></li>
+              <li><%= link_to 'Employees', employees_path %></li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           <% if employee_signed_in? %>

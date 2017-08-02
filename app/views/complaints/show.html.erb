@@ -56,5 +56,7 @@
 
 <div>
   <%= link_to 'Back', complaints_path, class: 'btn btn-default' %>
-  <%= link_to 'Edit', edit_complaint_path(@complaint), class: 'btn btn-default pull-right' %>
+  <% if current_employee.admin %>
+    <%= link_to 'Edit', edit_complaint_path(@complaint), class: 'btn btn-default pull-right' %>
+  <% end %>
 </div>
