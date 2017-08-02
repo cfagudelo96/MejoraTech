@@ -1,0 +1,9 @@
+Hello <%= @employee.name %>
+
+You have been assigned the investigation of the complaint <%= @complaint %>
+
+Use the following link to access the details of this complaint:
+
+<%= link_to 'View complaint details', complaint_url(@complaint) %>
+
+Thank you for helping with the continuous improvement of Farma.

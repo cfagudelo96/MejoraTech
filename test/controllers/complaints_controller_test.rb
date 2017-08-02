@@ -43,6 +43,28 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to complaint_url(Complaint.last)
   end
 
+  test 'create should notify redirection' do
+    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+      post complaints_url, params: { complaint: { batch_number: @complaint.batch_number,
+                                                  classification: @complaint.classification,
+                                                  description: @complaint.description,
+                                                  effective_date: @complaint.effective_date,
+                                                  employee_id: @complaint.employee_id,
+                                                  expiration_date: @complaint.expiration_date,
+                                                  product_id: @complaint.product_id,
+                                                  review_date: @complaint.review_date,
+                                                  source: @complaint.source,
+                                                  source_email: @complaint.source_email,
+                                                  source_contact_info: @complaint.source_contact_info,
+                                                  contact_employee_id: @complaint.contact_employee_id,
+                                                  company: @complaint.company } }
+    end
+    complaint_redirected_email = ActionMailer::Base.deliveries.last
+
+    assert_equal 'New complaint investigation assigned',
+                 complaint_redirected_email.subject
+  end
+
   test 'should show complaint' do
     get complaint_url(@complaint)
     assert_response :success
@@ -78,6 +100,46 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
                                                             contact_employee_id: @complaint.contact_employee_id,
                                                             company: @complaint.company } }
     assert_redirected_to complaint_url(@complaint)
+  end
+
+  test 'update should not notify redirection if the employee did not change' do
+    assert_no_difference('ActionMailer::Base.deliveries.size') do
+      patch complaint_url(@complaint), params: { complaint: { batch_number: @complaint.batch_number,
+                                                              classification: @complaint.classification,
+                                                              description: @complaint.description,
+                                                              effective_date: @complaint.effective_date,
+                                                              employee_id: @complaint.employee_id,
+                                                              expiration_date: @complaint.expiration_date,
+                                                              product_id: @complaint.product_id,
+                                                              review_date: @complaint.review_date,
+                                                              source: @complaint.source,
+                                                              source_email: @complaint.source_email,
+                                                              source_contact_info: @complaint.source_contact_info,
+                                                              contact_employee_id: @complaint.contact_employee_id,
+                                                              company: @complaint.company } }
+    end
+  end
+
+  test 'update should notify redirection if the employee changed' do
+    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+      patch complaint_url(@complaint), params: { complaint: { batch_number: @complaint.batch_number,
+                                                              classification: @complaint.classification,
+                                                              description: @complaint.description,
+                                                              effective_date: @complaint.effective_date,
+                                                              employee_id: @complaint.employee_id + 1,
+                                                              expiration_date: @complaint.expiration_date,
+                                                              product_id: @complaint.product_id,
+                                                              review_date: @complaint.review_date,
+                                                              source: @complaint.source,
+                                                              source_email: @complaint.source_email,
+                                                              source_contact_info: @complaint.source_contact_info,
+                                                              contact_employee_id: @complaint.contact_employee_id,
+                                                              company: @complaint.company } }
+    end
+    complaint_redirected_email = ActionMailer::Base.deliveries.last
+
+    assert_equal 'New complaint investigation assigned',
+                 complaint_redirected_email.subject
   end
 
   test 'should destroy complaint' do

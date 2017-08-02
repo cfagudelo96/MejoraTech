@@ -30,6 +30,8 @@ class ComplaintsController < ApplicationController
 
     respond_to do |format|
       if @complaint.save
+        @complaint.notify_redirection
+
         format.html { redirect_to @complaint, notice: 'Complaint was successfully created.' }
         format.json { render :show, status: :created, location: @complaint }
       else
@@ -42,8 +44,12 @@ class ComplaintsController < ApplicationController
   # PATCH/PUT /complaints/1
   # PATCH/PUT /complaints/1.json
   def update
+    old_employee_id = @complaint.employee_id
+
     respond_to do |format|
       if @complaint.update(complaint_params)
+        @complaint.notify_redirection(old_employee_id)
+
         format.html { redirect_to @complaint, notice: 'Complaint was successfully updated.' }
         format.json { render :show, status: :ok, location: @complaint }
       else

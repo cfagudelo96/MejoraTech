@@ -1,0 +1,11 @@
+<h2>Hello <%= @employee.name %></h2>
+
+<p>
+  You have been assigned the investigation of the complaint <strong><%= @complaint %></strong>
+</p>
+
+<p>Use the following link to access the details of this complaint: </p>
+
+<p><%= link_to 'View complaint details', complaint_url(@complaint) %></p>
+
+<p>Thank you for helping with the continuous improvement of Farma.</p>

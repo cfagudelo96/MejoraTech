@@ -15,7 +15,7 @@ one:
   expiration_date: 2017-07-20
   effective_date: 2017-07-20
   review_date: 2017-07-20
-  code: 001
+  code: '001'
   company: <%= Complaint.companies[:farmatech] %>
   status: <%= Complaint.statuses[:researching] %>
 
@@ -29,7 +29,7 @@ two:
   expiration_date: 2017-07-20
   effective_date: 2017-07-20
   review_date: 2017-07-20
-  code: 002
+  code: '002'
   company: <%= Complaint.companies[:humax] %>
   status: <%= Complaint.statuses[:researching] %>
 
@@ -46,6 +46,6 @@ three:
   expiration_date: 2017-07-20
   effective_date: 2017-07-20
   review_date: 2017-07-20
-  code: 003
+  code: '003'
   company: <%= Complaint.companies[:cambridge] %>
   status: <%= Complaint.statuses[:researching] %>

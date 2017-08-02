@@ -138,4 +138,25 @@ class ComplaintTest < ActiveSupport::TestCase
     cambridge_complaint.assign_create_attributes
     assert cambridge_complaint.code.include? 'C'
   end
+
+  test 'should notify redirection if the old employee id is nil' do
+    complaint = complaints(:one)
+    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+      complaint.notify_redirection(nil)
+    end
+  end
+
+  test 'should not notify redirection if the employee id is the same' do
+    complaint = complaints(:one)
+    assert_no_difference('ActionMailer::Base.deliveries.size') do
+      complaint.notify_redirection(complaint.employee_id)
+    end
+  end
+
+  test 'should notify redirection if the employee id is different' do
+    complaint = complaints(:one)
+    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+      complaint.notify_redirection(complaint.employee_id + 1)
+    end
+  end
 end

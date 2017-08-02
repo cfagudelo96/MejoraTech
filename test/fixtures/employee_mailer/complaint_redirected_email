@@ -1,0 +1,9 @@
+Hello MyString
+
+You have been assigned the investigation of the complaint 001
+
+Use the following link to access the details of this complaint:
+
+<a href="http://localhost:3000/complaints/1">View complaint details</a>
+
+Thank you for helping with the continuous improvement of Farma.
