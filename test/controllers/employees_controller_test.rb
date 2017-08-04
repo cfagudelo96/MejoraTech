@@ -48,4 +48,10 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to employees_url
   end
+
+  test 'should get edit password' do
+    get edit_password_employees_url
+    assert_response :success
+    assert_equal employees(:admin), assigns(:employee)
+  end
 end

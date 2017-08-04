@@ -123,18 +123,6 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   private
 
   def complaint_parameters_hash
-    { complaint: { batch_number: @complaint.batch_number,
-                   classification: @complaint.classification,
-                   description: @complaint.description,
-                   effective_date: @complaint.effective_date,
-                   employee_id: @complaint.employee_id,
-                   expiration_date: @complaint.expiration_date,
-                   product_id: @complaint.product_id,
-                   review_date: @complaint.review_date,
-                   source: @complaint.source,
-                   source_email: @complaint.source_email,
-                   source_contact_info: @complaint.source_contact_info,
-                   contact_employee_id: @complaint.contact_employee_id,
-                   company: @complaint.company } }
+    { complaint: { batch_number: @complaint.batch_number, classification: @complaint.classification, description: @complaint.description, effective_date: @complaint.effective_date, employee_id: @complaint.employee_id, expiration_date: @complaint.expiration_date, product_id: @complaint.product_id, review_date: @complaint.review_date, source: @complaint.source, source_email: @complaint.source_email, source_contact_info: @complaint.source_contact_info, contact_employee_id: @complaint.contact_employee_id, company: @complaint.company } }
   end
 end

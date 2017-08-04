@@ -63,6 +63,20 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def edit_password
+    @employee = current_employee
+  end
+
+  def update_password
+    @employee = current_employee
+    if @employee.update_with_password(employee_password_params)
+      bypass_sign_in(@employee)
+      redirect_to root_path, notice: 'Your password has been changed.'
+    else
+      render 'edit_password'
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -73,5 +87,9 @@ class EmployeesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def employee_params
     params.require(:employee).permit(:name, :identification, :email, :position)
+  end
+
+  def employee_password_params
+    params.require(:employee).permit(:password, :password_confirmation, :current_password)
   end
 end
