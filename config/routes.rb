@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :employees
 
-  resources :complaints
+  resources :complaints do
+    resources :supports
+  end
   resources :products
   resources :employees do
     collection do

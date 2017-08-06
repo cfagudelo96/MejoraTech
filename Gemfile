@@ -7,6 +7,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'carrierwave'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'momentjs-rails'
