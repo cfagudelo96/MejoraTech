@@ -1,57 +1,115 @@
 <h1>Complaint <%= @complaint %></h1>
 
 <div class="row">
-  <div class="col-md-6 col-xs-12">
-    <h4>Classification</h4>
-    <p><%= @complaint.classification.humanize %></p>
+  <div class="col-md-12">
+    <h3>Description</h3>
+    <p><%= @complaint.description %></p>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-md-3 col-xs-6">
     <h4>Status</h4>
     <p><%= @complaint.status.humanize %></p>
+  </div>
 
+  <div class="col-md-3 col-xs-6">
+    <h4>Classification</h4>
+    <p><%= @complaint.classification.humanize %></p>
+  </div>
+
+  <div class="col-md-3 col-xs-6">
     <h4>Effective date</h4>
     <p><%= @complaint.effective_date %></p>
+  </div>
 
-    <h4>Description</h4>
-    <p><%= @complaint.description %></p>
-
+  <div class="col-md-3 col-xs-6">
     <h4>Review date</h4>
     <p><%= @complaint.review_date %></p>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <h4>Employee in charge</h4>
+    <p><%= @complaint.employee %></p>
+  </div>
+
+  <div class="col-md-6 col-xs-12">
+    <% if @complaint.contact_employee.present? %>
+      <h4>Contact employee</h4>
+      <p><%= @complaint.contact_employee %></p>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xs-12">
     <h4>Source</h4>
-    <p><%= @complaint.source %></p>
+    <p><strong><%= @complaint.source %></strong></p>
+  </div>
 
+  <div class="col-md-4 col-xs-12">
     <% if @complaint.source_email.present? %>
       <h4>Source email</h4>
       <p><%= @complaint.source_email %></p>
-  <% end %>
+    <% end %>
+  </div>
 
+  <div class="col-md-4 col-xs-12">
     <% if @complaint.source_contact_info.present? %>
       <h4>Source contact info</h4>
       <p><%= @complaint.source_contact_info %></p>
     <% end %>
   </div>
-  <div class="col-md-6 col-xs-12">
-    <h4>Employee in charge</h4>
-    <p><%= @complaint.employee %></p>
+</div>
 
-    <% if @complaint.contact_employee.present? %>
-      <h4>Contact employee</h4>
-      <p><%= @complaint.contact_employee %></p>
-    <% end %>
-
+<div class="row">
+  <div class="col-md-4 col-xs-12">
     <h4>Product</h4>
-    <p><%= @complaint.product_name %></p>
+    <p><strong><%= @complaint.product_name %></strong></p>
+  </div>
 
+  <div class="col-md-4 col-xs-12">
     <% if @complaint.batch_number.present? %>
       <h4>Batch number</h4>
       <p><%= @complaint.batch_number %></p>
     <% end %>
+  </div>
 
+  <div class="col-md-4 col-xs-12">
     <% if @complaint.expiration_date.present? %>
       <h4>Expiration date</h4>
       <p><%= @complaint.expiration_date %></p>
     <% end %>
   </div>
+</div>
+
+<div class="margin-bottom">
+  <h3>Supporting info</h3>
+
+  <ul>
+    <% @complaint.supports.each do |support| %>
+      <li class="margin-bottom">
+        <p>
+          <strong><%= support.description %></strong>
+          <span class="margin-left btn-group" role="group">
+          <%= link_to support.support_file.url, target: '_blank', class: 'btn btn-default' do %>
+            <%= fa_icon 'download' %>
+          <% end %>
+            <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
+            <%= fa_icon 'pencil-square-o' %>
+          <% end %>
+            <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do %>
+            <%= fa_icon 'trash' %>
+          <% end %>
+          </span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Add supporting info', new_complaint_support_path(@complaint) %>
 </div>
 
 <div>

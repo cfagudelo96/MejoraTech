@@ -1,0 +1,10 @@
+<h1>Support file for complaint <%= link_to @support.complaint, complaint_path(@support.complaint) %></h1>
+
+<h4>File</h4>
+<%= link_to @support.support_file.file.filename, @support.support_file.url %>
+
+<h4>Description</h4>
+<p><%= @support.description %></p>
+
+<%= link_to 'Back', complaint_supports_path(@support.complaint), class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_complaint_support_path(@support.complaint, @support), class: 'btn btn-default pull-right' %>

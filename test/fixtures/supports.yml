@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  support_file: MyString
+  description: MyText
+  complaint_id: 1
+
+two:
+  id: 2
+  support_file: MyString
+  description: MyText
+  complaint_id: 1

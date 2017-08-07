@@ -1,0 +1,31 @@
+<%= form_with(model: [complaint, support], local: true) do |form| %>
+  <% if support.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(support.errors.count, "error") %> prohibited this support from being saved:</h2>
+
+      <ul>
+      <% support.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if support.support_file.present? %>
+    <p><strong>Current file:</strong> <%= support.support_file.file.filename %></p>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :support_file %>
+    <%= form.file_field :support_file, id: :support_file, required: support.support_file.blank?, class: 'btn btn-default' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :support_description, rows: 4, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-default pull-right' %>
+  </div>
+<% end %>

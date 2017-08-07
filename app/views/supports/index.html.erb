@@ -1,0 +1,35 @@
+<h1>Supports</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Support file</th>
+      <th>Description</th>
+      <th>Complaint</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @supports.each do |support| %>
+      <tr>
+        <td><%= link_to "Download #{support.support_file.file.filename}", support.support_file.url %></td>
+        <td><%= support.description %></td>
+        <td><%= link_to support.complaint, complaint_path(support.complaint) %></td>
+        <td>
+          <span class="pull-right">
+            <%= link_to 'Show', complaint_support_path(support.complaint, support), class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' %>
+            <%= link_to 'Destroy', complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Support', new_complaint_support_path(@complaint), class: 'btn btn-default' %>

@@ -1,5 +1,7 @@
 .idea
 
+public/uploads
+
 *.rbc
 capybara-*.html
 .rspec
