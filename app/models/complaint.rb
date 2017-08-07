@@ -13,6 +13,8 @@ class Complaint < ApplicationRecord
   belongs_to :employee
   belongs_to :contact_employee, class_name: 'Employee', optional: true
 
+  has_many :supports
+
   validates :description, presence: true
   validates :source, presence: true
   validates :effective_date, presence: true

@@ -1,1 +1,1 @@
-json.partial! "supports/support", support: @support
+json.partial! 'supports/support', support: @support

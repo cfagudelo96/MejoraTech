@@ -1,19 +1,10 @@
-<p id="notice"><%= notice %></p>
+<h1>Support file for complaint <%= link_to @support.complaint, complaint_path(@support.complaint) %></h1>
 
-<p>
-  <strong>File:</strong>
-  <%= @support.file %>
-</p>
+<h4>File</h4>
+<%= link_to @support.support_file.file.filename, @support.support_file.url %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @support.description %>
-</p>
+<h4>Description</h4>
+<p><%= @support.description %></p>
 
-<p>
-  <strong>Complaint:</strong>
-  <%= @support.complaint_id %>
-</p>
-
-<%= link_to 'Edit', edit_support_path(@support) %> |
-<%= link_to 'Back', supports_path %>
+<%= link_to 'Back', complaint_supports_path(@support.complaint), class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_complaint_support_path(@support.complaint, @support), class: 'btn btn-default pull-right' %>
