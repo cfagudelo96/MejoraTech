@@ -32,6 +32,21 @@ class SupportsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'show should permit access to the correct employee' do
+    sign_in employees(:one)
+    get complaint_support_url(@complaint, @support)
+
+    assert_response :success
+  end
+
+  test 'show should restrict access to a different employee' do
+    sign_in employees(:two)
+    get complaint_support_url(@complaint, @support)
+
+    assert_redirected_to complaints_url
+    assert_equal "You don't have permission to access the supporting info of this complaint", flash[:alert]
+  end
+
   test 'should get edit' do
     get edit_complaint_support_url(@complaint, @support)
     assert_response :success
