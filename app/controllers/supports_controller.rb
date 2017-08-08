@@ -1,6 +1,7 @@
 class SupportsController < ApplicationController
   before_action :set_support, only: [:show, :edit, :update, :destroy]
-  before_action :set_complaint, only: [:index, :new, :create, :destroy]
+  before_action :set_complaint
+  before_action :restrict_access_to_employee
 
   # GET /supports
   # GET /supports.json
@@ -44,7 +45,7 @@ class SupportsController < ApplicationController
   def update
     respond_to do |format|
       if @support.update(support_params)
-        format.html { redirect_to complaint_path(@support.complaint), notice: 'Support was successfully updated.' }
+        format.html { redirect_to complaint_path(@complaint), notice: 'Support was successfully updated.' }
         format.json { render :show, status: :ok, location: @support }
       else
         format.html { render :edit }
@@ -77,5 +78,11 @@ class SupportsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def support_params
     params.require(:support).permit(:support_file, :description)
+  end
+
+  def restrict_access_to_employee
+    unless current_employee.admin || current_employee.id == @complaint.employee_id
+      redirect_to complaints_path, alert: "You don't have permission to access the supporting info of this complaint"
+    end
   end
 end

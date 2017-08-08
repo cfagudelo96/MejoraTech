@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :restrict_access_to_admin
+  before_action :restrict_access_to_admin, except: [:edit_password, :update_password]
 
   # GET /employees
   # GET /employees.json
