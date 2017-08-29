@@ -85,31 +85,38 @@
   </div>
 </div>
 
-<div class="margin-bottom">
-  <h3>Supporting info</h3>
+<div class="row margin-bottom">
+  <div class="col-md-6 col-xs-12">
+    <h3>Supporting info</h3>
 
-  <ul>
-    <% @complaint.supports.each do |support| %>
-      <li class="margin-bottom">
-        <p>
-          <strong><%= support.description %></strong>
-          <span class="margin-left btn-group" role="group">
+    <ul>
+      <% @complaint.supports.each do |support| %>
+        <li class="margin-bottom">
+          <p>
+            <strong><%= support.description %></strong>
+            <span class="margin-left btn-group" role="group">
           <%= link_to support.support_file.url, target: '_blank', class: 'btn btn-default' do %>
             <%= fa_icon 'download' %>
           <% end %>
-            <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
+              <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
             <%= fa_icon 'pencil-square-o' %>
           <% end %>
-            <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do %>
+              <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do %>
             <%= fa_icon 'trash' %>
           <% end %>
           </span>
-        </p>
-      </li>
-    <% end %>
-  </ul>
+          </p>
+        </li>
+      <% end %>
+    </ul>
 
-  <%= link_to 'Add supporting info', new_complaint_support_path(@complaint) %>
+    <%= link_to 'Add supporting info', new_complaint_support_path(@complaint) %>
+  </div>
+
+  <div class="col-md-6 col-xs-12">
+    <h3>Analyses</h3>
+    <%= link_to 'Add analysis', new_complaint_fishbone_analysis_path(@complaint) %>
+  </div>
 </div>
 
 <div>

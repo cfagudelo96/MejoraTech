@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  complaint_id: 1
+  effect: MyString
+
+two:
+  id: 2
+  complaint_id: 1
+  effect: MyString
