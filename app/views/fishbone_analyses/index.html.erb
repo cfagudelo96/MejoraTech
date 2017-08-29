@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fishbone Analyses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Complaint</th>
+      <th>Effect</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fishbone_analyses.each do |fishbone_analysis| %>
+      <tr>
+        <td><%= fishbone_analysis.complaint_id %></td>
+        <td><%= fishbone_analysis.effect %></td>
+        <td><%= link_to 'Show', fishbone_analysis %></td>
+        <td><%= link_to 'Edit', edit_fishbone_analysis_path(fishbone_analysis) %></td>
+        <td><%= link_to 'Destroy', fishbone_analysis, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fishbone Analysis', new_fishbone_analysis_path %>

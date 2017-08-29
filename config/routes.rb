@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   resources :complaints do
     resources :supports
+    resources :fishbone_analyses
   end
+
   resources :products
+
   resources :employees do
     collection do
       get 'edit_password'

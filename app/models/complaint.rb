@@ -14,6 +14,7 @@ class Complaint < ApplicationRecord
   belongs_to :contact_employee, class_name: 'Employee', optional: true
 
   has_many :supports
+  has_many :fishbone_analyses
 
   validates :description, presence: true
   validates :source, presence: true

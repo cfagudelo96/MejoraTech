@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  fishbone_category_id: 1
+  cause: MyString
+
+two:
+  id: 2
+  fishbone_category_id: 1
+  cause: MyString

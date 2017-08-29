@@ -1,0 +1,2 @@
+module FishboneAnalysesHelper
+end
