@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Complaint:</strong>
   <%= @fishbone_analysis.complaint_id %>
@@ -10,5 +8,5 @@
   <%= @fishbone_analysis.effect %>
 </p>
 
-<%= link_to 'Edit', edit_fishbone_analysis_path(@fishbone_analysis) %> |
-<%= link_to 'Back', fishbone_analyses_path %>
+<%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, @fishbone_analysis) %> |
+<%= link_to 'Back', complaint_path(@complaint) %>

@@ -1,6 +1,7 @@
 class FishboneAnalysesController < ApplicationController
   before_action :set_complaint
   before_action :set_fishbone_analysis, only: [:show, :edit, :update, :destroy]
+  before_action :restrict_access_to_employee
 
   # GET /fishbone_analyses
   # GET /fishbone_analyses.json
@@ -32,7 +33,7 @@ class FishboneAnalysesController < ApplicationController
 
     respond_to do |format|
       if @fishbone_analysis.save
-        format.html { redirect_to @fishbone_analysis, notice: 'Fishbone analysis was successfully created.' }
+        format.html { redirect_to complaint_path(@complaint), notice: 'Fishbone analysis was successfully created.' }
         format.json { render :show, status: :created, location: @fishbone_analysis }
       else
         format.html { render :new }
@@ -46,7 +47,7 @@ class FishboneAnalysesController < ApplicationController
   def update
     respond_to do |format|
       if @fishbone_analysis.update(fishbone_analysis_params)
-        format.html { redirect_to @fishbone_analysis, notice: 'Fishbone analysis was successfully updated.' }
+        format.html { redirect_to complaint_path(@complaint), notice: 'Fishbone analysis was successfully updated.' }
         format.json { render :show, status: :ok, location: @fishbone_analysis }
       else
         format.html { render :edit }
@@ -60,7 +61,7 @@ class FishboneAnalysesController < ApplicationController
   def destroy
     @fishbone_analysis.destroy
     respond_to do |format|
-      format.html { redirect_to complaint_fishbone_analyses_url(@complaint), notice: 'Fishbone analysis was successfully destroyed.' }
+      format.html { redirect_to complaint_url(@complaint), notice: 'Fishbone analysis was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,5 +80,11 @@ class FishboneAnalysesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def fishbone_analysis_params
     params.require(:fishbone_analysis).permit(:complaint_id, :effect, fishbone_categories_attributes: [:id, :category, fishbone_causes_attributes: [:id, :cause]])
+  end
+
+  def restrict_access_to_employee
+    unless current_employee.admin || current_employee.id == @complaint.employee_id
+      redirect_to complaints_path, alert: "You don't have permission to access the supporting info of this complaint"
+    end
   end
 end

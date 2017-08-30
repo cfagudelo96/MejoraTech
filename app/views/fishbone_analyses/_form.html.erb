@@ -11,22 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :effect %>
-    <%= form.text_field :effect, id: :fishbone_analysis_effect %>
+    <%= form.text_field :effect, required: true, id: :fishbone_analysis_effect, class: 'form-control' %>
   </div>
 
-  <%= form.fields_for :fishbone_categories do |category_form| %>
-    <div class="form-group">
-      <%= category_form.text_field :category %>
-    </div>
-
-    <%= category_form.fields_for :fishbone_causes do |cause_form| %>
-      <%= cause_form.text_field :cause %>
+  <div class="row" id="categories-container">
+    <%= form.fields_for :fishbone_categories do |category_form| %>
+      <div class="category-panel col-md-12 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= category_form.label :category %>
+              <%= category_form.text_field :category, required: true, class: 'form-control' %>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body" id="causes-container-0">
+                <%= category_form.fields_for :fishbone_causes do |cause_form| %>
+                  <div class="form-group">
+                    <%= cause_form.text_area :cause, required: true, rows: 2, placeholder: 'Cause #1', class: 'form-control' %>
+                  </div>
+                <% end %>
+                <button type="button" onclick="addCause(this)" class="btn btn-default"><%= fa_icon('plus') %> Add cause</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  <% end %>
+  </div>
+
+  <div class="margin-bottom">
+    <button type="button" onclick="addCategory()" class="btn btn-default"><%= fa_icon('plus') %> Add category</button>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-default pull-right' %>
   </div>
 <% end %>

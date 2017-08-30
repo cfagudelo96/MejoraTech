@@ -1,6 +1,6 @@
 class SupportsController < ApplicationController
-  before_action :set_support, only: [:show, :edit, :update, :destroy]
   before_action :set_complaint
+  before_action :set_support, only: [:show, :edit, :update, :destroy]
   before_action :restrict_access_to_employee
 
   # GET /supports
@@ -27,7 +27,7 @@ class SupportsController < ApplicationController
   # POST /supports.json
   def create
     @support = Support.new(support_params)
-    @support.complaint_id = @complaint.id
+    @support.complaint = @complaint
 
     respond_to do |format|
       if @support.save
