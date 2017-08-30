@@ -47,3 +47,41 @@ changePanelWidth = (categoryPanel, panelWidth) ->
       <textarea required="required" rows="2" placeholder="Cause #' + (causeNumber + 1) + '" class="form-control" name="fishbone_analysis[fishbone_categories_attributes][' + categoryNumber + '][fishbone_causes_attributes][' + causeNumber + '][cause]" id="fishbone_analysis_fishbone_categories_attributes_' + categoryNumber + '_fishbone_causes_attributes_' + causeNumber + '_cause"></textarea>
     </div>'
   $(element).before(causeForm)
+
+@drawDiagram = () ->
+  fishbone = d3.fishbone()
+
+  data = {
+    "name": "Quality",
+    "children": [
+      {
+        "name": "Machine",
+        "children": [
+          {"name": "Mill"},
+          {"name": "Mixer"},
+          {"name": "Metal Lathe"}
+        ]
+      }
+    ]
+  }
+
+  size = () ->
+    return {
+      width: this.clientWidth,
+      height: this.clientHeight
+    }
+  size.bind(window.document.documentElement)
+
+  svg = d3.select("body")
+          .append("svg")
+          .attr(size())
+          .datum(data)
+          .call(fishbone.defaultArrow)
+          .call(fishbone)
+
+  fishbone.force().start()
+
+  d3.select(window).on("resize", () ->
+    fishbone.force().size([size().width, size().height]).start()
+    svg.attr(size())
+  )

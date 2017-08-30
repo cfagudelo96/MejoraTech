@@ -17,4 +17,6 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
+//= require d3.min
+//= require d3.fishbone
 //= require_tree .

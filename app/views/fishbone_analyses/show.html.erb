@@ -8,5 +8,11 @@
   <%= @fishbone_analysis.effect %>
 </p>
 
+<%= content_tag :div, '', data: @fishbone_analysis_json %>
+
+<script>
+    drawDiagram();
+</script>
+
 <%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, @fishbone_analysis) %> |
 <%= link_to 'Back', complaint_path(@complaint) %>

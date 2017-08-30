@@ -12,6 +12,8 @@ class FishboneAnalysesController < ApplicationController
   # GET /fishbone_analyses/1
   # GET /fishbone_analyses/1.json
   def show
+    to_json_hash = { include: { fishbone_categories: { include: :fishbone_causes } } }
+    @fishbone_analysis_json = @fishbone_analysis.to_json(to_json_hash)
   end
 
   # GET /fishbone_analyses/new
