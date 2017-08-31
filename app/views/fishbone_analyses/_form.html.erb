@@ -32,7 +32,8 @@
                     <%= cause_form.text_area :cause, required: true, rows: 2, placeholder: 'Cause #1', class: 'form-control' %>
                   </div>
                 <% end %>
-                <button type="button" onclick="addCause(this)" class="btn btn-default"><%= fa_icon('plus') %> Add cause</button>
+                <button type="button" onclick="addCause(this)" class="btn btn-default"><%= fa_icon('plus') %> Cause</button>
+                <button type="button" onclick="removeCause(this)" disabled class="btn btn-default" id="remove-cause-category-0"><%= fa_icon('minus') %> Cause</button>
               </div>
             </div>
           </div>
@@ -42,7 +43,8 @@
   </div>
 
   <div class="margin-bottom">
-    <button type="button" onclick="addCategory()" class="btn btn-default"><%= fa_icon('plus') %> Add category</button>
+    <button type="button" onclick="addCategory()" class="btn btn-default"><%= fa_icon('plus') %> Category</button>
+    <button type="button" onclick="removeCategory()" disabled class="btn btn-default" id="remove-category"><%= fa_icon('minus') %> Category</button>
   </div>
 
   <div class="actions">

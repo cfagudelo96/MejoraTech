@@ -98,10 +98,10 @@
           <%= link_to support.support_file.url, target: '_blank', class: 'btn btn-default' do %>
             <%= fa_icon 'download' %>
           <% end %>
-              <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
+          <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
             <%= fa_icon 'pencil-square-o' %>
           <% end %>
-              <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do %>
+          <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do %>
             <%= fa_icon 'trash' %>
           <% end %>
           </span>
