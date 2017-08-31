@@ -21,8 +21,6 @@ THE SOFTWARE.
 ;(function(d3){
     "use strict";
 
-    console.log(d3)
-
     d3.fishbone = function(){
         /*
           A Fishbone diagram implemented in d3.

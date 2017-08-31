@@ -48,40 +48,48 @@ changePanelWidth = (categoryPanel, panelWidth) ->
     </div>'
   $(element).before(causeForm)
 
-@drawDiagram = () ->
+@drawFishboneDiagram = () ->
   fishbone = d3.fishbone()
 
-  data = {
-    "name": "Quality",
-    "children": [
-      {
-        "name": "Machine",
-        "children": [
-          {"name": "Mill"},
-          {"name": "Mixer"},
-          {"name": "Metal Lathe"}
-        ]
-      }
-    ]
-  }
+  fishboneAnalysisContainer = $('#fishbone-analysis-container')
 
-  size = () ->
+  fishboneData = getFishboneAnalysisData(fishboneAnalysisContainer)
+
+  size = (() ->
     return {
-      width: this.clientWidth,
-      height: this.clientHeight
-    }
-  size.bind(window.document.documentElement)
+      width: fishboneAnalysisContainer.width(),
+      height: fishboneAnalysisContainer.height()
+    })
 
-  svg = d3.select("body")
+  svg = d3.select("#fishbone-analysis-container")
           .append("svg")
           .attr(size())
-          .datum(data)
+          .datum(fishboneData)
           .call(fishbone.defaultArrow)
           .call(fishbone)
 
-  fishbone.force().start()
+  fishbone.force().size([size().width, size().height]).start()
 
-  d3.select(window).on("resize", () ->
+  d3.select(window).on('resize', () ->
     fishbone.force().size([size().width, size().height]).start()
     svg.attr(size())
   )
+
+getFishboneAnalysisData = (fishboneAnalysisContainer) ->
+  fishboneAnalysis = fishboneAnalysisContainer.data('json')
+  data = {
+    name: fishboneAnalysis.effect,
+    children: []
+  }
+  for category in fishboneAnalysis.fishbone_categories
+    categoryChild = {
+      name: category.category
+      children: []
+    }
+    for cause in category.fishbone_causes
+      causeChild = {
+        name: cause.cause
+      }
+      categoryChild.children.push(causeChild)
+    data.children.push(categoryChild)
+  return data

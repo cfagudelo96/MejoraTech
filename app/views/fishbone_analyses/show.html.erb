@@ -1,18 +1,12 @@
-<p>
-  <strong>Complaint:</strong>
-  <%= @fishbone_analysis.complaint_id %>
-</p>
+<h1><%= @fishbone_analysis %></h1>
 
-<p>
-  <strong>Effect:</strong>
-  <%= @fishbone_analysis.effect %>
-</p>
+<%= content_tag :div, '', data: {json: @fishbone_analysis_json}, id: 'fishbone-analysis-container' %>
 
-<%= content_tag :div, '', data: @fishbone_analysis_json %>
+<div>
+  <%= link_to 'Back', complaint_path(@complaint), class: 'btn btn-default' %>
+  <%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, @fishbone_analysis), class: 'btn btn-default pull-right' %>
+</div>
 
-<script>
-    drawDiagram();
-</script>
-
-<%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, @fishbone_analysis) %> |
-<%= link_to 'Back', complaint_path(@complaint) %>
+<%= javascript_tag do %>
+  drawFishboneDiagram();
+<% end %>
