@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :complaints do
     resources :supports
     resources :fishbone_analyses
+    resources :five_m_analyses
   end
 
   resources :products
@@ -15,6 +16,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'complaints#index'
 end

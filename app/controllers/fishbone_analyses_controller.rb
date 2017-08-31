@@ -86,7 +86,7 @@ class FishboneAnalysesController < ApplicationController
 
   def restrict_access_to_employee
     unless current_employee.admin || current_employee.id == @complaint.employee_id
-      redirect_to complaints_path, alert: "You don't have permission to access the supporting info of this complaint"
+      redirect_to complaints_path, alert: "You don't have permission to access this fishbone analysis"
     end
   end
 end

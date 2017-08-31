@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829163512) do
+ActiveRecord::Schema.define(version: 20170831123306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 20170829163512) do
   create_table "fishbone_causes", force: :cascade do |t|
     t.integer "fishbone_category_id"
     t.string "cause"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "five_m_analyses", force: :cascade do |t|
+    t.integer "complaint_id"
+    t.text "consequence"
+    t.text "manpower"
+    t.text "machines"
+    t.text "materials"
+    t.text "methods"
+    t.text "management"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

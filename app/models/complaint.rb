@@ -15,6 +15,7 @@ class Complaint < ApplicationRecord
 
   has_many :supports
   has_many :fishbone_analyses
+  has_many :five_m_analyses
 
   validates :description, presence: true
   validates :source, presence: true

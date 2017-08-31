@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  complaint_id: 1
+  consequence: MyText
+  manpower: MyText
+  machines: MyText
+  materials: MyText
+  methods: MyText
+  management: MyText
+
+two:
+  complaint_id: 1
+  consequence: MyText
+  manpower: MyText
+  machines: MyText
+  materials: MyText
+  methods: MyText
+  management: MyText

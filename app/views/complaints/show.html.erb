@@ -110,18 +110,32 @@
       <% end %>
     </ul>
 
-    <%= link_to 'Add supporting info', new_complaint_support_path(@complaint) %>
+    <%= link_to 'Add supporting info', new_complaint_support_path(@complaint), class: 'btn btn-default' %>
   </div>
 
   <div class="col-md-6 col-xs-12">
     <h3>Analyses</h3>
-    <h4>Fishbone analyses</h4>
     <ul>
       <% @complaint.fishbone_analyses.each do |fishbone_analysis| %>
         <li><%= link_to fishbone_analysis, complaint_fishbone_analysis_path(@complaint, fishbone_analysis) %></li>
       <% end %>
+      <% @complaint.five_m_analyses.each do |five_m_analysis| %>
+        <li><%= link_to five_m_analysis, complaint_five_m_analysis_path(@complaint, five_m_analysis) %></li>
+      <% end %>
     </ul>
-    <%= link_to 'Add analysis', new_complaint_fishbone_analysis_path(@complaint) %>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup aria-expanded>
+        Add analysis <%= fa_icon('caret-down') %>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+        <li>
+          <%= link_to 'Fishbone analysis', new_complaint_fishbone_analysis_path(@complaint) %>
+        </li>
+        <li>
+          <%= link_to 'Five M analysis', new_complaint_five_m_analysis_path(@complaint) %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
