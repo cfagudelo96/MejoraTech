@@ -1,0 +1,15 @@
+one:
+  id: 1
+  amef_analysis_id: 1
+  fishbone_category_id: 1
+  severity: 5
+  frequency: 5
+  detectability: 5
+
+two:
+  id: 2
+  amef_analysis_id: 1
+  fishbone_category_id: 2
+  severity: 5
+  frequency: 5
+  detectability: 5

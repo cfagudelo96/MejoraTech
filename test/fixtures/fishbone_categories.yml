@@ -13,3 +13,13 @@ two:
   id: 2
   fishbone_analysis_id: 1
   category: MyString2
+
+three:
+  id: 3
+  fishbone_analysis_id: 2
+  category: MyString3
+
+four:
+  id: 4
+  fishbone_analysis_id: 2
+  category: MyString4

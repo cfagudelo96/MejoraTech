@@ -35,7 +35,7 @@ class Complaint < ApplicationRecord
   end
 
   def notify_redirection(old_employee_id = nil)
-    if redirection_notification_needed(old_employee_id)
+    if redirection_mail_needed(old_employee_id)
       EmployeeMailer.complaint_redirected_email(self).deliver_now
     end
   end
@@ -57,7 +57,7 @@ class Complaint < ApplicationRecord
     end
   end
 
-  def redirection_notification_needed(old_employee_id)
+  def redirection_mail_needed(old_employee_id)
     old_employee_id.blank? ||
       (old_employee_id.present? && old_employee_id != employee_id)
   end
