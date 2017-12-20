@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :restrict_access_to_admin, except: [:edit_password, :update_password]
+  before_action :set_employee, only: %i[show edit update destroy]
+  before_action :restrict_access_to_admin, except: %i[edit_password update_password]
 
   def index
     @employees = Employee.paginate(page: params[:page])
@@ -41,8 +41,6 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # DELETE /employees/1
-  # DELETE /employees/1.json
   def destroy
     @employee.destroy
     respond_to do |format|

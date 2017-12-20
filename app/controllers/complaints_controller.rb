@@ -50,7 +50,7 @@ class ComplaintsController < ApplicationController
   def destroy
     @complaint.destroy
     respond_to do |format|
-      format.html { redirect_to complaints_url, notice: I18n.t('.success') }
+      format.html { redirect_to complaints_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end

@@ -17,7 +17,8 @@ class AmefAnalysisController < ApplicationController
   end
 
   def restrict_access_to_employee
-    return if current_employee.admin || current_employee.id == @complaint.employee_id
+    same_employee = current_employee.id == @complaint.employee_id
+    return if current_employee.admin || same_employee
     redirect_to complaints_path, alert: I18n.t(:access_restricted)
   end
 end

@@ -1,34 +1,24 @@
 class FiveMAnalysesController < ApplicationController
   before_action :set_complaint
-  before_action :set_five_m_analysis, only: [:show, :edit, :update, :destroy]
+  before_action :set_five_m_analysis, only: %i[show edit update destroy]
   before_action :restrict_access_to_employee
 
-  # GET /five_m_analyses
-  # GET /five_m_analyses.json
   def index
     @five_m_analyses = @complaint.five_m_analyses
   end
 
-  # GET /five_m_analyses/1
-  # GET /five_m_analyses/1.json
   def show
   end
 
-  # GET /five_m_analyses/new
   def new
     @five_m_analysis = FiveMAnalysis.new
   end
 
-  # GET /five_m_analyses/1/edit
   def edit
   end
 
-  # POST /five_m_analyses
-  # POST /five_m_analyses.json
   def create
     @five_m_analysis = FiveMAnalysis.new(five_m_analysis_params)
-    @five_m_analysis.complaint = @complaint
-
     respond_to do |format|
       if @five_m_analysis.save
         format.html { redirect_to @complaint, notice: t('.success') }
@@ -40,8 +30,6 @@ class FiveMAnalysesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /five_m_analyses/1
-  # PATCH/PUT /five_m_analyses/1.json
   def update
     respond_to do |format|
       if @five_m_analysis.update(five_m_analysis_params)
@@ -54,8 +42,6 @@ class FiveMAnalysesController < ApplicationController
     end
   end
 
-  # DELETE /five_m_analyses/1
-  # DELETE /five_m_analyses/1.json
   def destroy
     @five_m_analysis.destroy
     respond_to do |format|
@@ -70,14 +56,14 @@ class FiveMAnalysesController < ApplicationController
     @complaint = Complaint.find(params[:complaint_id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_five_m_analysis
     @five_m_analysis = FiveMAnalysis.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def five_m_analysis_params
-    params.require(:five_m_analysis).permit(:consequence,
+    params[:five_m_analysis][:complaint_id] = params[:complaint_id]
+    params.require(:five_m_analysis).permit(:complaint_id,
+                                            :consequence,
                                             :manpower,
                                             :machines,
                                             :materials,

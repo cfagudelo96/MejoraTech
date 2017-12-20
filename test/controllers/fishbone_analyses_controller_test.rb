@@ -21,7 +21,9 @@ class FishboneAnalysesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create fishbone_analysis' do
     assert_difference('FishboneAnalysis.count') do
-      post complaint_fishbone_analyses_url(@complaint), params: { fishbone_analysis: { complaint_id: @fishbone_analysis.complaint_id, effect: @fishbone_analysis.effect } }
+      post complaint_fishbone_analyses_url(@complaint), params: {
+        fishbone_analysis: { effect: @fishbone_analysis.effect }
+      }
     end
 
     assert_redirected_to complaint_url(FishboneAnalysis.last.complaint)
@@ -38,7 +40,9 @@ class FishboneAnalysesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update fishbone_analysis' do
-    patch complaint_fishbone_analysis_url(@complaint, @fishbone_analysis), params: { fishbone_analysis: { complaint_id: @fishbone_analysis.complaint_id, effect: @fishbone_analysis.effect } }
+    patch complaint_fishbone_analysis_url(@complaint, @fishbone_analysis), params: {
+      fishbone_analysis: { effect: @fishbone_analysis.effect }
+    }
     assert_redirected_to complaint_url(@complaint)
   end
 

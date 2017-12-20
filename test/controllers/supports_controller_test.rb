@@ -68,6 +68,9 @@ class SupportsControllerTest < ActionDispatch::IntegrationTest
   private
 
   def support_params_hash
-    { support: { description: @support.description, support_file: fixture_file_upload('files/SupportFile.txt', 'text/plain') } }
+    { support: {
+      description: @support.description,
+      support_file: fixture_file_upload('files/SupportFile.txt', 'text/plain')
+    } }
   end
 end

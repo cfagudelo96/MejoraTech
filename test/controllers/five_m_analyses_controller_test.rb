@@ -21,7 +21,14 @@ class FiveMAnalysesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create five_m_analysis' do
     assert_difference('FiveMAnalysis.count') do
-      post complaint_five_m_analyses_url(@complaint), params: { five_m_analysis: { consequence: @five_m_analysis.consequence, machines: @five_m_analysis.machines, management: @five_m_analysis.management, manpower: @five_m_analysis.manpower, materials: @five_m_analysis.materials, methods: @five_m_analysis.methods } }
+      post complaint_five_m_analyses_url(@complaint), params: { five_m_analysis: {
+        consequence: @five_m_analysis.consequence,
+        machines: @five_m_analysis.machines,
+        management: @five_m_analysis.management,
+        manpower: @five_m_analysis.manpower,
+        materials: @five_m_analysis.materials,
+        methods: @five_m_analysis.methods
+      } }
     end
 
     assert_redirected_to complaint_url(@complaint)
@@ -38,7 +45,14 @@ class FiveMAnalysesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update five_m_analysis' do
-    patch complaint_five_m_analysis_url(@complaint, @five_m_analysis), params: { five_m_analysis: { consequence: @five_m_analysis.consequence, machines: @five_m_analysis.machines, management: @five_m_analysis.management, manpower: @five_m_analysis.manpower, materials: @five_m_analysis.materials, methods: @five_m_analysis.methods } }
+    patch complaint_five_m_analysis_url(@complaint, @five_m_analysis), params: { five_m_analysis: {
+      consequence: @five_m_analysis.consequence,
+      machines: @five_m_analysis.machines,
+      management: @five_m_analysis.management,
+      manpower: @five_m_analysis.manpower,
+      materials: @five_m_analysis.materials,
+      methods: @five_m_analysis.methods
+    } }
     assert_redirected_to complaint_url(@complaint)
   end
 

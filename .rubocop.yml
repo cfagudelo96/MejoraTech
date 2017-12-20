@@ -6,3 +6,9 @@ Style/EndOfLine:
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
+
+Metrics/AbcSize:
+  Max: 16
+
+Metrics/LineLength:
+  Max: 100
