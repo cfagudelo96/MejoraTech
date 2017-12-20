@@ -1,33 +1,46 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  complaints:
+    create:
+      success: "Complaint was successfully created."
+    update:
+      success: "Complaint was successfully updated."
+    destroy:
+      success: "Complaint was successfully destroyed."
+  employees:
+    create:
+      success: "Employee was successfully created."
+    update:
+      success: "Employee was successfully updated."
+    destroy:
+      success: "Employee was successfully destroyed."
+    update_password:
+      success: "Your password has been changed."
+  fishbone_analyses:
+    create:
+      success: "Fishbone analysis was successfully created."
+    update:
+      success: "Fishbone analysis was successfully updated."
+    destroy:
+      success: "Fishbone analysis was successfully destroyed."
+  five_m_analyses:
+    create:
+      success: "Five m analysis was successfully created."
+    update:
+      success: "Five m analysis was successfully updated."
+    destroy:
+      success: "Five m analysis was successfully destroyed."
+  products:
+    create:
+      success: "Product was successfully created."
+    update:
+      success: "Product was successfully updated."
+    destroy:
+      success: "Product was successfully destroyed."
+  supports:
+    create:
+      success: "Support was successfully created."
+    update:
+      success: "Support was successfully updated."
+    destroy:
+      success: "Support was successfully destroyed."
+  access_restricted: "You don't have permission to access this resource"

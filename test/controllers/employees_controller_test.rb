@@ -20,7 +20,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create employee' do
     assert_difference('Employee.count') do
-      post employees_url, params: { employee: { email: 'test@test.com', identification: @employee.identification, name: @employee.name, position: @employee.position } }
+      post employees_url, params: employee_parameters
     end
 
     assert_redirected_to employee_url(Employee.last)
@@ -37,7 +37,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update employee' do
-    patch employee_url(@employee), params: { employee: { email: @employee.email, identification: @employee.identification, name: @employee.name, position: @employee.position } }
+    patch employee_url(@employee), params: employee_parameters
     assert_redirected_to employee_url(@employee)
   end
 
@@ -53,5 +53,16 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
     get edit_password_employees_url
     assert_response :success
     assert_equal employees(:admin), assigns(:employee)
+  end
+
+  private
+
+  def employee_parameters
+    { employee: {
+      email: 'test@test.com',
+      identification: @employee.identification,
+      name: @employee.name,
+      position: @employee.position
+    } }
   end
 end

@@ -31,7 +31,7 @@ class SupportsController < ApplicationController
 
     respond_to do |format|
       if @support.save
-        format.html { redirect_to complaint_path(@complaint), notice: 'Support was successfully created.' }
+        format.html { redirect_to complaint_path(@complaint), notice: t('.success') }
         format.json { render :show, status: :created, location: @support }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class SupportsController < ApplicationController
   def update
     respond_to do |format|
       if @support.update(support_params)
-        format.html { redirect_to complaint_path(@complaint), notice: 'Support was successfully updated.' }
+        format.html { redirect_to complaint_path(@complaint), notice: t('.success') }
         format.json { render :show, status: :ok, location: @support }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class SupportsController < ApplicationController
   def destroy
     @support.destroy
     respond_to do |format|
-      format.html { redirect_to complaint_path(@complaint), notice: 'Support was successfully destroyed.' }
+      format.html { redirect_to complaint_path(@complaint), notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -82,7 +82,7 @@ class SupportsController < ApplicationController
 
   def restrict_access_to_employee
     unless current_employee.admin || current_employee.id == @complaint.employee_id
-      redirect_to complaints_path, alert: "You don't have permission to access the supporting info of this complaint"
+      redirect_to complaints_path, alert: t(:access_restricted)
     end
   end
 end

@@ -1,10 +1,8 @@
 class ComplaintsController < ApplicationController
-  before_action :set_complaint, only: [:show, :edit, :update, :destroy]
-  before_action :restrict_access_to_admin, except: [:index, :show]
-  before_action :restrict_access_to_employee, only: [:show]
+  before_action :set_complaint, only: %i[show edit update destroy]
+  before_action :restrict_access_to_admin, except: %i[index show]
+  before_action :restrict_access_to_employee, only: %i[show]
 
-  # GET /complaints
-  # GET /complaints.json
   def index
     @complaints = if current_employee.admin
                     Complaint.paginate(page: params[:page])
@@ -13,32 +11,22 @@ class ComplaintsController < ApplicationController
                   end
   end
 
-  # GET /complaints/1
-  # GET /complaints/1.json
   def show
   end
 
-  # GET /complaints/new
   def new
     @complaint = Complaint.new
     @complaint.review_date = 7.days.from_now
   end
 
-  # GET /complaints/1/edit
   def edit
   end
 
-  # POST /complaints
-  # POST /complaints.json
   def create
     @complaint = Complaint.new(complaint_params)
-    @complaint.assign_create_attributes
-
     respond_to do |format|
-      if @complaint.save
-        @complaint.notify_redirection
-
-        format.html { redirect_to @complaint, notice: 'Complaint was successfully created.' }
+      if @complaint.create_and_notify
+        format.html { redirect_to @complaint, notice: t('.success') }
         format.json { render :show, status: :created, location: @complaint }
       else
         format.html { render :new }
@@ -47,16 +35,10 @@ class ComplaintsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /complaints/1
-  # PATCH/PUT /complaints/1.json
   def update
-    old_employee_id = @complaint.employee_id
-
     respond_to do |format|
-      if @complaint.update(complaint_params)
-        @complaint.notify_redirection(old_employee_id)
-
-        format.html { redirect_to @complaint, notice: 'Complaint was successfully updated.' }
+      if @complaint.update_and_notify(complaint_params)
+        format.html { redirect_to @complaint, notice: t('.success') }
         format.json { render :show, status: :ok, location: @complaint }
       else
         format.html { render :edit }
@@ -65,35 +47,32 @@ class ComplaintsController < ApplicationController
     end
   end
 
-  # DELETE /complaints/1
-  # DELETE /complaints/1.json
   def destroy
     @complaint.destroy
     respond_to do |format|
-      format.html { redirect_to complaints_url, notice: 'Complaint was successfully destroyed.' }
+      format.html { redirect_to complaints_url, notice: I18n.t('.success') }
       format.json { head :no_content }
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_complaint
     @complaint = Complaint.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def complaint_params
     params.require(:complaint).permit(:product_id, :description, :employee_id,
                                       :classification, :source, :batch_number,
-                                      :expiration_date, :effective_date, :review_date,
-                                      :source_email, :source_contact_info,
+                                      :expiration_date, :effective_date,
+                                      :review_date, :source_email,
+                                      :source_contact_info,
                                       :contact_employee_id, :company)
   end
 
   def restrict_access_to_employee
-    unless current_employee.admin || current_employee.id == @complaint.employee_id
-      redirect_to complaints_path, alert: "You don't have permission to access this complaint"
-    end
+    same_employee = current_employee.id == @complaint.employee_id
+    return if current_employee.admin || same_employee
+    redirect_to complaints_path, alert: I18n.t(:access_restricted)
   end
 end

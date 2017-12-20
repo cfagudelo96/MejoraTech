@@ -35,7 +35,7 @@ class FishboneAnalysesController < ApplicationController
 
     respond_to do |format|
       if @fishbone_analysis.save
-        format.html { redirect_to complaint_path(@complaint), notice: 'Fishbone analysis was successfully created.' }
+        format.html { redirect_to complaint_path(@complaint), notice: t('.success') }
         format.json { render :show, status: :created, location: @fishbone_analysis }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class FishboneAnalysesController < ApplicationController
   def update
     respond_to do |format|
       if @fishbone_analysis.update(fishbone_analysis_params)
-        format.html { redirect_to complaint_path(@complaint), notice: 'Fishbone analysis was successfully updated.' }
+        format.html { redirect_to complaint_path(@complaint), notice: t('.success') }
         format.json { render :show, status: :ok, location: @fishbone_analysis }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class FishboneAnalysesController < ApplicationController
   def destroy
     @fishbone_analysis.destroy
     respond_to do |format|
-      format.html { redirect_to complaint_url(@complaint), notice: 'Fishbone analysis was successfully destroyed.' }
+      format.html { redirect_to complaint_url(@complaint), notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -81,12 +81,19 @@ class FishboneAnalysesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def fishbone_analysis_params
-    params.require(:fishbone_analysis).permit(:complaint_id, :effect, fishbone_categories_attributes: [:id, :category, fishbone_causes_attributes: [:id, :cause]])
+    params.require(:fishbone_analysis).permit(
+      :complaint_id,
+      :effect,
+      fishbone_categories_attributes:
+        [:id,
+         :category,
+         fishbone_causes_attributes: [:id, :cause]
+        ]
+    )
   end
 
   def restrict_access_to_employee
-    unless current_employee.admin || current_employee.id == @complaint.employee_id
-      redirect_to complaints_path, alert: "You don't have permission to access this fishbone analysis"
-    end
+    return if current_employee.admin || current_employee.id == @complaint.employee_id
+    redirect_to complaints_path, alert: t(:access_restricted)
   end
 end

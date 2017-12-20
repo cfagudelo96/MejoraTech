@@ -31,7 +31,7 @@ class FiveMAnalysesController < ApplicationController
 
     respond_to do |format|
       if @five_m_analysis.save
-        format.html { redirect_to @complaint, notice: 'Five m analysis was successfully created.' }
+        format.html { redirect_to @complaint, notice: t('.success') }
         format.json { render :show, status: :created, location: @five_m_analysis }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class FiveMAnalysesController < ApplicationController
   def update
     respond_to do |format|
       if @five_m_analysis.update(five_m_analysis_params)
-        format.html { redirect_to @complaint, notice: 'Five m analysis was successfully updated.' }
+        format.html { redirect_to @complaint, notice: t('.success') }
         format.json { render :show, status: :ok, location: @five_m_analysis }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class FiveMAnalysesController < ApplicationController
   def destroy
     @five_m_analysis.destroy
     respond_to do |format|
-      format.html { redirect_to @complaint, notice: 'Five m analysis was successfully destroyed.' }
+      format.html { redirect_to @complaint, notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -77,12 +77,17 @@ class FiveMAnalysesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def five_m_analysis_params
-    params.require(:five_m_analysis).permit(:consequence, :manpower, :machines, :materials, :methods, :management)
+    params.require(:five_m_analysis).permit(:consequence,
+                                            :manpower,
+                                            :machines,
+                                            :materials,
+                                            :methods,
+                                            :management)
   end
 
   def restrict_access_to_employee
-    unless current_employee.admin || current_employee.id == @complaint.employee_id
-      redirect_to complaints_path, alert: "You don't have permission to access this five M analysis"
-    end
+    same_employee = current_employee.id == @complaint.employee_id
+    return if current_employee.admin || same_employee
+    redirect_to complaints_path, alert: t(:access_restricted)
   end
 end

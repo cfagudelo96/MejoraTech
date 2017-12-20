@@ -26,7 +26,6 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   test 'index should show the employees complaints to an employee' do
     employee = employees(:one)
     sign_in employee
-
     get complaints_url
     complaints = assigns(:complaints)
     assert_equal employee.complaints.size, complaints.size
@@ -40,18 +39,16 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create complaint' do
     assert_difference('Complaint.count') do
-      post complaints_url, params: complaint_parameters_hash
+      post complaints_url, params: complaint_parameter_hash
     end
-
     assert_redirected_to complaint_url(Complaint.last)
   end
 
   test 'create should notify redirection' do
     assert_difference('ActionMailer::Base.deliveries.size', +1) do
-      post complaints_url, params: complaint_parameters_hash
+      post complaints_url, params: complaint_parameter_hash
     end
     complaint_redirected_email = ActionMailer::Base.deliveries.last
-
     assert_equal 'New complaint investigation assigned',
                  complaint_redirected_email.subject
   end
@@ -69,7 +66,6 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   test 'show should permit access to the correct employee' do
     sign_in employees(:one)
     get complaint_url(@complaint)
-
     assert_response :success
   end
 
@@ -78,7 +74,7 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     get complaint_url(@complaint)
 
     assert_redirected_to complaints_url
-    assert_equal "You don't have permission to access this complaint", flash[:alert]
+    assert_equal I18n.t(:access_restricted), flash[:alert]
   end
 
   test 'should get edit' do
@@ -92,22 +88,23 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update complaint' do
-    patch complaint_url(@complaint), params: complaint_parameters_hash
+    patch complaint_url(@complaint), params: complaint_parameter_hash
     assert_redirected_to complaint_url(@complaint)
   end
 
   test 'update should not notify redirection if the employee did not change' do
     assert_no_difference('ActionMailer::Base.deliveries.size') do
-      patch complaint_url(@complaint), params: complaint_parameters_hash
+      patch complaint_url(@complaint), params: complaint_parameter_hash
     end
   end
 
   test 'update should notify redirection if the employee changed' do
     assert_difference('ActionMailer::Base.deliveries.size', +1) do
-      patch complaint_url(@complaint), params: { complaint: { employee_id: @complaint.employee_id + 1 } }
+      patch complaint_url(@complaint), params: {
+        complaint: { employee_id: @complaint.employee_id + 1 }
+      }
     end
     complaint_redirected_email = ActionMailer::Base.deliveries.last
-
     assert_equal 'New complaint investigation assigned',
                  complaint_redirected_email.subject
   end
@@ -116,13 +113,25 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Complaint.count', -1) do
       delete complaint_url(@complaint)
     end
-
     assert_redirected_to complaints_url
   end
 
   private
 
+  def complaint_parameter_hash
+    { complaint: complaint_parameters_hash }
+  end
+
   def complaint_parameters_hash
-    { complaint: { batch_number: @complaint.batch_number, classification: @complaint.classification, description: @complaint.description, effective_date: @complaint.effective_date, employee_id: @complaint.employee_id, expiration_date: @complaint.expiration_date, product_id: @complaint.product_id, review_date: @complaint.review_date, source: @complaint.source, source_email: @complaint.source_email, source_contact_info: @complaint.source_contact_info, contact_employee_id: @complaint.contact_employee_id, company: @complaint.company } }
+    { batch_number: @complaint.batch_number,
+      classification: @complaint.classification,
+      description: @complaint.description, company: @complaint.company,
+      effective_date: @complaint.effective_date,
+      employee_id: @complaint.employee_id,
+      expiration_date: @complaint.expiration_date,
+      product_id: @complaint.product_id, review_date: @complaint.review_date,
+      source: @complaint.source, source_email: @complaint.source_email,
+      source_contact_info: @complaint.source_contact_info,
+      contact_employee_id: @complaint.contact_employee_id }
   end
 end

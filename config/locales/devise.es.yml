@@ -1,0 +1,62 @@
+es:
+  devise:
+    confirmations:
+      confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
+      send_instructions: "En unos minutos recibirás un correo con instrucciones para confirmar tu correo electrónico."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, en unos minutos recibirás un correo electrónico con instrucciones para confirmar tu cuenta."
+    failure:
+      already_authenticated: "Ya te encuentras autenticado."
+      inactive: "Tu cuenta aún no ha sido activada."
+      invalid: "%{authentication_keys} o contraseña inválidos."
+      locked: "Tu cuenta se encuentra bloqueada."
+      last_attempt: "Tienes un último intento antes de que tu cuenta sea bloqueada."
+      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      timeout: "Tu sesión ha expirado. Por favor vuelve a iniciar sesión para continuar."
+      unauthenticated: "Debes iniciar sesión antes de continuar."
+      unconfirmed: "Debes confirmar tu correo electrónico antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones de confirmación"
+      reset_password_instructions:
+        subject: "Instrucciones para resetear contraseña"
+      unlock_instructions:
+        subject: "Instrucciones de desbloqueo"
+      email_changed:
+        subject: "Correo cambiado"
+      password_change:
+        subject: "Contraseña cambiada"
+    omniauth_callbacks:
+      failure: "No hemos podido autenticarte desde %{kind} porque \"%{reason}\"."
+      success: "Autenticado exitosamente desde %{kind}."
+    passwords:
+      no_token: "No puedes acceder a esta página sin llegar desde un correo de reestrablecimiento de contraseña. Si llegaste desde un correo de reestrablecimiento de contraseña, por favor asegurate de haber usado la URL completa."
+      send_instructions: "Recibirás instrucciones para reestablecer tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibiras un link de recuperación de cuenta en tu correo en unos minutos."
+      updated: "Tu contraseña ha sido cambiada exitosamente. Has ingresado a la plataforma."
+      updated_not_active: "Tu contraseña ha sido cambiada exitosamente."
+    registrations:
+      destroyed: "Tu cuenta ha sido cancelada."
+      signed_up: "Bienvenido! Has ingresado exitosamente."
+      signed_up_but_inactive: "Te has registrado exitosamente. Sin embargo, aún no puedes ingresar puesto que tu cuenta no ha sido activada."
+      signed_up_but_locked: "Te has registrado exitosamente. Sin embargo, aún no puedes ingresar puesto que tu cuenta se encuentra bloqueada."
+      signed_up_but_unconfirmed: "Un mensaje con un link de confirmación ha sido enviado a tu correo electrónico. Por favor ingresa al link para activar tu cuenta."
+      update_needs_confirmation: "Tu cuenta ha sido actualizada exitosamente, pero necesitamos verificar tu nuevo correo electrónico. Por favor revisa tu correo y sigue el link para confirmar tu nuevo correo electrónico."
+      updated: "Tu cuenta ha sido actualizada exitosamente."
+    sessions:
+      signed_in: "Ingreso exitoso."
+      signed_out: "Salida exitosa."
+      already_signed_out: "Salida exitosa."
+    unlocks:
+      send_instructions: "Recibirás un correo con instrucciones para desbloquear tu cuenta en unos minutos."
+      send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo con instrucciones para desbloquearla en unos minutos."
+      unlocked: "Tu cuenta ha sido desbloqueada exitosamente. Por favor inicia sesión para continuar."
+  errors:
+    messages:
+      already_confirmed: "ya fue confirmada, por favor trata de iniciar sesión"
+      confirmation_period_expired: "necesita se confirmada dentro de %{period}, por favor solicita una nueva confirmación"
+      expired: "has expired, please request a new one"
+      not_found: "no encontrado"
+      not_locked: "no bloqueado"
+      not_saved:
+        one: "1 error prohibió guardar este %{resource}:"
+        other: "%{count} errores prohibieron guardar este %{resource}:"

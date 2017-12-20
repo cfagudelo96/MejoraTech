@@ -34,6 +34,20 @@ class Complaint < ApplicationRecord
     self.code = "#{next_code_number}-#{Time.now.year}-#{company.humanize.first}"
   end
 
+  def create_and_notify
+    assign_create_attributes
+    result = save
+    notify_redirection if result
+    result
+  end
+
+  def update_and_notify(params)
+    old_employee_id = employee_id
+    result = update(params)
+    notify_redirection(old_employee_id) if result
+    result
+  end
+
   def notify_redirection(old_employee_id = nil)
     if redirection_mail_needed(old_employee_id)
       EmployeeMailer.complaint_redirected_email(self).deliver_now

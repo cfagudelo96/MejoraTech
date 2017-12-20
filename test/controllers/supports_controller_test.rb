@@ -44,7 +44,7 @@ class SupportsControllerTest < ActionDispatch::IntegrationTest
     get complaint_support_url(@complaint, @support)
 
     assert_redirected_to complaints_url
-    assert_equal "You don't have permission to access the supporting info of this complaint", flash[:alert]
+    assert_equal I18n.t(:access_restricted), flash[:alert]
   end
 
   test 'should get edit' do

@@ -1,0 +1,37 @@
+es:
+  complaints:
+    create:
+      success: "La queja fue registrada exitosamente."
+    update:
+      success: "La queja fue actualizada exitosamente."
+    destroy:
+      success: "La queja fue eliminada exitosamente."
+  employees:
+    create:
+      success: "El empleado fue registrado exitosamente."
+    update:
+      success: "El empleado fue actualizado exitosamente."
+    destroy:
+      success: "El empleado fue eliminado exitosamente."
+    update_password:
+      success: "Tu contraseña ha sido cambiada exitosamente."
+  fishbone_analyses:
+    create:
+      success: "El análisis de Ishikawa fue creado exitosamente."
+    update:
+      success: "El análisis de Ishikawa fue actualizado exitosamente."
+    destroy:
+      success: "El análisis de Ishikawa fue eliminado exitosamente."
+  five_m_analyses:
+    create:
+      success: "El análisis de cinco M fue creado exitosamente."
+    update:
+      success: "El análisis de cinco M fue actualizado exitosamente."
+    destroy:
+      success: "El análisis de cinco M fue destruido exitosamente."
+  activerecord:
+    models:
+      amef_analysis: "Análisis AMEF"
+  access_restricted: "No tiene permiso para acceder a este recurso"
+
+
