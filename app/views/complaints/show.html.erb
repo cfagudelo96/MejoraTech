@@ -1,43 +1,43 @@
-<h1>Complaint <%= @complaint %></h1>
+<h1><%= t('.title') %> <%= @complaint %></h1>
 
 <div class="row">
   <div class="col-md-12">
-    <h3>Description</h3>
+    <h3><%= t('.description') %></h3>
     <p><%= @complaint.description %></p>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-3 col-xs-6">
-    <h4>Status</h4>
+    <h4><%= t('.status') %></h4>
     <p><%= @complaint.status.humanize %></p>
   </div>
 
   <div class="col-md-3 col-xs-6">
-    <h4>Classification</h4>
+    <h4><%= t('.classification') %></h4>
     <p><%= @complaint.classification.humanize %></p>
   </div>
 
   <div class="col-md-3 col-xs-6">
-    <h4>Effective date</h4>
+    <h4><%= t('.effective_date') %></h4>
     <p><%= @complaint.effective_date %></p>
   </div>
 
   <div class="col-md-3 col-xs-6">
-    <h4>Review date</h4>
+    <h4><%= t('.review_date') %></h4>
     <p><%= @complaint.review_date %></p>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-6 col-xs-12">
-    <h4>Employee in charge</h4>
+    <h4><%= t('.employee_in_charge') %></h4>
     <p><%= @complaint.employee %></p>
   </div>
 
   <div class="col-md-6 col-xs-12">
     <% if @complaint.contact_employee.present? %>
-      <h4>Contact employee</h4>
+      <h4><%= t('.contact_employee') %></h4>
       <p><%= @complaint.contact_employee %></p>
     <% end %>
   </div>
@@ -45,20 +45,20 @@
 
 <div class="row">
   <div class="col-md-4 col-xs-12">
-    <h4>Source</h4>
+    <h4><%= t('.source') %></h4>
     <p><strong><%= @complaint.source %></strong></p>
   </div>
 
   <div class="col-md-4 col-xs-12">
     <% if @complaint.source_email.present? %>
-      <h4>Source email</h4>
+      <h4><%= t('.source_email') %></h4>
       <p><%= @complaint.source_email %></p>
     <% end %>
   </div>
 
   <div class="col-md-4 col-xs-12">
     <% if @complaint.source_contact_info.present? %>
-      <h4>Source contact info</h4>
+      <h4><%= t('.source_contact_info') %></h4>
       <p><%= @complaint.source_contact_info %></p>
     <% end %>
   </div>
@@ -66,20 +66,20 @@
 
 <div class="row">
   <div class="col-md-4 col-xs-12">
-    <h4>Product</h4>
+    <h4><%= t('.product') %></h4>
     <p><strong><%= @complaint.product_name %></strong></p>
   </div>
 
   <div class="col-md-4 col-xs-12">
     <% if @complaint.batch_number.present? %>
-      <h4>Batch number</h4>
+      <h4><%= t('.batch_number') %></h4>
       <p><%= @complaint.batch_number %></p>
     <% end %>
   </div>
 
   <div class="col-md-4 col-xs-12">
     <% if @complaint.expiration_date.present? %>
-      <h4>Expiration date</h4>
+      <h4><%= t('.expiration_date') %></h4>
       <p><%= @complaint.expiration_date %></p>
     <% end %>
   </div>
@@ -87,7 +87,7 @@
 
 <div class="row margin-bottom">
   <div class="col-md-6 col-xs-12">
-    <h3>Supporting info</h3>
+    <h3><%= t('.supporting_info') %></h3>
 
     <ul>
       <% @complaint.supports.each do |support| %>
@@ -101,7 +101,7 @@
           <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
             <%= fa_icon 'pencil-square-o' %>
           <% end %>
-          <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do %>
+          <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' do %>
             <%= fa_icon 'trash' %>
           <% end %>
           </span>
@@ -110,11 +110,11 @@
       <% end %>
     </ul>
 
-    <%= link_to 'Add supporting info', new_complaint_support_path(@complaint), class: 'btn btn-default' %>
+    <%= link_to t('.add_supporting_info'), new_complaint_support_path(@complaint), class: 'btn btn-default' %>
   </div>
 
   <div class="col-md-6 col-xs-12">
-    <h3>Analyses</h3>
+    <h3><%= t('.analyses') %></h3>
     <ul>
       <% @complaint.fishbone_analyses.each do |fishbone_analysis| %>
         <li><%= link_to fishbone_analysis, complaint_fishbone_analysis_path(@complaint, fishbone_analysis) %></li>
@@ -125,14 +125,14 @@
     </ul>
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup aria-expanded>
-        Add analysis <%= fa_icon('caret-down') %>
+        <%= t('.add_analysis') %> <%= fa_icon('caret-down') %>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
         <li>
-          <%= link_to 'Fishbone analysis', new_complaint_fishbone_analysis_path(@complaint) %>
+          <%= link_to t('.fishbone_analysis'), new_complaint_fishbone_analysis_path(@complaint) %>
         </li>
         <li>
-          <%= link_to 'Five M analysis', new_complaint_five_m_analysis_path(@complaint) %>
+          <%= link_to t('.five_m_analysis'), new_complaint_five_m_analysis_path(@complaint) %>
         </li>
       </ul>
     </div>
@@ -140,8 +140,8 @@
 </div>
 
 <div>
-  <%= link_to 'Back', complaints_path, class: 'btn btn-default' %>
+  <%= link_to t(:back), complaints_path, class: 'btn btn-default' %>
   <% if current_employee.admin %>
-    <%= link_to 'Edit', edit_complaint_path(@complaint), class: 'btn btn-default pull-right' %>
+    <%= link_to t('.edit'), edit_complaint_path(@complaint), class: 'btn btn-default pull-right' %>
   <% end %>
 </div>

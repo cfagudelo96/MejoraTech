@@ -1,11 +1,4 @@
 en:
-  complaints:
-    create:
-      success: "Complaint was successfully created."
-    update:
-      success: "Complaint was successfully updated."
-    destroy:
-      success: "Complaint was successfully destroyed."
   employees:
     create:
       success: "Employee was successfully created."
@@ -15,6 +8,10 @@ en:
       success: "Employee was successfully destroyed."
     update_password:
       success: "Your password has been changed."
+    sign_in:
+      remember_me: "Remember me"
+      forgot_password: "Forgot your password?"
+      confirmation_instructions: "Didn't receive confirmation instructions?"
   fishbone_analyses:
     create:
       success: "Fishbone analysis was successfully created."
@@ -43,4 +40,13 @@ en:
       success: "Support was successfully updated."
     destroy:
       success: "Support was successfully destroyed."
+  employee_mailer:
+    complaint_redirected_email:
+      subject: "New complaint investigation assigned"
+  back: "Back"
+  select_if_needed: "Please select if needed"
+  my_account: "My account"
+  change_password: "Change password"
+  does_not_apply: "Does not apply"
   access_restricted: "You don't have permission to access this resource"
+  confirmation_question: "Are you sure?"

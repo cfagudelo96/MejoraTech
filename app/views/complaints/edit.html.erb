@@ -1,5 +1,5 @@
-<h1>Editing Complaint</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', complaint: @complaint %>
 
-<%= link_to 'Back', complaints_path, class: 'btn btn-default' %>
+<%= link_to t(:back), complaints_path, class: 'btn btn-default' %>

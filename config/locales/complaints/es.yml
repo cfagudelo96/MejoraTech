@@ -1,0 +1,56 @@
+es:
+  complaints:
+    index:
+      title: "Quejas"
+      code: "Código"
+      product: "Producto"
+      batch_number: "Número de lote"
+      effective_date: "Fecha efectiva"
+      classification: "Clasificación"
+      description: "Descripción"
+      source: "Fuente"
+      review_date: "Fecha de revisión"
+      show: "Ver"
+      edit: "Editar"
+      destroy: "Eliminar"
+      new_complaint: "Registrar queja"
+    show:
+      title: "Queja"
+      description: "Descripción"
+      status: "Estado"
+      classification: "Clasificación"
+      effective_date: "Fecha efectiva"
+      review_date: "Fecha de revisión"
+      employee_in_charge: "Empleado encargado"
+      contact_employee: "Empleado de contacto"
+      source: "Fuente"
+      source_email: "Correo de la fuente"
+      source_contact_info: "Información de contacto de la fuente"
+      product: "Producto"
+      batch_number: "Número de lote"
+      expiration_date: "Fecha de expiración"
+      supporting_info: "Información de soporte"
+      add_supporting_info: "Añadir información de soporte"
+      analyses: "Análisis"
+      add_analysis: "Añadir análisis"
+      fishbone_analysis: "Análisis de Ishikawa"
+      five_m_analysis: "Análisis de cinco M"
+      edit: "Editar"
+    form:
+      employee: "Empleado encargado"
+      contact_employee: "Empleado de contacto"
+    create:
+      success: "La queja fue registrada exitosamente."
+    update:
+      success: "La queja fue actualizada exitosamente."
+    destroy:
+      success: "La queja fue eliminada exitosamente."
+    edit:
+      title: "Editando queja"
+    new:
+      title: "Nueva queja"
+  helpers:
+    submit:
+      complaint:
+        create: "Registrar %{model}"
+        update: "Actualizar %{model}"

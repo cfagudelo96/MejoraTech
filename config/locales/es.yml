@@ -1,11 +1,4 @@
 es:
-  complaints:
-    create:
-      success: "La queja fue registrada exitosamente."
-    update:
-      success: "La queja fue actualizada exitosamente."
-    destroy:
-      success: "La queja fue eliminada exitosamente."
   employees:
     create:
       success: "El empleado fue registrado exitosamente."
@@ -15,6 +8,10 @@ es:
       success: "El empleado fue eliminado exitosamente."
     update_password:
       success: "Tu contraseña ha sido cambiada exitosamente."
+    sign_in:
+      remember_me: "Recuerdame"
+      forgot_password: "¿Olvidaste tu contraseña?"
+      confirmation_instructions: "¿No has recibido instrucciones de confirmación?"
   fishbone_analyses:
     create:
       success: "El análisis de Ishikawa fue creado exitosamente."
@@ -29,9 +26,13 @@ es:
       success: "El análisis de cinco M fue actualizado exitosamente."
     destroy:
       success: "El análisis de cinco M fue destruido exitosamente."
-  activerecord:
-    models:
-      amef_analysis: "Análisis AMEF"
+  employee_mailer:
+      complaint_redirected_email:
+        subject: "Nueva investigación de queja asignada"
+  back: "Atras"
+  select_if_needed: "Selecciona si es necesario"
+  my_account: "Mi cuenta"
+  change_password: "Cambiar contraseña"
+  does_not_apply: "No aplica"
   access_restricted: "No tiene permiso para acceder a este recurso"
-
-
+  confirmation_question: "¿Estás seguro?"

@@ -1,17 +1,17 @@
-<h1>Complaints</h1>
+<h1><%= t('.title') %></h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Code</th>
-      <th>Product</th>
-      <th>Batch number</th>
-      <th>Effective date</th>
-      <th>Classification</th>
-      <th>Description</th>
-      <th>Source</th>
-      <th>Review date</th>
+      <th><%= t('.code') %></th>
+      <th><%= t('.product') %></th>
+      <th><%= t('.batch_number') %></th>
+      <th><%= t('.effective_date') %></th>
+      <th><%= t('.classification') %></th>
+      <th><%= t('.description') %></th>
+      <th><%= t('.source') %></th>
+      <th><%= t('.review_date') %></th>
       <th></th>
     </tr>
     </thead>
@@ -29,10 +29,10 @@
         <td><%= complaint.review_date %></td>
         <td>
           <span class="pull-right">
-            <%= link_to 'Show', complaint, class: 'btn btn-default' %>
+            <%= link_to t('.show'), complaint, class: 'btn btn-default' %>
             <% if current_employee.admin %>
-              <%= link_to 'Edit', edit_complaint_path(complaint), class: 'btn btn-default' %>
-              <%= link_to 'Destroy', complaint, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+              <%= link_to t('.edit'), edit_complaint_path(complaint), class: 'btn btn-default' %>
+              <%= link_to t('.destroy'), complaint, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
             <% end %>
           </span>
         </td>
@@ -45,5 +45,5 @@
 <br>
 
 <% if current_employee.admin %>
-  <%= link_to 'New Complaint', new_complaint_path, class: 'btn btn-default' %>
+  <%= link_to t('.new_complaint'), new_complaint_path, class: 'btn btn-default' %>
 <% end %>

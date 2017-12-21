@@ -1,0 +1,79 @@
+es:
+  activerecord:
+    models:
+      amef_analysis:
+        one: "Análisis AMEF"
+        other: "Análisis AMEF"
+      amef_component:
+        one: "Componente de análisis AMEF"
+        other: "Componentes de análisis AMEF"
+      complaint:
+        one: "Queja"
+        other: "Quejas"
+      employee:
+        one: "Empleado"
+        other: "Empleados"
+      fishbone_analysis:
+        to_s: "Análisis de Ishikawa para %{effect}"
+        one: "Análisis de Ishikawa"
+        other: "Análisis de Ishikawa"
+      fishbone_category:
+        one: "Categoría de análisis de Ishikawa"
+        other: "Categorías de análisis de Ishikawa"
+      fishbone_cause:
+        one: "Causa de análisis de Ishikawa"
+        other: "Causas de análisis de Ishikawa"
+      five_m_analysis:
+        one: "Análisis de cinco M"
+        other: "Análisis de cinco M"
+      product:
+        one: "Producto"
+        other: "Productos"
+      support:
+        one: "Documento de soporte"
+        other: "Documentos de soporte"
+    attributes:
+      amef_component:
+        severity: "Severidad"
+        frequency:  "Frecuencia"
+        detectability: "Detectabilidad"
+      complaint:
+        description: "Descripción"
+        classification: "Clasificación"
+        source: "Fuente"
+        batch_number: "Número de lote"
+        expiration_date: "Fecha de expiración"
+        effective_date: "Fecha efectiva"
+        review_date: "Fecha de revisión"
+        source_email: "Correo de la fuente"
+        source_contact_info: "Información de contacto de la fuente"
+        code: "Código"
+        company: "Compañía"
+        status: "Estado"
+        product_id: "Producto"
+      employee:
+        name: "Nombre"
+        password: "Contraseña"
+        identification: "Identificación"
+        position: "Posición"
+        email: "Email"
+        admin: "Administrador"
+      fishbone_analysis:
+        effect: "Efecto"
+      fishbone_category:
+        category: "Categoría"
+      fishbone_cause:
+        cause: "Causa"
+      five_m_analysis:
+        consequence: "Consecuencia"
+        manpower: "Mano de obra"
+        machines: "Maquinaria"
+        materials: "Materiales"
+        methods: "Metodología"
+        management: "Manejo"
+      product:
+        code: "Código"
+        name: "Nombre"
+      support:
+        support_file: "Archivo de soporte"
+        description: "Descripción"

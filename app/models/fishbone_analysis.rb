@@ -8,6 +8,6 @@ class FishboneAnalysis < ApplicationRecord
   validates :effect, presence: true
 
   def to_s
-    "Fishbone analysis for #{effect}"
+    I18n.t('activerecord.models.fishbone_analysis.to_s', effect: effect)
   end
 end

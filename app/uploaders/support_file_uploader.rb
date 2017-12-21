@@ -46,7 +46,6 @@ class SupportFileUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  # TODO Comment this if it is not heroku
   def cache_dir
     "#{Rails.root}/tmp/uploads"
   end

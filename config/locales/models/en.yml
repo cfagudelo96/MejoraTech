@@ -1,0 +1,79 @@
+en:
+  activerecord:
+    models:
+      amef_analysis:
+        one: "AMEF Analysis"
+        other: "AMEF Analyses"
+      amef_component:
+        one: "AMEF Analysis Component"
+        other: "AMEF Analysis Components"
+      complaint:
+        one: "Complaint"
+        other: "Complaints"
+      employee:
+        one: "Employee"
+        other: "Employees"
+      fishbone_analysis:
+        to_s: "Fishbone Analysis for %{effect}"
+        one: "Fishbone Analysis"
+        other: "Fishbone Analyses"
+      fishbone_category:
+        one: "Fishbone Analysis Category"
+        other: "Fishbone Analysis Categories"
+      fishbone_cause:
+        one: "Fishbone Analysis Cause"
+        other: "Fishbone Analysis Causes"
+      five_m_analysis:
+        one: "Five M Analysis"
+        other: "Five M Analyses"
+      product:
+        one: "Product"
+        other: "Products"
+      support:
+        one: "Supporting document"
+        other: "Supporting documents"
+    attributes:
+      amef_component:
+        severity: "Severity"
+        frequency:  "Frequency"
+        detectability: "Detectability"
+      complaint:
+        description: "Description"
+        classification: "Classification"
+        source: "Source"
+        batch_number: "Batch number"
+        expiration_date: "Expiration date"
+        effective_date: "Effective date"
+        review_date: "Review date"
+        source_email: "Source email"
+        source_contact_info: "Source contact info"
+        code: "Code"
+        company: "Company"
+        status: "Status"
+        product_id: "Product"
+      employee:
+        name: "Name"
+        password: "Password"
+        identification: "Identification"
+        position: "Position"
+        email: "Email"
+        admin: "Admin"
+      fishbone_analysis:
+        effect: "Effect"
+      fishbone_category:
+        category: "Category"
+      fishbone_cause:
+        cause: "Cause"
+      five_m_analysis:
+        consequence: "Consequence"
+        manpower: "Manpower"
+        machines: "Machines"
+        materials: "Materials"
+        methods: "Methods"
+        management: "Management"
+      product:
+        code: "Code"
+        name: "Name"
+      support:
+        support_file: "Support file"
+        description: "Description"

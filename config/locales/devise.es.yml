@@ -43,6 +43,8 @@ es:
       update_needs_confirmation: "Tu cuenta ha sido actualizada exitosamente, pero necesitamos verificar tu nuevo correo electrónico. Por favor revisa tu correo y sigue el link para confirmar tu nuevo correo electrónico."
       updated: "Tu cuenta ha sido actualizada exitosamente."
     sessions:
+      new:
+        remember_me: "Recuerdame"
       signed_in: "Ingreso exitoso."
       signed_out: "Salida exitosa."
       already_signed_out: "Salida exitosa."

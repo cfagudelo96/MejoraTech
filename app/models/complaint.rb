@@ -1,14 +1,14 @@
 class Complaint < ApplicationRecord
-  enum classification: [:complaint,
-                        :suggestion,
-                        :warranty,
-                        :audit_result,
-                        :deviation,
-                        :nonconforming_product]
+  enum classification: %i[complaint
+                          suggestion
+                          warranty
+                          audit_result
+                          deviation
+                          nonconforming_product]
 
-  enum company: [:farmatech, :humax, :cambridge]
+  enum company: %i[farmatech humax cambridge]
 
-  enum status: [:researching, :reviewing, :closed]
+  enum status: %i[researching reviewing closed]
 
   belongs_to :employee
   belongs_to :contact_employee, class_name: 'Employee', optional: true
@@ -24,7 +24,7 @@ class Complaint < ApplicationRecord
   validates :code, presence: true, uniqueness: true
 
   def product_name
-    product_id.present? ? Product.find(product_id).to_s : 'Does not apply'
+    product_id.present? ? Product.find(product_id).to_s : t(:does_not_apply)
   rescue ActiveRecord::RecordNotFound
     'Product not found'
   end

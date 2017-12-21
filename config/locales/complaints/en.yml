@@ -1,0 +1,56 @@
+en:
+  complaints:
+    index:
+      title: "Complaints"
+      code: "Code"
+      product: "Product"
+      batch_number: "Batch number"
+      effective_date: "Effective date"
+      classification: "Classification"
+      description: "Description"
+      source: "Source"
+      review_date: "Review date"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_complaint: "New complaint"
+    show:
+      title: "Complaint"
+      description: "Description"
+      status: "Status"
+      classification: "Classification"
+      effective_date: "Effective date"
+      review_date: "Review date"
+      employee_in_charge: "Employee in charge"
+      contact_employee: "Contact employee"
+      source: "Source"
+      source_email: "Source email"
+      source_contact_info: "Source contact info"
+      product: "Product"
+      batch_number: "Batch number"
+      expiration_date: "Expiration date"
+      supporting_info: "Supporting info"
+      add_supporting_info: "Add supporting info"
+      analyses: "Analyses"
+      add_analysis: "Add analysis"
+      fishbone_analysis: "Fishbone analysis"
+      five_m_analysis: "Five M analysis"
+      edit: "Edit"
+    form:
+      employee: "Employee in charge"
+      contact_employee: "Contact employee"
+    create:
+      success: "Complaint was successfully created."
+    update:
+      success: "Complaint was successfully updated."
+    destroy:
+      success: "Complaint was successfully destroyed."
+    edit:
+      title: "Editing complaint"
+    new:
+      title: "New complaint"
+  helpers:
+    submit:
+      complaint:
+        create: "Create %{model}"
+        update: "Update %{model}"
