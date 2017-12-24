@@ -1,0 +1,22 @@
+es:
+  products:
+    index:
+      title: "Producto"
+      code: "Código"
+      name: "Nombre"
+      edit: "Editar"
+      destroy: "Eliminar"
+      new_product: "Registrar producto"
+    show:
+      code: "Code"
+      name: "Name"
+      edit: "Editar"
+    new:
+      title: "Nuevo producto"
+    edit:
+      title: "Editando producto"
+  helpers:
+    submit:
+      product:
+        create: "Registrar %{model}"
+        update: "Actualizar %{model}"

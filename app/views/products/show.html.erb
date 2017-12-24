@@ -1,8 +1,8 @@
-<h4>Name</h4>
+<h4><%= t('.name') %></h4>
 <p><%= @product.name %></p>
 
-<h4>Code</h4>
+<h4><%= t('.code') %></h4>
 <p><%= @product.code %></p>
 
-<%= link_to 'Back', products_path, class: 'btn btn-default' %>
-<%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-default pull-right' %>
+<%= link_to t(:back), products_path, class: 'btn btn-default' %>
+<%= link_to t('.edit'), edit_product_path(@product), class: 'btn btn-default pull-right' %>

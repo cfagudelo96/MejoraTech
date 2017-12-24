@@ -1,11 +1,11 @@
-<h1>Products</h1>
+<h1><%= t('.title') %></h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
+      <th><%= t('.code') %></th>
+      <th><%= t('.name') %></th>
       <th></th>
     </tr>
     </thead>
@@ -17,8 +17,8 @@
         <td><%= product.name %></td>
         <td>
           <span class="pull-right">
-            <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+            <%= link_to t('.edit'), edit_product_path(product), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), product, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
           </span>
         </td>
       </tr>
@@ -28,7 +28,7 @@
 </div>
 
 <div>
-  <%= link_to 'New Product', new_product_path, class: 'btn btn-default' %>
+  <%= link_to t('.new_product'), new_product_path, class: 'btn btn-default' %>
 </div>
 
 <%= will_paginate @products %>

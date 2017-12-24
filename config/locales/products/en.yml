@@ -1,0 +1,22 @@
+en:
+  products:
+    index:
+      title: "Product"
+      code: "Code"
+      name: "Name"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_product: "New product"
+    show:
+      code: "Code"
+      name: "Name"
+      edit: "Edit"
+    new:
+      title: "New product"
+    edit:
+      title: "Editing Product"
+  helpers:
+    submit:
+      product:
+        create: "Create %{model}"
+        update: "Update %{model}"
