@@ -44,6 +44,7 @@ en:
     complaint_redirected_email:
       subject: "New complaint investigation assigned"
   back: "Back"
+  save_changes: "Save changes"
   select_if_needed: "Please select if needed"
   my_account: "My account"
   change_password: "Change password"

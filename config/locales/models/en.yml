@@ -54,6 +54,8 @@ en:
       employee:
         name: "Name"
         password: "Password"
+        current_password: "Current password"
+        password_confirmation: "Password confirmation"
         identification: "Identification"
         position: "Position"
         email: "Email"

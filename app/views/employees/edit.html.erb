@@ -1,5 +1,5 @@
-<h1>Editing Employee</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', employee: @employee %>
 
-<%= link_to 'Back', employees_path, class: 'btn btn-default' %>
+<%= link_to t(:back), employees_path, class: 'btn btn-default' %>

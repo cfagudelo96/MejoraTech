@@ -1,13 +1,13 @@
 <h2><%= @employee.name %></h2>
 
-<h4>Identification</h4>
+<h4><%= t('.identification') %></h4>
 <p>C.C. <%= @employee.identification %></p>
 
-<h4>Email</h4>
+<h4><%= t('.email') %></h4>
 <p><%= @employee.email %></p>
 
-<h4>Position</h4>
+<h4><%= t('.position') %></h4>
 <p><%= @employee.position %></p>
 
-<%= link_to 'Back', employees_path, class: 'btn btn-default' %>
-<%= link_to 'Edit', edit_employee_path(@employee), class: 'btn btn-default pull-right' %>
+<%= link_to t(:back), employees_path, class: 'btn btn-default' %>
+<%= link_to t('.edit'), edit_employee_path(@employee), class: 'btn btn-default pull-right' %>

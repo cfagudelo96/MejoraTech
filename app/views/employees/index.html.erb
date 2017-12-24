@@ -1,13 +1,13 @@
-<h1>Employees</h1>
+<h1><%= t('.title') %></h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Identification</th>
-      <th>Email</th>
-      <th>Position</th>
+      <th><%= t('.name') %></th>
+      <th><%= t('.identification') %></th>
+      <th><%= t('.email') %></th>
+      <th><%= t('.position') %></th>
       <th></th>
     </tr>
     </thead>
@@ -21,9 +21,9 @@
         <td><%= employee.position %></td>
         <td>
           <span class="pull-right">
-            <%= link_to 'Show', employee, class: 'btn btn-default' %>
-            <%= link_to 'Edit', edit_employee_path(employee), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+            <%= link_to t('.show'), employee, class: 'btn btn-default' %>
+            <%= link_to t('.edit'), edit_employee_path(employee), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), employee, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
           </span>
         </td>
       </tr>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path, class: 'btn btn-default' %>
+<%= link_to t('.new_employee'), new_employee_path, class: 'btn btn-default' %>

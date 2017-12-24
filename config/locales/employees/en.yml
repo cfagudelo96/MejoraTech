@@ -1,0 +1,28 @@
+en:
+  employees:
+    index:
+      title: "Employees"
+      name: "Name"
+      identification: "Identification"
+      email: "Email"
+      position: "Position"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_employee: "New employee"
+    show:
+      identification: "Identification"
+      email: "Email"
+      position: "Position"
+      edit: "Edit"
+    new:
+      title: "New Employee"
+    edit:
+      title: "Editing Employee"
+    edit_password:
+      title: "Change my password"
+  helpers:
+    submit:
+      employee:
+        create: "Create %{model}"
+        update: "Update %{model}"

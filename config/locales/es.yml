@@ -30,6 +30,7 @@ es:
       complaint_redirected_email:
         subject: "Nueva investigación de queja asignada"
   back: "Atras"
+  save_changes: "Guardar cambios"
   select_if_needed: "Selecciona si es necesario"
   my_account: "Mi cuenta"
   change_password: "Cambiar contraseña"
