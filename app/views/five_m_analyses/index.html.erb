@@ -1,15 +1,15 @@
-<h1>Five M Analyses for complaint <%= @complaint %></h1>
+<h1><%= t('.title', complaint: @complaint) %></h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Consequence</th>
-      <th>Manpower</th>
-      <th>Machines</th>
-      <th>Materials</th>
-      <th>Methods</th>
-      <th>Management</th>
+      <th><%= t('.consequence') %></th>
+      <th><%= t('.manpower') %></th>
+      <th><%= t('.machines') %></th>
+      <th><%= t('.materials') %></th>
+      <th><%= t('.methods') %></th>
+      <th><%= t('.management') %></th>
       <th></th>
     </tr>
     </thead>
@@ -25,9 +25,9 @@
         <td><%= five_m_analysis.management %></td>
         <td>
           <span class="pull-right">
-            <%= link_to 'Show', complaint_five_m_analysis_path(@complaint, five_m_analysis) %>
-            <%= link_to 'Edit', edit_complaint_five_m_analysis_path(@complaint, five_m_analysis) %>
-            <%= link_to 'Destroy', complaint_five_m_analysis_path(@complaint, five_m_analysis), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to t('.show'), complaint_five_m_analysis_path(@complaint, five_m_analysis) %>
+            <%= link_to t('.edit'), edit_complaint_five_m_analysis_path(@complaint, five_m_analysis) %>
+            <%= link_to t('.destroy'), complaint_five_m_analysis_path(@complaint, five_m_analysis), method: :delete, data: { confirm: t(:confirmation_question) } %>
           </span>
         </td>
       </tr>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Five M Analysis', new_complaint_five_m_analysis_path(@complaint) %>
+<%= link_to t('.new_five_m_analysis'), new_complaint_five_m_analysis_path(@complaint) %>

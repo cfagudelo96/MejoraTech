@@ -24,7 +24,7 @@ class Complaint < ApplicationRecord
   validates :code, presence: true, uniqueness: true
 
   def product_name
-    product_id.present? ? Product.find(product_id).to_s : t(:does_not_apply)
+    product_id.present? ? Product.find(product_id).to_s : I18n.t(:does_not_apply)
   rescue ActiveRecord::RecordNotFound
     'Product not found'
   end

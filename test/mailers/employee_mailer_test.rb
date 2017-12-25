@@ -20,7 +20,7 @@ class EmployeeMailerTest < ActionMailer::TestCase
   end
 
   test 'complaint redirected email should have the correct subject' do
-    assert_equal 'New complaint investigation assigned',
+    assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
                  @complaint_redirected_email.subject
   end
 

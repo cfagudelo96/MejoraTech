@@ -87,7 +87,7 @@ class ComplaintTest < ActiveSupport::TestCase
 
   test 'should get a blank if there is no product name' do
     complaint = complaints(:two)
-    assert_equal 'Does not apply', complaint.product_name
+    assert_equal I18n.t(:does_not_apply), complaint.product_name
   end
 
   test 'should not raise error if the product was not found' do

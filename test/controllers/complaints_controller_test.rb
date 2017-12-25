@@ -49,7 +49,7 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
       post complaints_url, params: complaint_parameter_hash
     end
     complaint_redirected_email = ActionMailer::Base.deliveries.last
-    assert_equal 'New complaint investigation assigned',
+    assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
                  complaint_redirected_email.subject
   end
 
@@ -105,7 +105,7 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
       }
     end
     complaint_redirected_email = ActionMailer::Base.deliveries.last
-    assert_equal 'New complaint investigation assigned',
+    assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
                  complaint_redirected_email.subject
   end
 

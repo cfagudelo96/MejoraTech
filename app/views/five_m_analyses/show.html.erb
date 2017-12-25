@@ -29,7 +29,7 @@
 </div>
 
 <div>
-  <%= link_to 'Back', complaint_path(@complaint), class: 'btn btn-default' %>
+  <%= link_to t(:back), complaint_path(@complaint), class: 'btn btn-default' %>
   <span class="btn-group pull-right" role="group" aria-label="actions">
     <%= link_to 'Edit', edit_complaint_five_m_analysis_path(@complaint, @five_m_analysis), class: 'btn btn-default' %>
     <%= link_to 'Delete', complaint_five_m_analysis_path(@complaint, @five_m_analysis), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>

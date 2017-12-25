@@ -1,9 +1,8 @@
-Hello MyString
+Hola MyString
 
-You have been assigned the investigation of the complaint 001
+Se te ha asignado el seguimiento y la investigación de la queja 001.
+Por favor usa el siguiente link para acceder a los detalles de la queja:
 
-Use the following link to access the details of this complaint:
+http://localhost:3000/complaints/1
 
-<a href="http://localhost:3000/complaints/1">View complaint details</a>
-
-Thank you for helping with the continuous improvement of Farma.
+Gracias por ayudar al mejoramiento continuo de Farma.
