@@ -1,0 +1,28 @@
+en:
+  supports:
+    index:
+      title: "Supporting Documents"
+      support_file: "Support file"
+      description: "Description"
+      complaint: "Complaint"
+      download: "Download %{filename}"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_support: "New Support"
+    show:
+      title: "Support file for complaint"
+      file: "File"
+      description: "Description"
+      edit: "Edit"
+    form:
+      current_file: "Current file"
+    new:
+      title: "New Support"
+    edit:
+      title: "Editing Support Document"
+  helpers:
+    submit:
+      support:
+        create: "Create %{model}"
+        update: "Update %{model}"

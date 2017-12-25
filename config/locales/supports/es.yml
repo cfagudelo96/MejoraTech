@@ -1,0 +1,28 @@
+es:
+  supports:
+    index:
+      title: "Documentos de soporte"
+      support_file: "Archivo de soporte"
+      description: "Descripción"
+      complaint: "Queja"
+      download: "Descargar %{filename}"
+      show: "Ver"
+      edit: "Editar"
+      destroy: "Eliminar"
+      new_support: "Añadir documento de soporte"
+    show:
+      title: "Documento de soporte para la queja"
+      file: "Archivo"
+      description: "Descripción"
+      edit: "Editar"
+    form:
+      current_file: "Archivo actual"
+    new:
+      title: "Nuevo documento de soporte"
+    edit:
+      title: "Editando documento de soporte"
+  helpers:
+    submit:
+      support:
+        create: "Adjuntar %{model}"
+        update: "Actualizar %{model}"

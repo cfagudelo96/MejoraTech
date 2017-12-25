@@ -1,10 +1,10 @@
-<h1>Support file for complaint <%= link_to @complaint, complaint_path(@complaint) %></h1>
+<h1><%= t('.title') %> <%= link_to @complaint, complaint_path(@complaint) %></h1>
 
-<h4>File</h4>
+<h4><%= t('.file') %></h4>
 <%= link_to @support.support_file.file.filename, @support.support_file.url %>
 
-<h4>Description</h4>
+<h4><%= t('.description') %></h4>
 <p><%= @support.description %></p>
 
-<%= link_to 'Back', complaint_supports_path(@complaint), class: 'btn btn-default' %>
-<%= link_to 'Edit', edit_complaint_support_path(@complaint, @support), class: 'btn btn-default pull-right' %>
+<%= link_to t(:back), complaint_supports_path(@complaint), class: 'btn btn-default' %>
+<%= link_to t('.edit'), edit_complaint_support_path(@complaint, @support), class: 'btn btn-default pull-right' %>

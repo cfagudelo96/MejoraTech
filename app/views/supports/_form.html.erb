@@ -12,7 +12,7 @@
   <% end %>
 
   <% if support.support_file.present? %>
-    <p><strong>Current file:</strong> <%= support.support_file.file.filename %></p>
+    <p><strong><%= t('.current_file') %></strong> <%= support.support_file.file.filename %></p>
   <% end %>
 
   <div class="form-group">

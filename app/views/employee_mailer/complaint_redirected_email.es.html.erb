@@ -1,0 +1,11 @@
+<h2>Hola <%= @employee.name %></h2>
+
+<p>
+  Se te ha asignado el seguimiento y la investigación de la queja <strong><%= @complaint %></strong>.
+</p>
+
+<p>Por favor usa el siguiente link para acceder a los detalles de la queja: </p>
+
+<p><%= link_to 'Ver detalles de la queja', complaint_url(@complaint) %></p>
+
+<p>Gracias por ayudar al mejoramiento continuo de Farma.</p>
