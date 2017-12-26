@@ -1,0 +1,21 @@
+<%= form_with(model: [fishbone_analysis, amef_analysis], local: true) do |form| %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Cause</th>
+        <th>Severity</th>
+        <th>Frequency</th>
+        <th>Detectability</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-default pull-right' %>
+  </div>
+<% end %>

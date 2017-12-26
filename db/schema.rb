@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219184637) do
+ActiveRecord::Schema.define(version: 20171225191448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171219184637) do
 
   create_table "amef_components", force: :cascade do |t|
     t.integer "amef_analysis_id"
-    t.integer "fishbone_category_id"
+    t.integer "fishbone_cause_id"
     t.integer "severity", default: 1
     t.integer "frequency", default: 1
     t.integer "detectability", default: 10

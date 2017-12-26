@@ -1,8 +1,8 @@
 class AmefComponent < ApplicationRecord
   belongs_to :amef_analysis
-  belongs_to :fishbone_category
+  belongs_to :fishbone_cause
 
-  validates :fishbone_category_id, uniqueness: {
+  validates :fishbone_cause_id, uniqueness: {
     scope: :amef_analysis_id
   }
   validates :severity, numericality: {

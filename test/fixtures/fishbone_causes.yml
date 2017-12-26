@@ -9,3 +9,13 @@ two:
   id: 2
   fishbone_category_id: 1
   cause: MyString
+
+three:
+  id: 3
+  fishbone_category_id: 3
+  cause: MyString
+
+four:
+  id: 4
+  fishbone_category_id: 3
+  cause: MyString

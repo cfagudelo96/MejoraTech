@@ -10,14 +10,14 @@ class AmefComponentTest < ActiveSupport::TestCase
     assert_not @amef_component.save
   end
 
-  test 'should belong to a fishbone category' do
-    @amef_component.fishbone_category = nil
+  test 'should belong to a fishbone cause' do
+    @amef_component.fishbone_cause = nil
     assert_not @amef_component.save
   end
 
-  test 'fishbone category should be unique per AMEF analysis' do
-    @amef_component.fishbone_category_id =
-      amef_components(:two).fishbone_category_id
+  test 'fishbone cause should be unique per AMEF analysis' do
+    @amef_component.fishbone_cause_id =
+      amef_components(:two).fishbone_cause_id
     assert_not @amef_component.save
   end
 
@@ -52,14 +52,14 @@ class AmefComponentTest < ActiveSupport::TestCase
   end
 
   test 'fishbone category should be consistent with the AMEF analysis' do
-    @amef_component.fishbone_category_id = fishbone_categories(:three).id
+    @amef_component.fishbone_cause_id = fishbone_causes(:three).id
     assert_not @amef_component.save
   end
 
   test 'should save' do
     amef_component = AmefComponent.new(
       amef_analysis_id: amef_analyses(:two).id,
-      fishbone_category_id: fishbone_categories(:three).id,
+      fishbone_cause_id: fishbone_causes(:three).id,
       severity: 1,
       frequency: 10,
       detectability: 5

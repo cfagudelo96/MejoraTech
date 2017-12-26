@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :fishbone_analyses
     resources :five_m_analyses
   end
-
+  resources :fishbone_analyses, only: [] do
+    resources :amef_analyses
+  end
   resources :products
-
   resources :employees do
     collection do
       get 'edit_password'
