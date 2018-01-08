@@ -1,5 +1,5 @@
 class AmefComponent < ApplicationRecord
-  belongs_to :amef_analysis
+  belongs_to :amef_analysis, inverse_of: :amef_components
   belongs_to :fishbone_cause
 
   validates :fishbone_cause_id, uniqueness: {
@@ -18,4 +18,13 @@ class AmefComponent < ApplicationRecord
     less_than_or_equal_to: 10
   }
   validates_with AmefComponentValidator
+
+  def total
+    severity * frequency * detectability
+  end
+
+  def percentage
+    amef_total = amef_analysis.total
+    ((total.to_f / amef_total.to_f) * 100).round(1)
+  end
 end

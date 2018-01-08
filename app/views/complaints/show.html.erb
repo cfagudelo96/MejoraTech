@@ -89,24 +89,28 @@
   <div class="col-md-6 col-xs-12">
     <h3><%= t('.supporting_info') %></h3>
 
-    <ul>
+    <ul class="list-group">
       <% @complaint.supports.each do |support| %>
-        <li class="margin-bottom">
-          <p>
-            <strong><%= support.description %></strong>
-            <span class="margin-left btn-group" role="group">
-          <%= link_to support.support_file.url, target: '_blank', class: 'btn btn-default' do %>
-            <%= fa_icon 'download' %>
-          <% end %>
-          <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
-            <%= fa_icon 'pencil-square-o' %>
-          <% end %>
-          <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' do %>
-            <%= fa_icon 'trash' %>
-          <% end %>
-          </span>
-          </p>
-        </li>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col-md-8">
+              <strong><%= support.description %></strong>
+            </div>
+            <div class="col-md-4">
+              <span class="btn-group pull-right" role="group">
+                <%= link_to support.support_file.url, target: '_blank', class: 'btn btn-default' do %>
+                  <%= fa_icon 'download' %>
+                <% end %>
+                  <%= link_to edit_complaint_support_path(support.complaint, support), class: 'btn btn-default' do %>
+                  <%= fa_icon 'pencil-square-o' %>
+                <% end %>
+                  <%= link_to complaint_support_path(support.complaint, support), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' do %>
+                  <%= fa_icon 'trash' %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
       <% end %>
     </ul>
 
@@ -115,12 +119,15 @@
 
   <div class="col-md-6 col-xs-12">
     <h3><%= t('.analyses') %></h3>
-    <ul>
+    <ul class="list-group">
       <% @complaint.fishbone_analyses.each do |fishbone_analysis| %>
-        <li><%= link_to fishbone_analysis, complaint_fishbone_analysis_path(@complaint, fishbone_analysis) %></li>
+        <li class="list-group-item"><%= link_to fishbone_analysis, complaint_fishbone_analysis_path(@complaint, fishbone_analysis) %></li>
+        <% if fishbone_analysis.amef_analysis %>
+          <li class="list-group-item"><%= link_to fishbone_analysis.amef_analysis, fishbone_analysis_amef_analysis_path(fishbone_analysis, fishbone_analysis.amef_analysis) %></li>
+        <% end %>
       <% end %>
       <% @complaint.five_m_analyses.each do |five_m_analysis| %>
-        <li><%= link_to five_m_analysis, complaint_five_m_analysis_path(@complaint, five_m_analysis) %></li>
+        <li class="list-group-item"><%= link_to five_m_analysis, complaint_five_m_analysis_path(@complaint, five_m_analysis) %></li>
       <% end %>
     </ul>
     <div class="dropdown">

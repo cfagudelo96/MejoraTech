@@ -2,7 +2,9 @@ class FishboneAnalysis < ApplicationRecord
   belongs_to :complaint
 
   has_many :fishbone_categories
-  has_many :amef_analyses
+  has_one :amef_analysis
+
+  accepts_nested_attributes_for :fishbone_categories
 
   validates :effect, presence: true
 

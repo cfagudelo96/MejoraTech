@@ -1,0 +1,27 @@
+<h1><%= @amef_analysis %></h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Causa</th>
+        <th>Severidad</th>
+        <th>Frecuencia</th>
+        <th>Detectabilidad</th>
+        <th>Total</th>
+        <th>Riesgo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @amef_analysis.amef_components.each do |amef_component| %>
+        <tr>
+          <td><%= amef_component.fishbone_cause.cause %></td>
+          <td><%= amef_component.severity %></td>
+          <td><%= amef_component.frequency %></td>
+          <td><%= amef_component.detectability %></td>
+          <td><%= amef_component.total %></td>
+          <td><%= amef_component.percentage %>%</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

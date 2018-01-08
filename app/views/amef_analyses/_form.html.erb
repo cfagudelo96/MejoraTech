@@ -10,7 +10,19 @@
       </tr>
       </thead>
       <tbody>
-
+      <% @fishbone_analysis.fishbone_categories.each do |fishbone_category| %>
+        <% fishbone_category.fishbone_causes.each do |fishbone_cause| %>
+          <%= form.fields_for :amef_components do |component_form| %>
+            <%= component_form.hidden_field :fishbone_cause_id, value: fishbone_cause.id %>
+            <tr>
+              <td><%= fishbone_cause.cause %></td>
+              <td><%= component_form.select :severity, (1..10), {include_blank: '...'} %></td>
+              <td><%= component_form.select :frequency, (1..10), {include_blank: '...'} %></td>
+              <td><%= component_form.select :detectability, (1..10), {include_blank: '...'} %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
       </tbody>
     </table>
   </div>

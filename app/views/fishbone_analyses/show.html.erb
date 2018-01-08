@@ -4,6 +4,7 @@
 
 <div>
   <%= link_to t(:back), complaint_path(@complaint), class: 'btn btn-default' %>
+  <%= link_to 'Temp', new_fishbone_analysis_amef_analysis_path(@fishbone_analysis), class: 'btn btn-default' %>
   <span class="btn-group pull-right" role="group" aria-label="actions">
     <%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, @fishbone_analysis), class: 'btn btn-default' %>
     <%= link_to 'Delete', complaint_fishbone_analysis_path(@complaint, @fishbone_analysis), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>

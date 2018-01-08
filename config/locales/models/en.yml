@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       amef_analysis:
+        to_s: "AMEF Analysis for %{effect}"
         one: "AMEF Analysis"
         other: "AMEF Analyses"
       amef_component:
