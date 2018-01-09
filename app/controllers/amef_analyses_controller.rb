@@ -3,7 +3,40 @@ class AmefAnalysesController < ApplicationController
   before_action :set_amef_analysis, only: %i[show]
   before_action :restrict_access_to_employee
 
+  helper_method :sort_column, :sort_direction
+
   def show
+    amef_percentage =  @amef_analysis.amef_components.sort_by(&:percentage).reverse
+
+    if params['all']
+      @amef_components = amef_percentage
+    else
+      percentage = 0
+      @amef_components=[]
+      amef_percentage.each do |amef_component|
+        if percentage < 80
+          @amef_components.push(amef_component)
+          percentage += amef_component.percentage
+        end
+      end
+    end
+
+    if sort_column == "cause"
+      @amef_components.sort!
+    elsif sort_column == "severity"
+      @amef_components = @amef_components.sort_by(&:severity)
+    elsif sort_column == "frequency"
+      @amef_components = @amef_analysis.amef_components.sort_by(&:frequency)
+    elsif sort_column == "detectability"
+      @amef_components = @amef_analysis.amef_components.sort_by(&:detectability)
+    elsif sort_column == "total"
+      @amef_components = @amef_analysis.amef_components.sort_by(&:total)
+    elsif sort_column == "percentage"
+      # No se hace nada
+    end
+    if sort_direction == "desc"
+      @amef_components.reverse!
+    end
   end
 
   def new
@@ -48,4 +81,18 @@ class AmefAnalysesController < ApplicationController
     return if current_employee.admin || same_employee
     redirect_to complaints_path, alert: I18n.t(:access_restricted)
   end
+
+
+  def sortable_columns
+    ["cause", "severity","frequency","detectability","total","percentage"]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "cause"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

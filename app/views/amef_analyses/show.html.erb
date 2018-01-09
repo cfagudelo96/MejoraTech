@@ -1,18 +1,18 @@
 <h1><%= @amef_analysis %></h1>
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table class="table table-striped" id="mytable">
     <thead>
       <tr>
-        <th>Causa</th>
-        <th>Severidad</th>
-        <th>Frecuencia</th>
-        <th>Detectabilidad</th>
-        <th>Total</th>
-        <th>Riesgo</th>
+        <th><%= sort_link "cause", "Causa" %></th>
+        <th><%= sort_link "severity", "Severidad" %></span></th>
+        <th><%= sort_link "frequency", "Frecuencia" %></th>
+        <th><%= sort_link "detectability", "Detectabilidad" %></th>
+        <th><%= sort_link "total", "Total" %></th>
+        <th><%= sort_link "percentage", "Porcentaje" %></th>
       </tr>
     </thead>
     <tbody>
-      <% @amef_analysis.amef_components.each do |amef_component| %>
+      <% @amef_components.each do |amef_component| %>
         <tr>
           <td><%= amef_component.fishbone_cause.cause %></td>
           <td><%= amef_component.severity %></td>
@@ -24,4 +24,18 @@
       <% end %>
     </tbody>
   </table>
+  <a href="?all=true" id="verMas">ver mas</a>
+  <a href="?" id="verMenos" style="display: none">ver menos</a>
+  <script>
+    if(window.location.search.slice(1).split("=")[1])
+    {
+        var x = document.getElementById("verMenos");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        $('#verMas').toggle();
+    }
+  </script>
 </div>
