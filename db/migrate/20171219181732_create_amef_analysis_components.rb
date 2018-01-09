@@ -1,6 +1,6 @@
 class CreateAmefAnalysisComponents < ActiveRecord::Migration[5.1]
   def change
-    create_table :amef_analysis_components do |t|
+    create_table :amef_components do |t|
       t.integer :amef_analysis_id
       t.integer :fishbone_category_id
       t.integer :severity, default: 1

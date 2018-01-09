@@ -9,10 +9,11 @@
         <th>Detectabilidad</th>
         <th>Total</th>
         <th>Riesgo</th>
+        <th>Plan de acción</th>
       </tr>
     </thead>
     <tbody>
-      <% @amef_analysis.amef_components.each do |amef_component| %>
+      <% @amef_components.each do |amef_component| %>
         <tr>
           <td><%= amef_component.fishbone_cause.cause %></td>
           <td><%= amef_component.severity %></td>
@@ -20,6 +21,13 @@
           <td><%= amef_component.detectability %></td>
           <td><%= amef_component.total %></td>
           <td><%= amef_component.percentage %>%</td>
+          <td>
+            <% if amef_component.action_plan %>
+              <%= link_to 'Ver plan de acción', amef_component_action_plan_path(amef_component, amef_component.action_plan) %>
+            <% else %>
+              <%= link_to 'Añadir plan de acción', new_amef_component_action_plan_path(amef_component) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

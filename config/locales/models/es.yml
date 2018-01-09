@@ -1,8 +1,12 @@
 es:
   activerecord:
     models:
+      action_plan:
+        to_s: "Plan de acción para: %{cause}"
+        one: "Plan de acción"
+        other: "Planes de acción"
       amef_analysis:
-        to_s: "Análisis AMEF para %{effect}"
+        to_s: "Análisis AMEF para: %{effect}"
         one: "Análisis AMEF"
         other: "Análisis AMEF"
       amef_component:
@@ -15,7 +19,7 @@ es:
         one: "Empleado"
         other: "Empleados"
       fishbone_analysis:
-        to_s: "Análisis de Ishikawa para %{effect}"
+        to_s: "Análisis de Ishikawa para: %{effect}"
         one: "Análisis de Ishikawa"
         other: "Análisis de Ishikawa"
       fishbone_category:

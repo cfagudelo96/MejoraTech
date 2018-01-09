@@ -1,4 +1,7 @@
 es:
+  action_plans:
+    create:
+      success: "El plan de acción fue registrado exitosamente."
   employees:
     create:
       success: "El empleado fue registrado exitosamente."

@@ -4,6 +4,7 @@ class AmefAnalysesController < ApplicationController
   before_action :restrict_access_to_employee
 
   def show
+    @amef_components = @amef_analysis.amef_components.order(:frequency)
   end
 
   def new

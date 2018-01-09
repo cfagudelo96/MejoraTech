@@ -1,6 +1,10 @@
 en:
   activerecord:
     models:
+      action_plan:
+        to_s: "Action plan for: %{cause}"
+        one: "Action plan"
+        other: "Action plans"
       amef_analysis:
         to_s: "AMEF Analysis for %{effect}"
         one: "AMEF Analysis"
