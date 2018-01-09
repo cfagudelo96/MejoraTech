@@ -8,7 +8,8 @@
         <th><%= sort_link "frequency", "Frecuencia" %></th>
         <th><%= sort_link "detectability", "Detectabilidad" %></th>
         <th><%= sort_link "total", "Total" %></th>
-        <th><%= sort_link "percentage", "Porcentaje" %></th>
+        <th><%= sort_link "percentage", "Riesgo" %></th>
+        <th>Plan de acción</th>
       </tr>
     </thead>
     <tbody>
@@ -20,22 +21,21 @@
           <td><%= amef_component.detectability %></td>
           <td><%= amef_component.total %></td>
           <td><%= amef_component.percentage %>%</td>
+          <td>
+            <% if amef_component.action_plan %>
+              <%= link_to 'Ver plan de acción', amef_component_action_plan_path(amef_component, amef_component.action_plan) %>
+            <% else %>
+              <%= link_to 'Añadir plan de acción', new_amef_component_action_plan_path(amef_component) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <a href="?all=true" id="verMas">ver mas</a>
-  <a href="?" id="verMenos" style="display: none">ver menos</a>
-  <script>
-    if(window.location.search.slice(1).split("=")[1])
-    {
-        var x = document.getElementById("verMenos");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-        $('#verMas').toggle();
-    }
-  </script>
+  <% if @verMas %>
+      <a href="?" id="verMenos">ver menos</a>
+  <%else%>
+      <a href="?all=true" id="verMas">ver mas</a>
+  <% end %>
+
 </div>

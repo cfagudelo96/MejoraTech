@@ -6,14 +6,16 @@ class AmefAnalysesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def show
-    amef_percentage =  @amef_analysis.amef_components.sort_by(&:percentage).reverse
+    amef_percentage =  @amef_analysis.amef_components.sort_by(&:percentage)
 
     if params['all']
       @amef_components = amef_percentage
+      @verMas= true
     else
+      @verMas= false
       percentage = 0
       @amef_components=[]
-      amef_percentage.each do |amef_component|
+      amef_percentage.reverse.each do |amef_component|
         if percentage < 80
           @amef_components.push(amef_component)
           percentage += amef_component.percentage
@@ -26,13 +28,13 @@ class AmefAnalysesController < ApplicationController
     elsif sort_column == "severity"
       @amef_components = @amef_components.sort_by(&:severity)
     elsif sort_column == "frequency"
-      @amef_components = @amef_analysis.amef_components.sort_by(&:frequency)
+      @amef_components = @amef_components.sort_by(&:frequency)
     elsif sort_column == "detectability"
-      @amef_components = @amef_analysis.amef_components.sort_by(&:detectability)
+      @amef_components = @amef_components.sort_by(&:detectability)
     elsif sort_column == "total"
-      @amef_components = @amef_analysis.amef_components.sort_by(&:total)
+      @amef_components = @amef_components.sort_by(&:total)
     elsif sort_column == "percentage"
-      # No se hace nada
+      @amef_components = @amef_components
     end
     if sort_direction == "desc"
       @amef_components.reverse!

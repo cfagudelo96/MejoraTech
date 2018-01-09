@@ -2,6 +2,8 @@ class AmefComponent < ApplicationRecord
   belongs_to :amef_analysis, inverse_of: :amef_components
   belongs_to :fishbone_cause
 
+  has_one :action_plan
+
   validates :fishbone_cause_id, uniqueness: {
     scope: :amef_analysis_id
   }

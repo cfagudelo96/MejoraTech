@@ -1,0 +1,73 @@
+<%= form_with(model: [amef_component, action_plan], local: true) do |form| %>
+  <% if action_plan.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(action_plan.errors.count, 'error') %> prohibited this action plan from being saved:</h2>
+
+      <ul>
+        <% amef_component.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :action_plan %>
+        <%= form.text_area :action_plan, required: true, rows: 8, class: 'form-control', id: :action_plan_action_plan %>
+      </div>
+      <div class="form-group">
+        <%= form.label :how %>
+        <%= form.text_area :how, required: true, rows: 8, class: 'form-control', id: :action_plan_how %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :employee_id %>
+        <%= form.collection_select :employee_id, Employee.all, :id, :to_s, {}, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :cost %>
+        <%= form.number_field :cost, min: 0, step: :any, required: true, class: 'form-control', id: :action_plan_cost %>
+      </div>
+      <div class="form-group">
+        <%= form.label :execution_date %>
+        <div class="input-group date" id="execution-date-picker">
+          <%= form.text_field :execution_date, id: :action_plan_execution_date, required: true, class: 'form-control' %>
+          <span class="input-group-addon">
+            <%= fa_icon 'calendar' %>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= form.label :evaluation_date %>
+        <div class="input-group date" id="evaluation-date-picker">
+          <%= form.text_field :evaluation_date, id: :action_plan_evaluation_date, required: true, class: 'form-control' %>
+          <span class="input-group-addon">
+            <%= fa_icon 'calendar' %>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= form.label :evaluation %>
+        <%= form.text_area :evaluation, required: true, rows: 4, class: 'form-control', id: :action_plan_evaluation %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-default pull-right' %>
+  </div>
+
+  <script type="text/javascript">
+      $(function () {
+          $('#execution-date-picker').datetimepicker({
+              format: 'YYYY-MM-DD'
+          });
+          $('#evaluation-date-picker').datetimepicker({
+              format: 'YYYY-MM-DD'
+          });
+      });
+  </script>
+<% end %>

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :fishbone_analyses, only: [] do
     resources :amef_analyses
   end
+  resources :amef_components, only: [] do
+    resources :action_plans
+  end
   resources :products
   resources :employees do
     collection do
