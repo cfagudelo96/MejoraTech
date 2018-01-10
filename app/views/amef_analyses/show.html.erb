@@ -3,12 +3,12 @@
   <table class="table table-striped" id="mytable">
     <thead>
       <tr>
-        <th><%= sort_link "cause", "Causa" %></th>
-        <th><%= sort_link "severity", "Severidad" %></span></th>
-        <th><%= sort_link "frequency", "Frecuencia" %></th>
-        <th><%= sort_link "detectability", "Detectabilidad" %></th>
-        <th><%= sort_link "total", "Total" %></th>
-        <th><%= sort_link "percentage", "Riesgo" %></th>
+        <th><%= sort_link "cause", "Causa", @all %></th>
+        <th><%= sort_link "severity", "Severidad" , @all%></span></th>
+        <th><%= sort_link "frequency", "Frecuencia", @all %></th>
+        <th><%= sort_link "detectability", "Detectabilidad", @all %></th>
+        <th><%= sort_link "total", "Total", @all %></th>
+        <th><%= sort_link "percentage", "Riesgo", @all %></th>
         <th>Plan de acción</th>
       </tr>
     </thead>
@@ -32,10 +32,27 @@
       <% end %>
     </tbody>
   </table>
-  <% if @verMas %>
-      <a href="?" id="verMenos">ver menos</a>
+  <% if @all %>
+      <a onclick="verMenos()" href="">ver menos</a>
   <%else%>
-      <a href="?all=true" id="verMas">ver mas</a>
+        <a onclick="verMas()" href="">ver mas</a>
   <% end %>
 
+  <script>
+    function verMenos() {
+        if (window.location.href.includes("&")) {
+            window.location.href = window.location.href.slice(0, window.location.href.lastIndexOf('?')+1)+window.location.href.slice(window.location.href.indexOf("&")+1, window.location.href.length-1);
+        } else {
+            window.location.href = window.location.href.slice(0, window.location.href.lastIndexOf('?'));
+        }
+    }
+    function verMas() {
+      if (window.location.href.includes("&")) {
+          url = window.location.href.replace("all=false","");
+          window.location.href = url.slice(0, url.lastIndexOf('?')+1)+ "all=true&"+url.slice(url.lastIndexOf('?')+2, url.length-1);
+      } else {
+         window.location.href = window.location.href + "?all=true";
+      }
+    }
+  </script>
 </div>

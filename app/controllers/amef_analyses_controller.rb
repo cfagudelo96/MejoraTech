@@ -8,11 +8,11 @@ class AmefAnalysesController < ApplicationController
   def show
     amef_percentage =  @amef_analysis.amef_components.sort_by(&:percentage)
 
-    if params['all']
+    if params['all'] == "true"
       @amef_components = amef_percentage
-      @verMas= true
+      @all= true
     else
-      @verMas= false
+      @all= false
       percentage = 0
       @amef_components=[]
       amef_percentage.reverse.each do |amef_component|
@@ -39,6 +39,7 @@ class AmefAnalysesController < ApplicationController
     if sort_direction == "desc"
       @amef_components.reverse!
     end
+
   end
 
   def new
