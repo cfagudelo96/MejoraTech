@@ -1,6 +1,6 @@
 class AmefAnalysesController < ApplicationController
   before_action :set_fishbone_analysis
-  before_action :set_amef_analysis, only: %i[show]
+  before_action :set_amef_analysis, only: %i[show edit destroy]
   before_action :restrict_access_to_employee
 
   helper_method :sort_column, :sort_direction
@@ -39,7 +39,6 @@ class AmefAnalysesController < ApplicationController
     if sort_direction == "desc"
       @amef_components.reverse!
     end
-
   end
 
   def new
@@ -57,6 +56,18 @@ class AmefAnalysesController < ApplicationController
         format.html { render :new }
         format.json { render json: @amef_analysis.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def edit
+  end
+
+  def destroy
+    complaint = @amef_analysis.fishbone_analysis.complaint
+    @amef_analysis.destroy
+    respond_to do |format|
+      format.html { redirect_to complaint_url(complaint), notice: 'Success' }
+      format.json { head :no_content }
     end
   end
 
@@ -85,17 +96,15 @@ class AmefAnalysesController < ApplicationController
     redirect_to complaints_path, alert: I18n.t(:access_restricted)
   end
 
-
   def sortable_columns
-    ["cause", "severity","frequency","detectability","total","percentage"]
+    %w[cause severity frequency detectability total percentage]
   end
 
   def sort_column
-    sortable_columns.include?(params[:column]) ? params[:column] : "cause"
+    sortable_columns.include?(params[:column]) ? params[:column] : 'cause'
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
-
 end

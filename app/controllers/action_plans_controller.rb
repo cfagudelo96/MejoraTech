@@ -4,7 +4,6 @@ class ActionPlansController < ApplicationController
   before_action :restrict_access_to_employee
 
   def show
-
   end
 
   def new
@@ -55,6 +54,6 @@ class ActionPlansController < ApplicationController
     complaint = @amef_component.amef_analysis.fishbone_analysis.complaint
     same_employee = current_employee.id == complaint.employee_id
     return if current_employee.admin || same_employee
-    redirect_to complaints_path, alert: I18n.t(:access_restricted)
+    redirect_to complaints_path, alert: t(:access_restricted)
   end
 end

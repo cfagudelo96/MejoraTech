@@ -33,10 +33,14 @@
     </tbody>
   </table>
   <% if @all %>
-      <a onclick="verMenos()" href="">ver menos</a>
+    <a onclick="verMenos()" href="">Ver menos</a>
   <%else%>
-        <a onclick="verMas()" href="">ver mas</a>
+    <a onclick="verMas()" href="">Ver mas</a>
   <% end %>
+
+  <span class="pull-right">
+    <%= link_to 'Eliminar análisis', fishbone_analysis_amef_analysis_path(@fishbone_analysis, @amef_analysis), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-danger' %>
+  </span>
 
   <script>
     function verMenos() {
