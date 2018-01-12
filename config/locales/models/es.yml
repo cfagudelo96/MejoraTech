@@ -38,6 +38,14 @@ es:
         one: "Documento de soporte"
         other: "Documentos de soporte"
     attributes:
+      action_plan:
+        action_plan: "Plan de acción"
+        how: "¿Cómo?"
+        execution_date: "Fecha de ejecución"
+        cost: "Costo"
+        evaluation: "Evaluación"
+        evaluation_date: "Fecha de evaluación"
+        employee_id: "Empleado encargado"
       amef_component:
         severity: "Severidad"
         frequency:  "Frecuencia"

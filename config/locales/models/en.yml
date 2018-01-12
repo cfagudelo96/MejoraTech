@@ -38,6 +38,14 @@ en:
         one: "Supporting document"
         other: "Supporting documents"
     attributes:
+      action_plan:
+        action_plan: "Action plan"
+        how: "How?"
+        execution_date: "Execution date"
+        cost: "Cost"
+        evaluation: "Evaluation"
+        evaluation_date: "Evaluation date"
+        employee_id: "Employee in charge"
       amef_component:
         severity: "Severity"
         frequency:  "Frequency"

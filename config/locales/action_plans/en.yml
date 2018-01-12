@@ -1,0 +1,4 @@
+en:
+  action_plans:
+    create:
+      success: "The action plan was successfully created."
