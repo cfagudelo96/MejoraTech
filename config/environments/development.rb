@@ -34,9 +34,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.sendgrid.net',
     port: 587,
-    domain: 'gmail.com',
+    domain: 'mejoratech.herokuapp.com',
     user_name: ENV['MEJORATECH_SMTP_USER'],
     password: ENV['MEJORATECH_SMTP_PASSWORD'],
     authentication: 'plain',
