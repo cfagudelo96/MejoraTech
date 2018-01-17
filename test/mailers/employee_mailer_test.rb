@@ -1,13 +1,15 @@
 require 'test_helper'
 
 class EmployeeMailerTest < ActionMailer::TestCase
+  include ActiveJob::TestHelper
+
   setup do
     @complaint_redirected_email = EmployeeMailer.complaint_redirected_email(complaints(:one))
   end
 
   test 'complaint redirected email should queue' do
-    assert_emails 1 do
-      @complaint_redirected_email.deliver_now
+    assert_enqueued_jobs 1 do
+      @complaint_redirected_email.deliver_later
     end
   end
 

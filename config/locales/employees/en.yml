@@ -1,5 +1,17 @@
 en:
   employees:
+    create:
+      success: "Employee was successfully created."
+    update:
+      success: "Employee was successfully updated."
+    destroy:
+      success: "Employee was successfully destroyed."
+    update_password:
+      success: "Your password has been changed."
+    sign_in:
+      remember_me: "Remember me"
+      forgot_password: "Forgot your password?"
+      confirmation_instructions: "Didn't receive confirmation instructions?"
     index:
       title: "Employees"
       name: "Name"

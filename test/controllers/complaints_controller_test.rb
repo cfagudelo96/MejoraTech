@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
+  include ActiveJob::TestHelper
 
   setup do
     @complaint = complaints(:one)
@@ -45,12 +46,13 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'create should notify redirection' do
-    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+    perform_enqueued_jobs do
       post complaints_url, params: complaint_parameter_hash
+      complaint_redirected_email = ActionMailer::Base.deliveries.last
+      assert_not_nil complaint_redirected_email
+      assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
+                   complaint_redirected_email.subject
     end
-    complaint_redirected_email = ActionMailer::Base.deliveries.last
-    assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
-                 complaint_redirected_email.subject
   end
 
   test 'should show complaint' do
@@ -99,14 +101,14 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update should notify redirection if the employee changed' do
-    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+    perform_enqueued_jobs do
       patch complaint_url(@complaint), params: {
         complaint: { employee_id: @complaint.employee_id + 1 }
       }
+      complaint_redirected_email = ActionMailer::Base.deliveries.last
+      assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
+                   complaint_redirected_email.subject
     end
-    complaint_redirected_email = ActionMailer::Base.deliveries.last
-    assert_equal I18n.t('employee_mailer.complaint_redirected_email.subject'),
-                 complaint_redirected_email.subject
   end
 
   test 'should destroy complaint' do

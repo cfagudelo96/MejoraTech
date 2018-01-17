@@ -1,17 +1,4 @@
 en:
-  employees:
-    create:
-      success: "Employee was successfully created."
-    update:
-      success: "Employee was successfully updated."
-    destroy:
-      success: "Employee was successfully destroyed."
-    update_password:
-      success: "Your password has been changed."
-    sign_in:
-      remember_me: "Remember me"
-      forgot_password: "Forgot your password?"
-      confirmation_instructions: "Didn't receive confirmation instructions?"
   fishbone_analyses:
     create:
       success: "Fishbone analysis was successfully created."
@@ -43,6 +30,10 @@ en:
   employee_mailer:
     complaint_redirected_email:
       subject: "New complaint investigation assigned"
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
   back: "Back"
   save_changes: "Save changes"
   select_if_needed: "Please select if needed"
@@ -51,3 +42,4 @@ en:
   does_not_apply: "Does not apply"
   access_restricted: "You don't have permission to access this resource"
   confirmation_question: "Are you sure?"
+  entity_not_found: "%{entity} not found"

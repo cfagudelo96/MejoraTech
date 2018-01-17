@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ComplaintTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
+
   test 'should not save without description' do
     complaint = Complaint.new(employee_id: 1,
                               classification: 1,
@@ -92,13 +94,13 @@ class ComplaintTest < ActiveSupport::TestCase
 
   test 'should not raise error if the product was not found' do
     complaint = complaints(:three)
-    assert_equal 'Product not found', complaint.product_name
+    assert_equal I18n.t(:entity_not_found, entity: Product.model_name.human), complaint.product_name
   end
 
-  test'assign create attributes should make the status researching' do
+  test'assign create attributes should make the status open' do
     complaint = complaints(:one)
     complaint.assign_create_attributes
-    assert complaint.researching?
+    assert complaint.open?
   end
 
   test 'assign create attributes should create a code' do
@@ -141,22 +143,37 @@ class ComplaintTest < ActiveSupport::TestCase
 
   test 'should notify redirection if the old employee id is nil' do
     complaint = complaints(:one)
-    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+    assert_enqueued_jobs 1 do
       complaint.notify_redirection(nil)
     end
   end
 
   test 'should not notify redirection if the employee id is the same' do
     complaint = complaints(:one)
-    assert_no_difference('ActionMailer::Base.deliveries.size') do
+    assert_enqueued_jobs 0 do
       complaint.notify_redirection(complaint.employee_id)
     end
   end
 
   test 'should notify redirection if the employee id is different' do
     complaint = complaints(:one)
-    assert_difference('ActionMailer::Base.deliveries.size', +1) do
+    assert_enqueued_jobs 1 do
       complaint.notify_redirection(complaint.employee_id + 1)
     end
+  end
+
+  test 'should change the code if the company changed' do
+    assert complaints(:one).update_and_notify(company: Complaint.companies[:humax])
+    assert_equal '001-2017-H', complaints(:one).code
+    assert complaints(:two).update_and_notify(company: Complaint.companies[:cambridge])
+    assert_equal '002-2017-C', complaints(:two).code
+    assert complaints(:three).update_and_notify(company: Complaint.companies[:farmatech])
+    assert_equal '003-2017-F', complaints(:three).code
+  end
+
+  test 'should not change the code if the company did not change' do
+    old_code = complaints(:one).code
+    assert complaints(:one).update_and_notify(company: Complaint.companies[:farmatech])
+    assert_equal old_code, complaints(:one).code
   end
 end

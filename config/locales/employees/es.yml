@@ -1,5 +1,17 @@
 es:
   employees:
+    create:
+      success: "El empleado fue registrado exitosamente."
+    update:
+      success: "El empleado fue actualizado exitosamente."
+    destroy:
+      success: "El empleado fue eliminado exitosamente."
+    update_password:
+      success: "Tu contraseña ha sido cambiada exitosamente."
+    sign_in:
+      remember_me: "Recuerdame"
+      forgot_password: "¿Olvidaste tu contraseña?"
+      confirmation_instructions: "¿No has recibido instrucciones de confirmación?"
     index:
       title: "Empleados"
       name: "Nombre"

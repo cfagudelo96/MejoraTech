@@ -1,17 +1,4 @@
 es:
-  employees:
-    create:
-      success: "El empleado fue registrado exitosamente."
-    update:
-      success: "El empleado fue actualizado exitosamente."
-    destroy:
-      success: "El empleado fue eliminado exitosamente."
-    update_password:
-      success: "Tu contraseña ha sido cambiada exitosamente."
-    sign_in:
-      remember_me: "Recuerdame"
-      forgot_password: "¿Olvidaste tu contraseña?"
-      confirmation_instructions: "¿No has recibido instrucciones de confirmación?"
   fishbone_analyses:
     create:
       success: "El análisis de Ishikawa fue creado exitosamente."
@@ -27,8 +14,12 @@ es:
     destroy:
       success: "El análisis de cinco M fue destruido exitosamente."
   employee_mailer:
-      complaint_redirected_email:
-        subject: "Nueva investigación de queja asignada"
+    complaint_redirected_email:
+      subject: "Nueva investigación de queja asignada"
+  will_paginate:
+    previous_label: "&#8592; Atras"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
   back: "Atras"
   save_changes: "Guardar cambios"
   select_if_needed: "Selecciona si es necesario"
@@ -37,3 +28,4 @@ es:
   does_not_apply: "No aplica"
   access_restricted: "No tiene permiso para acceder a este recurso"
   confirmation_question: "¿Estás seguro?"
+  entity_not_found: "%{entity} no encontrado"

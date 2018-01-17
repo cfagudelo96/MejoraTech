@@ -53,6 +53,13 @@ en:
       complaint:
         description: "Description"
         classification: "Classification"
+        classifications:
+          complaint: "Complaint"
+          suggestion: "Suggestion"
+          warranty: "Warranty"
+          audit_result: "Audit result"
+          deviation: "Deviation"
+          nonconforming_product: "Noncomforming product"
         source: "Source"
         batch_number: "Batch number"
         expiration_date: "Expiration date"
@@ -63,6 +70,10 @@ en:
         code: "Code"
         company: "Company"
         status: "Status"
+        statuses:
+          open: "Open"
+          extended: "Extended"
+          closed: "Closed"
         product_id: "Product"
       employee:
         name: "Name"

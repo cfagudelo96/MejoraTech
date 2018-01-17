@@ -53,6 +53,13 @@ es:
       complaint:
         description: "Descripción"
         classification: "Clasificación"
+        classifications:
+          complaint: "Queja"
+          suggestion: "Sugerencia"
+          warranty: "Garantía"
+          audit_result: "Resultado de auditoría"
+          deviation: "Desviación"
+          nonconforming_product: "Producto no conforme"
         source: "Fuente"
         batch_number: "Número de lote"
         expiration_date: "Fecha de expiración"
@@ -63,6 +70,10 @@ es:
         code: "Código"
         company: "Compañía"
         status: "Estado"
+        statuses:
+          open: "Abierta"
+          extended: "Extendida"
+          closed: "Cerrada"
         product_id: "Producto"
       employee:
         name: "Nombre"
