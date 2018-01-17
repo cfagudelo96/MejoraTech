@@ -1,5 +1,11 @@
 es:
   products:
+    create:
+      success: "El producto fue registrado exitosamente."
+    update:
+      success: "El producto fue actualizado exitosamente."
+    destroy:
+      success: "El producto fue eliminado exitosamente."
     index:
       title: "Producto"
       code: "Código"
@@ -8,8 +14,8 @@ es:
       destroy: "Eliminar"
       new_product: "Registrar producto"
     show:
-      code: "Code"
-      name: "Name"
+      code: "Código"
+      name: "Nombre"
       edit: "Editar"
     new:
       title: "Nuevo producto"

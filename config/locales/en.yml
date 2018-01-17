@@ -13,20 +13,6 @@ en:
       success: "Five m analysis was successfully updated."
     destroy:
       success: "Five m analysis was successfully destroyed."
-  products:
-    create:
-      success: "Product was successfully created."
-    update:
-      success: "Product was successfully updated."
-    destroy:
-      success: "Product was successfully destroyed."
-  supports:
-    create:
-      success: "Support was successfully created."
-    update:
-      success: "Support was successfully updated."
-    destroy:
-      success: "Support was successfully destroyed."
   employee_mailer:
     complaint_redirected_email:
       subject: "New complaint investigation assigned"

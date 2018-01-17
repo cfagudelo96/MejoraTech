@@ -1,5 +1,11 @@
 es:
   supports:
+    create:
+      success: "La información de soporte fue registrada exitosamente."
+    update:
+      success: "La información de soporte fue actualizada exitosamente."
+    destroy:
+      success: "La información de soporte fue eliminada exitosamente."
     index:
       title: "Documentos de soporte"
       support_file: "Archivo de soporte"
