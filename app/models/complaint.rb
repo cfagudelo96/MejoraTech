@@ -29,6 +29,7 @@ class Complaint < ApplicationRecord
     'Product not found'
   end
 
+  # TODO Cambiar la ultima letra si editan y cambian
   def assign_create_attributes
     self.status = :researching
     self.code = "#{next_code_number}-#{Time.now.year}-#{company.humanize.first}"
