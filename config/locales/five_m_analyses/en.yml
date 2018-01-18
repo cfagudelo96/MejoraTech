@@ -1,5 +1,11 @@
 en:
   five_m_analyses:
+    create:
+      success: "Five m analysis was successfully created."
+    update:
+      success: "Five m analysis was successfully updated."
+    destroy:
+      success: "Five m analysis was successfully destroyed."
     index:
       title: "Five M Analyses for complaint %{complaint}"
       consequence: "Consequence"

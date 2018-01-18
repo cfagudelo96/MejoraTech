@@ -1,5 +1,11 @@
 es:
   five_m_analyses:
+    create:
+      success: "El análisis de cinco M fue creado exitosamente."
+    update:
+      success: "El análisis de cinco M fue actualizado exitosamente."
+    destroy:
+      success: "El análisis de cinco M fue destruido exitosamente."
     index:
       title: "Análisis de cinco M para la queja %{complaint}"
       consequence: "Consecuencia"

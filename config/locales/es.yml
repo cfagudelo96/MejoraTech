@@ -6,13 +6,6 @@ es:
       success: "El análisis de Ishikawa fue actualizado exitosamente."
     destroy:
       success: "El análisis de Ishikawa fue eliminado exitosamente."
-  five_m_analyses:
-    create:
-      success: "El análisis de cinco M fue creado exitosamente."
-    update:
-      success: "El análisis de cinco M fue actualizado exitosamente."
-    destroy:
-      success: "El análisis de cinco M fue destruido exitosamente."
   employee_mailer:
     complaint_redirected_email:
       subject: "Nueva investigación de queja asignada"
