@@ -10,6 +10,7 @@ en:
       description: "Description"
       source: "Source"
       review_date: "Review date"
+      status: "Status"
       show: "Show"
       edit: "Edit"
       destroy: "Destroy"

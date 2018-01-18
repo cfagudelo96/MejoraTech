@@ -9,9 +9,9 @@
       <th><%= t('.batch_number') %></th>
       <th><%= t('.effective_date') %></th>
       <th><%= t('.classification') %></th>
-      <th><%= t('.description') %></th>
       <th><%= t('.source') %></th>
       <th><%= t('.review_date') %></th>
+      <th><%= t('.status') %></th>
       <th></th>
     </tr>
     </thead>
@@ -23,10 +23,10 @@
         <td><%= complaint.product_name %></td>
         <td><%= complaint.batch_number %></td>
         <td><%= complaint.effective_date %></td>
-        <td><%= complaint.classification.humanize %></td>
-        <td><%= complaint.description %></td>
+        <td><%= Complaint.human_enum_name(:classification, complaint.classification)%></td>
         <td><%= complaint.source %></td>
         <td><%= complaint.review_date %></td>
+        <td><%= Complaint.human_enum_name(:status, complaint.status) %></td>
         <td>
           <span class="pull-right">
             <%= link_to t('.show'), complaint, class: 'btn btn-default' %>

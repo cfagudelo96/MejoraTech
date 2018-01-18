@@ -10,6 +10,7 @@ es:
       description: "Descripción"
       source: "Fuente"
       review_date: "Fecha de revisión"
+      status: "Estado"
       show: "Ver"
       edit: "Editar"
       destroy: "Eliminar"
