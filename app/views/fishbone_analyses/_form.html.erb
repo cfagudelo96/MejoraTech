@@ -18,7 +18,7 @@
 
   <div class="row" id="categories-container">
     <%= form.fields_for :fishbone_categories do |category_form| %>
-      <div class="category-panel col-md-12 col-xs-12">
+      <div class="category-panel col-md-4 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="form-group">
@@ -29,11 +29,12 @@
               <div class="panel-body" id="causes-container-0">
                 <%= category_form.fields_for :fishbone_causes do |cause_form| %>
                   <div class="form-group">
-                    <%= cause_form.text_area :cause, required: true, rows: 2, placeholder: 'Cause #1', class: 'form-control' %>
+                    <%= cause_form.text_area :cause, required: true, rows: 2, placeholder: "#{t('.cause')} #1", class: 'form-control' %>
                   </div>
                 <% end %>
-                <button type="button" onclick="addCause(this)" class="btn btn-default"><%= fa_icon('plus') %> Cause</button>
-                <button type="button" onclick="removeCause(this)" disabled class="btn btn-default" id="remove-cause-category-0"><%= fa_icon('minus') %> Cause</button>
+                <button type="button" onclick="addCause(this)" class="btn btn-default"><%= fa_icon('plus') %> <%= t('.cause') %></button>
+                <button type="button" onclick="removeCause(this)" disabled class="btn btn-default" id="remove-cause-category-0"><%= fa_icon('minus') %> <%= t('.cause') %></button>
+                <%= %>
               </div>
             </div>
           </div>
@@ -43,8 +44,8 @@
   </div>
 
   <div class="margin-bottom">
-    <button type="button" onclick="addCategory()" class="btn btn-default"><%= fa_icon('plus') %> Category</button>
-    <button type="button" onclick="removeCategory()" disabled class="btn btn-default" id="remove-category"><%= fa_icon('minus') %> Category</button>
+    <button type="button" onclick="addCategory()" class="btn btn-default"><%= fa_icon('plus') %> <%= t('.category') %></button>
+    <button type="button" onclick="removeCategory()" disabled class="btn btn-default" id="remove-category"><%= fa_icon('minus') %> <%= t('.category') %></button>
   </div>
 
   <div class="actions">

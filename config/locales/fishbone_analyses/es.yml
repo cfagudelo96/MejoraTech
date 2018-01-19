@@ -1,0 +1,25 @@
+es:
+  fishbone_analyses:
+    create:
+      success: "El análisis de Ishikawa fue creado exitosamente."
+    destroy:
+      success: "El análisis de Ishikawa fue eliminado exitosamente."
+    index:
+      title: "Análisis de Ishikawa para %{complaint}"
+      effect: "Efecto"
+      show: "Ver"
+      edit: "Editar"
+      destroy: "Eliminar"
+      new_fishbone_analysis: "Nuevo análisis de Ishikawa"
+    show:
+      delete: "Eliminar"
+      new_amef_analysis: "Registrar análisis AMEF"
+    form:
+      category: "Categoría"
+      cause: "Causa"
+    new:
+      title: "Nuevo análisis de Ishikawa"
+  helpers:
+    submit:
+      fishbone_analysis:
+        create: "Crear %{model}"

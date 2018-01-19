@@ -19,4 +19,6 @@
 //= require bootstrap-datetimepicker
 //= require d3.min
 //= require d3.fishbone
+//= require i18n.js
+//= require i18n/translations
 //= require_tree .

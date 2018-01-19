@@ -1,10 +1,10 @@
-<h1>Fishbone Analyses for <%= @complaint %></h1>
+<h1><%= t('.title', complaint: @complaint) %></h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Effect</th>
+      <th><%= t('.effect') %></th>
       <th></th>
     </tr>
     </thead>
@@ -15,9 +15,8 @@
         <td><%= fishbone_analysis %></td>
         <td>
           <span class="pull-right">
-            <%= link_to 'Show', complaint_fishbone_analysis_path(@complaint, fishbone_analysis), class: 'btn btn-default' %>
-            <%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, fishbone_analysis), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', complaint_fishbone_analysis_path(@complaint, fishbone_analysis), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+            <%= link_to t('.show'), complaint_fishbone_analysis_path(@complaint, fishbone_analysis), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), complaint_fishbone_analysis_path(@complaint, fishbone_analysis), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
           </span>
         </td>
       </tr>
@@ -27,4 +26,4 @@
 
 </div>
 
-<%= link_to 'New Fishbone Analysis', new_complaint_fishbone_analysis_path(@complaint), class: 'btn btn-default' %>
+<%= link_to t('.new_fishbone_analysis'), new_complaint_fishbone_analysis_path(@complaint), class: 'btn btn-default' %>

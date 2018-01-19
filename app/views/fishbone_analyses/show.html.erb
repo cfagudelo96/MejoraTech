@@ -5,9 +5,8 @@
 <div>
   <%= link_to t(:back), complaint_path(@complaint), class: 'btn btn-default' %>
   <span class="btn-group pull-right" role="group" aria-label="actions">
-    <%= link_to 'Registrar análisis AMEF', new_fishbone_analysis_amef_analysis_path(@fishbone_analysis), class: 'btn btn-default' %>
-    <%= link_to 'Edit', edit_complaint_fishbone_analysis_path(@complaint, @fishbone_analysis), class: 'btn btn-default' %>
-    <%= link_to 'Delete', complaint_fishbone_analysis_path(@complaint, @fishbone_analysis), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+    <%= link_to t('.new_amef_analysis'), new_fishbone_analysis_amef_analysis_path(@fishbone_analysis), class: 'btn btn-default' %>
+    <%= link_to t('.delete'), complaint_fishbone_analysis_path(@complaint, @fishbone_analysis), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
   </span>
 </div>
 

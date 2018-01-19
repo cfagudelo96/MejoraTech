@@ -1,11 +1,4 @@
 es:
-  fishbone_analyses:
-    create:
-      success: "El análisis de Ishikawa fue creado exitosamente."
-    update:
-      success: "El análisis de Ishikawa fue actualizado exitosamente."
-    destroy:
-      success: "El análisis de Ishikawa fue eliminado exitosamente."
   employee_mailer:
     complaint_redirected_email:
       subject: "Nueva investigación de queja asignada"

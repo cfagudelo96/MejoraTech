@@ -1,11 +1,4 @@
 en:
-  fishbone_analyses:
-    create:
-      success: "Fishbone analysis was successfully created."
-    update:
-      success: "Fishbone analysis was successfully updated."
-    destroy:
-      success: "Fishbone analysis was successfully destroyed."
   employee_mailer:
     complaint_redirected_email:
       subject: "New complaint investigation assigned"

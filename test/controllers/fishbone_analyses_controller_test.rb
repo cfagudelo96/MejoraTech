@@ -34,18 +34,6 @@ class FishboneAnalysesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get edit' do
-    get edit_complaint_fishbone_analysis_url(@complaint, @fishbone_analysis)
-    assert_response :success
-  end
-
-  test 'should update fishbone_analysis' do
-    patch complaint_fishbone_analysis_url(@complaint, @fishbone_analysis), params: {
-      fishbone_analysis: { effect: @fishbone_analysis.effect }
-    }
-    assert_redirected_to complaint_url(@complaint)
-  end
-
   test 'should destroy fishbone_analysis' do
     assert_difference('FishboneAnalysis.count', -1) do
       delete complaint_fishbone_analysis_path(@complaint, @fishbone_analysis)

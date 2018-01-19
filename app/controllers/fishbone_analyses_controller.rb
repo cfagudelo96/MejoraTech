@@ -1,6 +1,6 @@
 class FishboneAnalysesController < ApplicationController
   before_action :set_complaint
-  before_action :set_fishbone_analysis, only: [:show, :edit, :update, :destroy]
+  before_action :set_fishbone_analysis, only: %i[show destroy]
   before_action :restrict_access_to_employee
 
   def index
@@ -20,9 +20,6 @@ class FishboneAnalysesController < ApplicationController
     fishbone_category.fishbone_causes.build
   end
 
-  def edit
-  end
-
   def create
     @fishbone_analysis = FishboneAnalysis.new(fishbone_analysis_params)
     respond_to do |format|
@@ -31,18 +28,6 @@ class FishboneAnalysesController < ApplicationController
         format.json { render :show, status: :created, location: @fishbone_analysis }
       else
         format.html { render :new }
-        format.json { render json: @fishbone_analysis.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @fishbone_analysis.update(fishbone_analysis_params)
-        format.html { redirect_to complaint_path(@complaint), notice: t('.success') }
-        format.json { render :show, status: :ok, location: @fishbone_analysis }
-      else
-        format.html { render :edit }
         format.json { render json: @fishbone_analysis.errors, status: :unprocessable_entity }
       end
     end

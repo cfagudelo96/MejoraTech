@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :complaints do
     resources :supports
-    resources :fishbone_analyses
+    resources :fishbone_analyses, except: %i[edit update]
     resources :eight_ms_analyses
   end
   resources :fishbone_analyses, only: [] do

@@ -1,0 +1,25 @@
+en:
+  fishbone_analyses:
+    create:
+      success: "Fishbone analysis was successfully created."
+    destroy:
+      success: "Fishbone analysis was successfully destroyed."
+    index:
+      title: "Fishbone Analyses for %{complaint}"
+      effect: "Effect"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_fishbone_analysis: "New Fishbone Analysis"
+    show:
+      delete: "Delete"
+      new_amef_analysis: "New AMEF analysis"
+    form:
+      category: "Category"
+      cause: "Cause"
+    new:
+      title: "New Fishbone Analysis"
+  helpers:
+    submit:
+      fishbone_analysis:
+        create: "Create %{model}"
