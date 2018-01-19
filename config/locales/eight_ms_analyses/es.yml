@@ -1,0 +1,44 @@
+es:
+  eight_ms_analyses:
+    create:
+      success: "El análisis de ocho emes fue creado exitosamente."
+    update:
+      success: "El análisis de ocho emes fue actualizado exitosamente."
+    destroy:
+      success: "El análisis de ocho emes fue destruido exitosamente."
+    index:
+      title: "Análisis de ocho emes para la queja %{complaint}"
+      consequence: "Consecuencia"
+      manpower: "Mano de obra"
+      machines: "Maquinaria"
+      materials: "Materiales"
+      methods: "Metodología"
+      management: "Management"
+      money: "Money (Costos)"
+      medium: "Medio ambiente"
+      measurements: "Medidas"
+      show: "Ver"
+      edit: "Editar"
+      destroy: "Eliminar"
+      new_eight_ms_analysis: "Nuevo análisis de ocho emes"
+    show:
+      consequence: "Consecuencia"
+      manpower: "Mano de obra"
+      machines: "Maquinaria"
+      materials: "Materiales"
+      methods: "Metodología"
+      management: "Management"
+      money: "Money (Costos)"
+      medium: "Medio ambiente"
+      measurements: "Medidas"
+      edit: "Editar"
+      delete: "Eliminar"
+    new:
+      title: "Nuevo análisis de ocho emes"
+    edit:
+      title: "Editando análisis de ocho emes"
+  helpers:
+    submit:
+      eight_ms_analysis:
+        create: "Registrar %{model}"
+        update: "Actualizar %{model}"

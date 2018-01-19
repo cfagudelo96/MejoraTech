@@ -35,7 +35,7 @@ es:
       analyses: "Análisis"
       add_analysis: "Añadir análisis"
       fishbone_analysis: "Análisis de Ishikawa"
-      five_m_analysis: "Análisis de cinco M"
+      eight_ms_analysis: "Análisis de ocho emes"
       edit: "Editar"
     form:
       employee: "Empleado encargado"

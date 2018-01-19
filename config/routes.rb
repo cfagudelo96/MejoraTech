@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :complaints do
     resources :supports
     resources :fishbone_analyses
-    resources :five_m_analyses
+    resources :eight_ms_analyses
   end
   resources :fishbone_analyses, only: [] do
     resources :amef_analyses

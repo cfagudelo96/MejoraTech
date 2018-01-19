@@ -1,0 +1,47 @@
+<h1><%= t('.title', complaint: @complaint) %></h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th><%= t('.consequence') %></th>
+      <th><%= t('.manpower') %></th>
+      <th><%= t('.machines') %></th>
+      <th><%= t('.materials') %></th>
+      <th><%= t('.methods') %></th>
+      <th><%= t('.management') %></th>
+      <th><%= t('.money') %></th>
+      <th><%= t('.medium') %></th>
+      <th><%= t('.measurements') %></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @eight_ms_analyses.each do |eight_ms_analysis| %>
+      <tr>
+        <td><%= eight_ms_analysis.consequence %></td>
+        <td><%= eight_ms_analysis.manpower %></td>
+        <td><%= eight_ms_analysis.machines %></td>
+        <td><%= eight_ms_analysis.materials %></td>
+        <td><%= eight_ms_analysis.methods %></td>
+        <td><%= eight_ms_analysis.management %></td>
+        <td><%= eight_ms_analysis.money %></td>
+        <td><%= eight_ms_analysis.medium %></td>
+        <td><%= eight_ms_analysis.measurements %></td>
+        <td>
+          <span class="pull-right">
+            <%= link_to t('.show'), complaint_eight_ms_analysis_path(@complaint, eight_ms_analysis) %>
+            <%= link_to t('.edit'), edit_complaint_eight_ms_analysis_path(@complaint, eight_ms_analysis) %>
+            <%= link_to t('.destroy'), complaint_eight_ms_analysis_path(@complaint, eight_ms_analysis), method: :delete, data: { confirm: t(:confirmation_question) } %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to t('.new_eight_ms_analysis'), new_complaint_eight_ms_analysis_path(@complaint) %>

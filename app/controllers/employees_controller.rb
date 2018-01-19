@@ -73,8 +73,9 @@ class EmployeesController < ApplicationController
     parameters = params.require(:employee).permit(:name,
                                                   :identification,
                                                   :email,
-                                                  :position)
-    parameters[:password] = Devise.friendly_token
+                                                  :position,
+                                                  :admin)
+    parameters[:password] = Devise.friendly_token(8)
     parameters
   end
 

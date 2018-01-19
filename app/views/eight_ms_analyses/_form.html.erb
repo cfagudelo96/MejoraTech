@@ -1,0 +1,62 @@
+<%= form_with(model: [complaint, eight_ms_analysis], local: true) do |form| %>
+  <% if eight_ms_analysis.errors.any? %>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2><%= pluralize(eight_ms_analysis.errors.count, "error") %> prohibited this eight M's analysis from being saved:</h2>
+
+      <ul>
+      <% eight_ms_analysis.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :consequence %>
+    <%= form.text_area :consequence, required: true, rows: 3, class: 'form-control', id: :eight_ms_analysis_consequence %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :manpower %>
+        <%= form.text_area :manpower, rows: 5, class: 'form-control', id: :eight_ms_analysis_manpower %>
+      </div>
+      <div class="form-group">
+        <%= form.label :machines %>
+        <%= form.text_area :machines, rows: 5, class: 'form-control', id: :eight_ms_analysis_machines %>
+      </div>
+      <div class="form-group">
+        <%= form.label :money %>
+        <%= form.text_area :money, rows: 5, class: 'form-control', id: :eight_ms_analysis_money %>
+      </div>
+      <div class="form-group">
+        <%= form.label :management %>
+        <%= form.text_area :management, rows: 5, class: 'form-control', id: :eight_ms_analysis_management %>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= form.label :materials %>
+        <%= form.text_area :materials, rows: 5, class: 'form-control', id: :eight_ms_analysis_materials %>
+      </div>
+      <div class="form-group">
+        <%= form.label :methods %>
+        <%= form.text_area :methods, rows: 5, class: 'form-control', id: :eight_ms_analysis_methods %>
+      </div>
+      <div class="form-group">
+        <%= form.label :medium %>
+        <%= form.text_area :medium, rows: 5, class: 'form-control', id: :eight_ms_analysis_medium %>
+      </div>
+      <div class="form-group">
+        <%= form.label :measurements %>
+        <%= form.text_area :measurements, rows: 5, class: 'form-control', id: :eight_ms_analysis_measurements %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-default pull-right' %>
+  </div>
+<% end %>

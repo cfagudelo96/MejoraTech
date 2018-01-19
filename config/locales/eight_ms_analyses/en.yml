@@ -1,0 +1,44 @@
+en:
+  eight_ms_analyses:
+    create:
+      success: "Eight M's analysis was successfully created."
+    update:
+      success: "Eight M's analysis was successfully updated."
+    destroy:
+      success: "Eight M's analysis was successfully destroyed."
+    index:
+      title: "Eight M's Analyses for complaint %{complaint}"
+      consequence: "Consequence"
+      manpower: "Manpower"
+      machines: "Machines"
+      materials: "Materials"
+      methods: "Methods"
+      management: "Management"
+      money: "Money"
+      medium: "Medium"
+      measurements: "Measurements"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      new_eight_ms_analysis: "New Eight M's Analysis"
+    show:
+      consequence: "Consequence"
+      manpower: "Manpower"
+      machines: "Machines"
+      materials: "Materials"
+      methods: "Methods"
+      management: "Management"
+      money: "Money"
+      medium: "Medium"
+      measurements: "Measurements"
+      edit: "Edit"
+      delete: "Delete"
+    new:
+      title: "New Eight M's Analysis"
+    edit:
+      title: "Editing Eight M's Analysis"
+  helpers:
+    submit:
+      five_m_analysis:
+        create: "Create %{model}"
+        update: "Update %{model}"

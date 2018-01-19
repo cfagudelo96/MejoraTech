@@ -124,8 +124,8 @@
           <li class="list-group-item"><%= link_to fishbone_analysis.amef_analysis, fishbone_analysis_amef_analysis_path(fishbone_analysis, fishbone_analysis.amef_analysis) %></li>
         <% end %>
       <% end %>
-      <% @complaint.five_m_analyses.each do |five_m_analysis| %>
-        <li class="list-group-item"><%= link_to five_m_analysis, complaint_five_m_analysis_path(@complaint, five_m_analysis) %></li>
+      <% @complaint.eight_ms_analyses.each do |eight_m_analysis| %>
+        <li class="list-group-item"><%= link_to eight_m_analysis, complaint_eight_ms_analysis_path(@complaint, eight_m_analysis) %></li>
       <% end %>
     </ul>
     <div class="dropdown">
@@ -137,7 +137,7 @@
           <%= link_to t('.fishbone_analysis'), new_complaint_fishbone_analysis_path(@complaint) %>
         </li>
         <li>
-          <%= link_to t('.five_m_analysis'), new_complaint_five_m_analysis_path(@complaint) %>
+          <%= link_to t('.eight_ms_analysis'), new_complaint_eight_ms_analysis_path(@complaint) %>
         </li>
       </ul>
     </div>

@@ -1,0 +1,5 @@
+<h1><%= t('.title') %></h1>
+
+<%= render 'form', complaint: @complaint, eight_ms_analysis: @eight_ms_analysis %>
+
+<%= link_to t(:back), complaint_path(@complaint) %>

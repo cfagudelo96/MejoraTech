@@ -35,7 +35,7 @@ en:
       analyses: "Analyses"
       add_analysis: "Add analysis"
       fishbone_analysis: "Fishbone analysis"
-      five_m_analysis: "Five M analysis"
+      eight_ms_analysis: "Eight M's analysis"
       edit: "Edit"
     form:
       employee: "Employee in charge"

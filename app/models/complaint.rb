@@ -15,7 +15,7 @@ class Complaint < ApplicationRecord
 
   has_many :supports
   has_many :fishbone_analyses
-  has_many :five_m_analyses
+  has_many :eight_ms_analyses
 
   validates :description, presence: true
   validates :source, presence: true
@@ -29,7 +29,6 @@ class Complaint < ApplicationRecord
     I18n.t(:entity_not_found, entity: Product.model_name.human)
   end
 
-  # TODO Cambiar la ultima letra si editan y cambian
   def assign_create_attributes
     self.status = :open
     self.code = "#{next_code_number}-#{Time.now.year}-#{company.humanize.first}"

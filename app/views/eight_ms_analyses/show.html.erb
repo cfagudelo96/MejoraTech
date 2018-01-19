@@ -1,0 +1,37 @@
+<h1><%= @eight_ms_analysis %></h1>
+
+<h4><%= t('.consequence') %></h4>
+<p>
+  <%= @eight_ms_analysis.consequence %>
+</p>
+
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <h4><%= t('.manpower') %></h4>
+    <p><%= @eight_ms_analysis.manpower %></p>
+    <h4><%= t('.machines') %></h4>
+    <p><%= @eight_ms_analysis.machines %></p>
+    <h4><%= t('.money') %></h4>
+    <p><%= @eight_ms_analysis.money %></p>
+    <h4><%= t('.management') %></h4>
+    <p><%= @eight_ms_analysis.management %></p>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <h4><%= t('.materials') %></h4>
+    <p><%= @eight_ms_analysis.materials %></p>
+    <h4><%= t('.methods') %></h4>
+    <p><%= @eight_ms_analysis.methods %></p>
+    <h4><%= t('.medium') %></h4>
+    <p><%= @eight_ms_analysis.medium %></p>
+    <h4><%= t('.measurements') %></h4>
+    <p><%= @eight_ms_analysis.measurements %></p>
+  </div>
+</div>
+
+<div>
+  <%= link_to t(:back), complaint_path(@complaint), class: 'btn btn-default' %>
+  <span class="btn-group pull-right" role="group" aria-label="actions">
+    <%= link_to t('.edit'), edit_complaint_eight_ms_analysis_path(@complaint, @eight_ms_analysis), class: 'btn btn-default' %>
+    <%= link_to t('.delete'), complaint_eight_ms_analysis_path(@complaint, @eight_ms_analysis), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
+  </span>
+</div>

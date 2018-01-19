@@ -66,7 +66,7 @@
 
       <div class="form-group">
         <%= form.label :employee_id, t('.employee') %>
-        <%= form.collection_select :employee_id, Employee.all, :id, :to_s, {}, class: 'form-control' %>
+        <%= form.collection_select :employee_id, Employee.all.order(:name), :id, :to_s, {}, class: 'form-control' %>
       </div>
 
       <div class="form-group">

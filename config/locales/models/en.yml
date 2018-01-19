@@ -28,9 +28,10 @@ en:
       fishbone_cause:
         one: "Fishbone Analysis Cause"
         other: "Fishbone Analysis Causes"
-      five_m_analysis:
-        one: "Five M Analysis"
-        other: "Five M Analyses"
+      eight_ms_analysis:
+        to_s: "Eight M's Analysis for: %{consequence}"
+        one: "Eight M's Analysis"
+        other: "Eight M's Analyses"
       product:
         one: "Product"
         other: "Products"
@@ -90,13 +91,16 @@ en:
         category: "Category"
       fishbone_cause:
         cause: "Cause"
-      five_m_analysis:
+      eight_ms_analysis:
         consequence: "Consequence"
         manpower: "Manpower"
         machines: "Machines"
         materials: "Materials"
         methods: "Methods"
         management: "Management"
+        money: "Money"
+        medium: "Medium"
+        measurements: "Measurements"
       product:
         code: "Code"
         name: "Name"
