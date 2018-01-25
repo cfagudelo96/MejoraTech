@@ -9,4 +9,9 @@ CarrierWave.configure do |config|
   config.fog_directory = ENV['MEJORATECH_AWS_S3_BUCKET']
   config.fog_public = false
   config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+
+  if Rails.env.test?
+    config.storage = :file
+    config.enable_processing = false
+  end
 end
