@@ -12,6 +12,9 @@ es:
       destroy: "Eliminar"
       new_fishbone_analysis: "Nuevo análisis de Ishikawa"
     show:
+      effect: "Efecto"
+      category: "Categoría"
+      cause: "Causa"
       delete: "Eliminar"
       new_amef_analysis: "Registrar análisis AMEF"
     form:

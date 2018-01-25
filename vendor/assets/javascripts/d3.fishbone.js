@@ -48,6 +48,9 @@ THE SOFTWARE.
             // a custom tick accessor
             _perNodeTick = function(d){},
 
+            _onNodeClick = function (d) {
+                d.showDetail(d);
+            },
 
             // arbitrary "nice" values
             _linkScale = d3.scale.log()
@@ -125,7 +128,13 @@ THE SOFTWARE.
 
             _node.select("text")
                 .attr({
-                    "class": function(d){ return "label-" + d.depth; },
+                    "class": function(d){
+                        if(d.shortened) {
+                            return "label-" + d.depth + " label-with-more";
+                        } else {
+                            return "label-" + d.depth;
+                        }
+                    },
                     "text-anchor": function(d){
                         return !d.depth ? "start" : d.horizontal ? "end" : "middle";
                     },
@@ -140,8 +149,10 @@ THE SOFTWARE.
             // set up node events
             _node
                 .call(_force.drag)
-                .on("mousedown", function(){ d3.event.stopPropagation(); });
-
+                .on("mousedown", function(){ d3.event.stopPropagation(); })
+                .on("click", function(d) {
+                    _onNodeClick(d);
+                });
             // select this so we know its width in tick
             _root = $.select(".root").node();
         }; // fb1
@@ -229,7 +240,7 @@ THE SOFTWARE.
                     _nodes.push(child.connector = {
                         between: between,
                         childIdx: prev.childIdx
-                    })
+                    });
                     prev = null;
                 }else{
                     _nodes.push(prev = child.connector = {between: between, childIdx: cx++});

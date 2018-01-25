@@ -11,6 +11,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+        I18n.defaultLocale = "<%= I18n.default_locale %>";
+        I18n.locale = "<%= I18n.locale %>";
+    </script>
   </head>
 
   <body>
@@ -67,10 +71,6 @@
         </div>
       <% end %>
       <%= yield %>
-      <script type="text/javascript">
-          I18n.defaultLocale = "<%= I18n.default_locale %>";
-          I18n.locale = "<%= I18n.locale %>";
-      </script>
     </div>
   </body>
 </html>

@@ -12,6 +12,9 @@ en:
       destroy: "Destroy"
       new_fishbone_analysis: "New Fishbone Analysis"
     show:
+      effect: "Effect"
+      category: "Category"
+      cause: "Cause"
       delete: "Delete"
       new_amef_analysis: "New AMEF analysis"
     form:

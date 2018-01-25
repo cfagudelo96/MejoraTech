@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+maxCharacterCount = 15
+
 @addCategory = () ->
   categoriesContainer = $('#categories-container')
   categoryPanels = categoriesContainer.children('.category-panel')
@@ -87,18 +89,41 @@ appendCategoryPanel = (categoriesContainer, panelNumber) ->
 getFishboneAnalysisData = (fishboneAnalysisContainer) ->
   fishboneAnalysis = fishboneAnalysisContainer.data('json')
   data = {
-    name: fishboneAnalysis.effect,
+    name: shortenString(fishboneAnalysis.effect),
+    content: fishboneAnalysis.effect,
+    shortened: fishboneAnalysis.effect.length >= maxCharacterCount,
+    type: I18n.t('fishbone_analyses.show.effect'),
+    showDetail: showFishboneAnalysisDataDetail,
     children: []
   }
   for category in fishboneAnalysis.fishbone_categories
     categoryChild = {
-      name: category.category
+      name: shortenString(category.category),
+      content: category.category,
+      shortened: category.category.length >= maxCharacterCount,
+      type: I18n.t('fishbone_analyses.show.category'),
+      showDetail: showFishboneAnalysisDataDetail,
       children: []
     }
     for cause in category.fishbone_causes
       causeChild = {
-        name: cause.cause
+        name: shortenString(cause.cause),
+        content: cause.cause,
+        shortened: cause.cause.length >= maxCharacterCount,
+        type: I18n.t('fishbone_analyses.show.cause'),
+        showDetail: showFishboneAnalysisDataDetail,
       }
       categoryChild.children.push(causeChild)
     data.children.push(categoryChild)
   return data
+
+shortenString = (string) ->
+  if string.length >= maxCharacterCount
+    return "#{string.substring(0, maxCharacterCount)}...(Ver más)"
+  else
+    return string
+
+showFishboneAnalysisDataDetail = (data) ->
+  html_content = "<h4>#{data.type}</h4><p><strong>#{data.content}</strong></p>"
+  $('#cause-modal-body').html(html_content);
+  $('#cause-modal').modal('show');

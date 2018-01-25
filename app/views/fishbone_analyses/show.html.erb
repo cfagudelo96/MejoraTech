@@ -2,6 +2,15 @@
 
 <%= content_tag :div, '', data: {json: @fishbone_analysis_json}, id: 'fishbone-analysis-container' %>
 
+<div class="modal fade" id="cause-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" id="cause-modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
 <div>
   <%= link_to t(:back), complaint_path(@complaint), class: 'btn btn-default' %>
   <span class="btn-group pull-right" role="group" aria-label="actions">
