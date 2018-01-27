@@ -1,1 +1,33 @@
 en:
+  amef_analyses:
+    show:
+      cause: "Cause"
+      severity: "Severity"
+      frequency: "Frequency"
+      detectability: "Detectability"
+      total: "Total"
+      percentage: "% of risk"
+      action_plan: "Action plan"
+      show_action_plan: "See action plan"
+      new_action_plan: "New action plan"
+      show_more: "Show more..."
+      show_less: "Show less..."
+      destroy: "Delete AMEF Analysis"
+    form:
+      cause: "Cause"
+      severity: "Severity"
+      frequency: "Frequency"
+      detectability: "Detectability"
+    new:
+      title: "New AMEF Analysis"
+    create:
+      success: "AMEF Analysis was successfully created."
+    update:
+      success: "AMEF Analysis was successfully updated."
+    destroy:
+      success: "AMEF Analysis was successfully destroyed."
+  helpers:
+    submit:
+      amef_analysis:
+        create: "Create %{model}"
+        update: "Update %{model}"

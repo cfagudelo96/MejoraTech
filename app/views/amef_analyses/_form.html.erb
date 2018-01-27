@@ -1,12 +1,24 @@
 <%= form_with(model: [fishbone_analysis, amef_analysis], local: true) do |form| %>
+  <% if amef_analysis.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(amef_analysis.errors.count, 'error') %> prohibited this AMEF analysis from being saved:</h2>
+
+      <ul>
+        <% amef_analysis.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>Cause</th>
-        <th>Severity</th>
-        <th>Frequency</th>
-        <th>Detectability</th>
+        <th><%= t('.cause') %></th>
+        <th><%= t('.severity') %></th>
+        <th><%= t('.frequency') %></th>
+        <th><%= t('.detectability') %></th>
       </tr>
       </thead>
       <tbody>

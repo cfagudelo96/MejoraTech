@@ -3,13 +3,13 @@
   <table class="table table-striped" id="mytable">
     <thead>
       <tr>
-        <th><%= sort_link "cause", "Causa", @all %></th>
-        <th><%= sort_link "severity", "Severidad" , @all%></span></th>
-        <th><%= sort_link "frequency", "Frecuencia", @all %></th>
-        <th><%= sort_link "detectability", "Detectabilidad", @all %></th>
-        <th><%= sort_link "total", "Total", @all %></th>
-        <th><%= sort_link "percentage", "Riesgo", @all %></th>
-        <th>Plan de acción</th>
+        <th><%= t('.cause') %></th>
+        <th><%= sort_link 'severity', t('.severity'), params[:all] %></span></th>
+        <th><%= sort_link 'frequency', t('.frequency'), params[:all] %></th>
+        <th><%= sort_link 'detectability', t('.detectability'), params[:all] %></th>
+        <th><%= sort_link 'total', t('.total'), params[:all] %></th>
+        <th><%= sort_link 'percentage', t('.percentage'), params[:all] %></th>
+        <th><%= t('.action_plan') %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,40 +23,22 @@
           <td><%= amef_component.percentage %>%</td>
           <td>
             <% if amef_component.action_plan %>
-              <%= link_to 'Ver plan de acción', amef_component_action_plan_path(amef_component, amef_component.action_plan) %>
+              <%= link_to t('.show_action_plan'), amef_component_action_plan_path(amef_component, amef_component.action_plan) %>
             <% else %>
-              <%= link_to 'Añadir plan de acción', new_amef_component_action_plan_path(amef_component) %>
+              <%= link_to t('.new_action_plan'), new_amef_component_action_plan_path(amef_component) %>
             <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <% if @all %>
-    <a onclick="verMenos()" href="">Ver menos</a>
-  <%else%>
-    <a onclick="verMas()" href="">Ver mas</a>
+  <% if params[:all] %>
+    <%= link_to t('.show_less'), column: params[:column], direction: params[:direction] %>
+  <% else %>
+    <%= link_to t('.show_more'), column: params[:column], direction: params[:direction], all: 'true' %>
   <% end %>
 
   <span class="pull-right">
-    <%= link_to 'Eliminar análisis', fishbone_analysis_amef_analysis_path(@fishbone_analysis, @amef_analysis), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-danger' %>
+    <%= link_to t('.destroy'), fishbone_analysis_amef_analysis_path(@fishbone_analysis, @amef_analysis), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-danger' %>
   </span>
-
-  <script>
-    function verMenos() {
-        if (window.location.href.includes("&")) {
-            window.location.href = window.location.href.slice(0, window.location.href.lastIndexOf('?')+1)+window.location.href.slice(window.location.href.indexOf("&")+1, window.location.href.length-1);
-        } else {
-            window.location.href = window.location.href.slice(0, window.location.href.lastIndexOf('?'));
-        }
-    }
-    function verMas() {
-      if (window.location.href.includes("&")) {
-          url = window.location.href.replace("all=false","");
-          window.location.href = url.slice(0, url.lastIndexOf('?')+1)+ "all=true&"+url.slice(url.lastIndexOf('?')+2, url.length-1);
-      } else {
-         window.location.href = window.location.href + "?all=true";
-      }
-    }
-  </script>
 </div>

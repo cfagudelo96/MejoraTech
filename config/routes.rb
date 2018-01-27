@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :eight_ms_analyses
   end
   resources :fishbone_analyses, only: [] do
-    resources :amef_analyses
+    resources :amef_analyses, except: %i[index edit update]
   end
   resources :amef_components, only: [] do
     resources :action_plans

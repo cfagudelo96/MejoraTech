@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bcrypt', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'carrierwave', '~> 1.1.0'

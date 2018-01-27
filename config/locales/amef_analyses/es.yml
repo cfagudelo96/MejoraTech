@@ -1,1 +1,31 @@
 es:
+  amef_analyses:
+    show:
+      cause: "Causa"
+      severity: "Severidad"
+      frequency: "Frecuencia"
+      detectability: "Detectabilidad"
+      total: "Total"
+      percentage: "% de Riesgo"
+      action_plan: "Plan de acción"
+      show_action_plan: "Ver plan de acción"
+      new_action_plan: "Registrar plan de acción"
+      show_more: "Ver más..."
+      show_less: "Ver menos..."
+      destroy: "Eliminar análisis AMEF"
+    form:
+      cause: "Causa"
+      severity: "Severidad"
+      frequency: "Frecuencia"
+      detectability: "Detectabilidad"
+    create:
+      success: "El análisis AMEF fue creado exitósamente"
+    update:
+      success: "El análisis AMEF fue actualizado exitósamente"
+    destroy:
+      success: "El análisis AMEF fue eliminado exitósamente"
+  helpers:
+    submit:
+      amef_analysis:
+        create: "Registrar %{model}"
+        update: "Actualizar %{model}"

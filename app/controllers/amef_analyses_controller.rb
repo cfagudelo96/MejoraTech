@@ -6,39 +6,9 @@ class AmefAnalysesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def show
-    amef_percentage =  @amef_analysis.amef_components.sort_by(&:percentage)
-
-    if params['all'] == "true"
-      @amef_components = amef_percentage
-      @all= true
-    else
-      @all= false
-      percentage = 0
-      @amef_components=[]
-      amef_percentage.reverse.each do |amef_component|
-        if percentage < 80
-          @amef_components.push(amef_component)
-          percentage += amef_component.percentage
-        end
-      end
-    end
-
-    if sort_column == "cause"
-      @amef_components.sort!
-    elsif sort_column == "severity"
-      @amef_components = @amef_components.sort_by(&:severity)
-    elsif sort_column == "frequency"
-      @amef_components = @amef_components.sort_by(&:frequency)
-    elsif sort_column == "detectability"
-      @amef_components = @amef_components.sort_by(&:detectability)
-    elsif sort_column == "total"
-      @amef_components = @amef_components.sort_by(&:total)
-    elsif sort_column == "percentage"
-      @amef_components = @amef_components
-    end
-    if sort_direction == "desc"
-      @amef_components.reverse!
-    end
+    @amef_components = @amef_analysis.amef_components.sort_by(&:percentage).reverse
+    show_pareto_amef_components unless params[:all]
+    sort_elements
   end
 
   def new
@@ -50,7 +20,7 @@ class AmefAnalysesController < ApplicationController
     @amef_analysis = AmefAnalysis.new(amef_analysis_params)
     respond_to do |format|
       if @amef_analysis.save
-        format.html { redirect_to complaint_path(@fishbone_analysis.complaint), notice: 'Success' }
+        format.html { redirect_to complaint_path(@fishbone_analysis.complaint), notice: t('.success') }
         format.json { render :show, status: :created, location: @amef_analysis }
       else
         format.html { render :new }
@@ -59,14 +29,11 @@ class AmefAnalysesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def destroy
     complaint = @amef_analysis.fishbone_analysis.complaint
     @amef_analysis.destroy
     respond_to do |format|
-      format.html { redirect_to complaint_url(complaint), notice: 'Success' }
+      format.html { redirect_to complaint_path(complaint), notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -96,15 +63,32 @@ class AmefAnalysesController < ApplicationController
     redirect_to complaints_path, alert: I18n.t(:access_restricted)
   end
 
+  def show_pareto_amef_components
+    sorted_amef_components = @amef_components
+    @amef_components = []
+    percentage = 0
+    sorted_amef_components.each do |amef_component|
+      break if percentage >= 80
+      @amef_components << amef_component
+      percentage += amef_component.percentage
+    end
+  end
+
+  def sort_elements
+    sorting_by = sort_column
+    @amef_components = @amef_components.sort_by(&:"#{sorting_by}")
+    @amef_components.reverse! if sort_direction == 'desc'
+  end
+
   def sortable_columns
-    %w[cause severity frequency detectability total percentage]
+    %w[severity frequency detectability total percentage]
   end
 
   def sort_column
-    sortable_columns.include?(params[:column]) ? params[:column] : 'cause'
+    sortable_columns.include?(params[:column]) ? params[:column] : 'percentage'
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
 end
