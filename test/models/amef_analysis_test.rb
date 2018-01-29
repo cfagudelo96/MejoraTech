@@ -16,4 +16,8 @@ class AmefAnalysisTest < ActiveSupport::TestCase
     )
     assert amef_analysis.save
   end
+
+  test 'should get total' do
+    assert_equal 250, @amef_analysis.total
+  end
 end

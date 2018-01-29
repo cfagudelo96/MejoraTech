@@ -66,4 +66,12 @@ class AmefComponentTest < ActiveSupport::TestCase
     )
     assert amef_component.save
   end
+
+  test 'should get total' do
+    assert_equal 125, @amef_component.total
+  end
+
+  test 'should get percentage' do
+    assert_equal 50, @amef_component.percentage
+  end
 end
