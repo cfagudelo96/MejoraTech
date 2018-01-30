@@ -22,6 +22,7 @@ class Complaint < ApplicationRecord
   validates :effective_date, presence: true
   validates :review_date, presence: true
   validates :code, presence: true, uniqueness: true
+  validates :extended_count, numericality: {greater_than_or_equal_to: 0}
 
   def product_name
     product_id.present? ? Product.find(product_id).to_s : I18n.t(:does_not_apply)

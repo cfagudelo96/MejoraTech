@@ -1,5 +1,5 @@
 class ComplaintsController < ApplicationController
-  before_action :set_complaint, only: %i[show edit update destroy]
+  before_action :set_complaint, only: %i[show edit update destroy extend_date]
   before_action :restrict_access_to_admin, except: %i[index show]
   before_action :restrict_access_to_employee, only: %i[show]
 
@@ -55,6 +55,11 @@ class ComplaintsController < ApplicationController
     end
   end
 
+  def extend_date
+    @complaint.update(review_date: Time.now + 3.days, extended_count: @complaint.extended_count+1)
+    redirect_to complaints_path
+  end
+
   private
 
   def set_complaint
@@ -67,7 +72,7 @@ class ComplaintsController < ApplicationController
                                       :expiration_date, :effective_date,
                                       :review_date, :source_email,
                                       :source_contact_info,
-                                      :contact_employee_id, :company)
+                                      :contact_employee_id, :company, :extended_count)
   end
 
   def restrict_access_to_employee
