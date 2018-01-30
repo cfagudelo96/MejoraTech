@@ -44,7 +44,7 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: t('.success') }
+      format.html { redirect_to employees_path, notice: t('.success') }
       format.json { head :no_content }
     end
   end

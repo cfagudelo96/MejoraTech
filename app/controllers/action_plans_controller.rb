@@ -1,6 +1,6 @@
 class ActionPlansController < ApplicationController
   before_action :set_amef_component
-  before_action :set_action_plan, only: %i[show]
+  before_action :set_action_plan, only: %i[show edit update destroy]
   before_action :restrict_access_to_employee
 
   def show
@@ -20,6 +20,29 @@ class ActionPlansController < ApplicationController
         format.html { render :new }
         format.json { render json: @action_plan.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @action_plan.update(action_plan_params)
+        format.html { redirect_to success_path, notice: t('.success') }
+        format.json { render :show, status: :ok, location: @employee }
+      else
+        format.html { render :edit }
+        format.json { render json: @employee.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @action_plan.destroy
+    respond_to do |format|
+      format.html { redirect_to success_path, notice: t('.success') }
+      format.json { head :no_content }
     end
   end
 

@@ -1,34 +1,41 @@
-<h1>Plan de acción <small>para: <%= @amef_component.fishbone_cause.cause %></small></h1>
+<h1><%= t('.title_html', cause: @amef_component.fishbone_cause.cause) %></h1>
 
 <div class="row">
   <div class="col-md-4 col-xs-12">
-    <h3>Plan de acción</h3>
+    <h3><%= t('.action_plan') %></h3>
     <div>
       <p><%= @action_plan.action_plan %></p>
     </div>
-    <h3>¿Cómo?</h3>
+    <h3><%= t('.how') %></h3>
     <div>
       <p><%= @action_plan.how %></p>
     </div>
   </div>
   <div class="col-md-4 col-xs-12">
-    <h3>Fecha de evaluación</h3>
+    <h3><%= t('.evaluation_date') %></h3>
     <div>
       <p><%= @action_plan.evaluation_date %></p>
     </div>
-    <h3>Evaluación</h3>
+    <h3><%= t('.evaluation') %></h3>
     <div>
       <p><%= @action_plan.evaluation %></p>
     </div>
   </div>
   <div class="col-md-4 col-xs-12">
-    <h3>Empleado encargado</h3>
+    <h3><%= t('.employee') %></h3>
     <div>
       <%= link_to @action_plan.employee, employee_path(@action_plan.employee) %>
     </div>
-    <h3>Costo</h3>
+    <h3><%= t('.cost') %></h3>
     <div>
       <p>$<%= @action_plan.cost %></p>
     </div>
   </div>
+</div>
+<div>
+  <%= link_to t(:back), fishbone_analysis_amef_analysis_path(@amef_component.amef_analysis.fishbone_analysis, @amef_component.amef_analysis), class: 'btn btn-default' %>
+  <span class="pull-right btn-group">
+    <%= link_to t('.edit'), edit_amef_component_action_plan_path(@amef_component, @action_plan), class: 'btn btn-default' %>
+    <%= link_to t('.destroy'), amef_component_action_plan_path(@amef_component, @action_plan), method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-danger' %>
+  </span>
 </div>

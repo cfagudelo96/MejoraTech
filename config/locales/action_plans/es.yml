@@ -1,4 +1,27 @@
 es:
   action_plans:
+    show:
+      title_html: "Plan de acción <small>para: %{cause}</small>"
+      action_plan: "Plan de acción"
+      how: "¿Cómo?"
+      evaluation_date: "Fecha de evaluación"
+      evaluation: "Evaluación"
+      employee: "Empleado encargado"
+      cost: "Costo"
+      edit: "Editar"
+      destroy: "Eliminar"
+    new:
+      title_html: "Nuevo plan de acción <small>para: %{cause}</small>"
     create:
       success: "El plan de acción fue registrado exitosamente."
+    edit:
+      title_html: "Editar plan de acción <small>para: %{cause}</small>"
+    update:
+      success: "El plan de acción fue actualizado exitosamente"
+    destroy:
+      success: "El plan de acción fue eliminado exitosamente"
+  helpers:
+    submit:
+      action_plan:
+        create: "Registrar %{model}"
+        update: "Actualizar %{model}"

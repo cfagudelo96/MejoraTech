@@ -1,4 +1,27 @@
 en:
   action_plans:
+    show:
+      title_html: "Action plan <small>for: %{cause}</small>"
+      action_plan: "Action plan"
+      how: "How?"
+      evaluation_date: "Evaluation date"
+      evaluation: "Evaluation"
+      employee: "Employee in charge"
+      cost: "Cost"
+      edit: "Edit"
+      destroy: "Delete"
+    new:
+      title_html: "New action plan <small>for: %{cause}</small>"
     create:
       success: "The action plan was successfully created."
+    edit:
+      title_html: "Editing action plan <small>for: %{cause}</small>"
+    update:
+      success: "The action plan was successfully updated."
+    destroy:
+      success: "The action plan was successfully destroyed."
+  helpers:
+    submit:
+      complaint:
+        create: "Create %{model}"
+        update: "Update %{model}"

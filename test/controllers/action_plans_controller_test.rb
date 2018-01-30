@@ -70,4 +70,19 @@ class ActionPlansControllerTest < ActionDispatch::IntegrationTest
       } }
     end
   end
+
+  test 'should edit action plan' do
+    amef_component = @action_plan.amef_component
+    get edit_amef_component_action_plan_url(amef_component, @action_plan)
+    assert_response :success
+  end
+
+  test 'should destroy an action plan' do
+    amef_component = @action_plan.amef_component
+    complaint = amef_component.amef_analysis.fishbone_analysis.complaint
+    assert_difference 'ActionPlan.count', -1 do
+      delete amef_component_action_plan_url(amef_component, @action_plan)
+    end
+    assert_redirected_to complaint_url(complaint)
+  end
 end
