@@ -56,7 +56,7 @@ class ComplaintsController < ApplicationController
   end
 
   def extend_date
-    @complaint.update(review_date: Time.now + 3.days, extended_count: @complaint.extended_count+1)
+    @complaint.update(review_date: Time.now + 3.days, extended_count: @complaint.extended_count + 1)
     redirect_to complaints_path
   end
 
