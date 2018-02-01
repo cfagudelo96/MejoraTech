@@ -20,4 +20,14 @@ class ProductTest < ActiveSupport::TestCase
     product = Product.new(name: 'Test', code: 1)
     assert product.save
   end
+
+  test 'should filter by name' do
+    assert_equal 2, Product.all.size
+    assert_equal 1, Product.by_name('1').size
+  end
+
+  test 'should filter by code' do
+    assert_equal 2, Product.all.size
+    assert_equal 1, Product.by_code('2').size
+  end
 end

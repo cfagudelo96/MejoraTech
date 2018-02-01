@@ -3,9 +3,9 @@
 one:
   id: 1
   code: 2
-  name: MyString
+  name: MyString1
 
 two:
   id: 2
   code: 3
-  name: MyString
+  name: MyString2

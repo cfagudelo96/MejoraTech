@@ -11,11 +11,7 @@ class Product < ApplicationRecord
   validates :code, presence: true, uniqueness: true
 
   def self.humanize_filter(filter)
-    if filter == :name
-      I18n.t('activerecord.attributes.product.name')
-    elsif filter == :code
-      I18n.t('activerecord.attributes.product.code')
-    end
+    I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{filter}")
   end
 
   def to_s
