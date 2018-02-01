@@ -15,6 +15,10 @@ en:
       edit: "Edit"
       destroy: "Destroy"
       new_complaint: "New complaint"
+      extend_date: "Extend Date"
+      title_extend_date_modal: "Do you want to extend the complaint date?"
+      extend: "Extend"
+      cancel: "Cancel"
     show:
       title: "Complaint"
       description: "Description"

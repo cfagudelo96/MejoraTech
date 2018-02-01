@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :supports
     resources :fishbone_analyses, except: %i[edit update]
     resources :eight_ms_analyses
+    member do
+      post 'extend_date'
+    end
   end
   resources :fishbone_analyses, only: [] do
     resources :amef_analyses, except: %i[index edit update]

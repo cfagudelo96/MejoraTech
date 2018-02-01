@@ -1,6 +1,7 @@
 .idea
 
 public/uploads
+public/javascripts/translations.js
 
 *.rbc
 capybara-*.html

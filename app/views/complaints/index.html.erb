@@ -26,7 +26,12 @@
         <td><%= Complaint.human_enum_name(:classification, complaint.classification)%></td>
         <td><%= complaint.source %></td>
         <td><%= complaint.review_date %></td>
-        <td><%= Complaint.human_enum_name(:status, complaint.status) %></td>
+        <td><%= Complaint.human_enum_name(:status, complaint.status) %>
+          <%if complaint.review_date < Time.now%>
+              <br>
+              <button type="button" class="btn btn-warning pull-right" onclick="extend_date(<%= complaint.id %>)"><%=t('.extend_date')%></button>
+          <%end%>
+        </td>
         <td>
           <span class="pull-right">
             <%= link_to t('.show'), complaint, class: 'btn btn-default' %>

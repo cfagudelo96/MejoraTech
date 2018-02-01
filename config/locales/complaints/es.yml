@@ -15,6 +15,10 @@ es:
       edit: "Editar"
       destroy: "Eliminar"
       new_complaint: "Registrar queja"
+      extend_date: "Extender fecha"
+      title_extend_date_modal: "¿Quieres extender la fecha de revisión de la queja?"
+      extend: "Extender"
+      cancel: "Cancelar"
     show:
       title: "Queja"
       description: "Descripción"
