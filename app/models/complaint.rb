@@ -10,6 +10,8 @@ class Complaint < ApplicationRecord
 
   enum status: %i[open extended closed]
 
+  scope :by_product
+
   belongs_to :employee
   belongs_to :contact_employee, class_name: 'Employee', optional: true
 
