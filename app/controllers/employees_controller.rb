@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
 
   def index
     @filterrific = initialize_filterrific(Employee, params[:filterrific]) || return
-    @employees = @filterrific.find.paginate(page: params[:page])
+    @employees = @filterrific.find.page(params[:page])
   end
 
   def show

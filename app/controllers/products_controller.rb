@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @filterrific = initialize_filterrific(Product, params[:filterrific]) || return
-    @products = @filterrific.find.paginate(page: params[:page])
+    @products = @filterrific.find.page(params[:page])
   end
 
   def show
