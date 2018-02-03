@@ -3,7 +3,8 @@ class EmployeesController < ApplicationController
   before_action :restrict_access_to_admin, except: %i[edit_password update_password]
 
   def index
-    @employees = Employee.paginate(page: params[:page])
+    @filterrific = initialize_filterrific(Employee, params[:filterrific]) || return
+    @employees = @filterrific.find.paginate(page: params[:page])
   end
 
   def show

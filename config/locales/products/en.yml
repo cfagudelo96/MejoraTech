@@ -6,12 +6,13 @@ en:
       success: "Product was successfully updated."
     destroy:
       success: "Product was successfully destroyed."
-    index:
-      title: "Product"
+    list:
       code: "Code"
       name: "Name"
       edit: "Edit"
       destroy: "Destroy"
+    index:
+      title: "Product"
       new_product: "New product"
     show:
       code: "Code"

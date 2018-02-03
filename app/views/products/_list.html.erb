@@ -1,0 +1,28 @@
+<div id="filterrific_results">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t('.code') %></th>
+        <th><%= t('.name') %></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td><%= product.code %></td>
+          <td><%= product.name %></td>
+          <td>
+            <span class="pull-right">
+              <%= link_to t('.edit'), edit_product_path(product), class: 'btn btn-default' %>
+              <%= link_to t('.destroy'), product, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

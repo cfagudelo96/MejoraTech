@@ -86,6 +86,7 @@ GEM
     execjs (2.7.0)
     ffi (1.9.18)
     ffi (1.9.18-x64-mingw32)
+    filterrific (5.0.1)
     fog-aws (2.0.0)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
@@ -252,6 +253,7 @@ DEPENDENCIES
   carrierwave (~> 1.1.0)
   coffee-rails (~> 4.2)
   devise
+  filterrific
   fog-aws
   font-awesome-rails
   i18n-js

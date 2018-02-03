@@ -1,33 +1,34 @@
 <h1><%= t('.title') %></h1>
 
-<%= render 'filter_form' %>
+<%= form_for_filterrific @filterrific do |form| %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <%= form.text_field :by_name,
+                            placeholder: t(:filter_by),
+                            id: :name,
+                            class: 'filterrific-periodically-observed form-control' %>
+        <%= form.text_field :by_code,
+                            placeholder: t(:filter_by),
+                            id: :code,
+                            class: 'hide filterrific-periodically-observed form-control' %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.select :filter,
+                        Product::AVAILABLE_FILTERS.map { |filter| [Product.humanize_filter(filter), filter] },
+                        { selected: params[:filter] || Product::AVAILABLE_FILTERS.first },
+                        id: :available_filters,
+                        onchange: 'changeFilters()',
+                        class: 'form-control' %>
+      </div>
+    </div>
+    <%= render_filterrific_spinner %>
+  </div>
+<% end %>
 
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th><%= t('.code') %></th>
-      <th><%= t('.name') %></th>
-      <th></th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.code %></td>
-        <td><%= product.name %></td>
-        <td>
-          <span class="pull-right">
-            <%= link_to t('.edit'), edit_product_path(product), class: 'btn btn-default' %>
-            <%= link_to t('.destroy'), product, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+<%= render 'list', products: @products %>
 
 <div>
   <%= link_to t('.new_product'), new_product_path, class: 'btn btn-default' %>

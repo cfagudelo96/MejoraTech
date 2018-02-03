@@ -12,8 +12,7 @@ es:
       remember_me: "Recuerdame"
       forgot_password: "¿Olvidaste tu contraseña?"
       confirmation_instructions: "¿No has recibido instrucciones de confirmación?"
-    index:
-      title: "Empleados"
+    list:
       name: "Nombre"
       identification: "Identificación"
       email: "Email"
@@ -21,6 +20,8 @@ es:
       show: "Ver"
       edit: "Editar"
       destroy: "Eliminar"
+    index:
+      title: "Empleados"
       new_employee: "Registrar empleado"
     show:
       identification: "Identificación"

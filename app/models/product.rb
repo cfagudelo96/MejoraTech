@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
   AVAILABLE_FILTERS = %i[name code].freeze
 
+  filterrific(default_filter_params: { by_name: '' }, available_filters: %i[by_name by_code])
+
   has_many :complaints
 
-  # TODO Test scopes
   scope :by_name, (->(name) { where('name ilike ?', "%#{name}%") })
   scope :by_code, (->(code) { where('code ilike ?', "%#{code}%") })
 

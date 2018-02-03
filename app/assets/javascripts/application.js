@@ -21,4 +21,5 @@
 //= require d3.fishbone
 //= require i18n.js
 //= require i18n/translations
+//= require filterrific/filterrific-jquery
 //= require_tree .

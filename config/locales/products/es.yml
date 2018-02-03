@@ -6,6 +6,11 @@ es:
       success: "El producto fue actualizado exitosamente."
     destroy:
       success: "El producto fue eliminado exitosamente."
+    list:
+      code: "Código"
+      name: "Nombre"
+      edit: "Editar"
+      destroy: "Eliminar"
     index:
       title: "Producto"
       code: "Código"

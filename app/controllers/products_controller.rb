@@ -3,9 +3,8 @@ class ProductsController < ApplicationController
   before_action :restrict_access_to_admin
 
   def index
-    @products = Product.all
-    apply_filters
-    @products = @products.paginate(page: params[:page])
+    @filterrific = initialize_filterrific(Product, params[:filterrific]) || return
+    @products = @filterrific.find.paginate(page: params[:page])
   end
 
   def show
@@ -52,15 +51,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
-  def apply_filters
-    return if params[:value].blank?
-    if params[:filter] == 'name'
-      @products = @products.by_name(params[:value])
-    elsif params[:filter] == 'code'
-      @products = @products.by_code(params[:value])
-    end
-  end
 
   def set_product
     @product = Product.find(params[:id])

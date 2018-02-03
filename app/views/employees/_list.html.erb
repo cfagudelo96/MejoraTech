@@ -1,0 +1,33 @@
+<div id="filterrific_results">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t('.name') %></th>
+        <th><%= t('.identification') %></th>
+        <th><%= t('.email') %></th>
+        <th><%= t('.position') %></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% employees.each do |employee| %>
+        <tr>
+          <td><%= employee.name %></td>
+          <td><%= employee.identification %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.position %></td>
+          <td>
+          <span class="pull-right">
+            <%= link_to t('.show'), employee, class: 'btn btn-default' %>
+            <%= link_to t('.edit'), edit_employee_path(employee), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), employee, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
+          </span>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

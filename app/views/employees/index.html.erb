@@ -1,38 +1,38 @@
 <h1><%= t('.title') %></h1>
 
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th><%= t('.name') %></th>
-      <th><%= t('.identification') %></th>
-      <th><%= t('.email') %></th>
-      <th><%= t('.position') %></th>
-      <th></th>
-    </tr>
-    </thead>
+<%= form_for_filterrific @filterrific do |form| %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <%= form.text_field :by_name,
+                            placeholder: t(:filter_by),
+                            id: :name,
+                            class: 'filterrific-periodically-observed form-control' %>
+        <%= form.text_field :by_identification,
+                            placeholder: t(:filter_by),
+                            id: :identification,
+                            class: 'hide filterrific-periodically-observed form-control' %>
+        <%= form.text_field :by_position,
+                            placeholder: t(:filter_by),
+                            id: :position,
+                            class: 'hide filterrific-periodically-observed form-control' %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.select :filter,
+                        Employee::AVAILABLE_FILTERS.map { |filter| [Employee.humanize_filter(filter), filter] },
+                        { selected: params[:filter] || Employee::AVAILABLE_FILTERS.first },
+                        id: :available_filters,
+                        onchange: 'changeFilters()',
+                        class: 'form-control' %>
+      </div>
+    </div>
+    <%= render_filterrific_spinner %>
+  </div>
+<% end %>
 
-    <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.identification %></td>
-        <td><%= employee.email %></td>
-        <td><%= employee.position %></td>
-        <td>
-          <span class="pull-right">
-            <%= link_to t('.show'), employee, class: 'btn btn-default' %>
-            <%= link_to t('.edit'), edit_employee_path(employee), class: 'btn btn-default' %>
-            <%= link_to t('.destroy'), employee, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
-
-<br>
+<%= render 'list', employees: @employees %>
 
 <div>
   <%= link_to t('.new_employee'), new_employee_path, class: 'btn btn-default' %>
