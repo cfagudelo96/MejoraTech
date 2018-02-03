@@ -10,6 +10,26 @@ class Complaint < ApplicationRecord
 
   enum status: %i[open extended closed]
 
+  scope :by_product, (->(product_id) { where(product_id: product_id) })
+  scope :by_employee, (->(employee_id) { where(employee_id: employee_id) })
+  scope :by_classification, (->(classification) { where(classification: classification) })
+  scope :by_source, (->(source) { where('source ilike ?', "%#{source}%") })
+  scope :by_batch_number, (->(batch_number) { where('batch_number ilike ?', "%#{batch_number}%") })
+  scope :review_date_gte, lambda { |review_date|
+    where('review_date >= ?', review_date)
+  }
+  scope :review_date_lt, lambda { |review_date|
+    where('review_date < ?', review_date)
+  }
+  scope :effective_date_gte, lambda { |effective_date|
+    where('effective_date >= ?', effective_date)
+  }
+  scope :effective_date_lt, lambda { |effective_date|
+    where('effective_date < ?', effective_date)
+  }
+  scope :by_company, (->(company) { where(company: company) })
+  scope :by_status, (->(status) { where(status: status) })
+
   belongs_to :employee
   belongs_to :contact_employee, class_name: 'Employee', optional: true
 

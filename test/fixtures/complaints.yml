@@ -8,16 +8,16 @@ one:
   contact_employee_id: 2
   classification: 1
   source: MyString
-  source_email: MyString
+  source_email: MyString1
   source_contact_info: MyString
   contact_employee_id: 1
   batch_number: MyString
-  expiration_date: 2017-07-20
-  effective_date: 2017-07-20
-  review_date: 2017-07-20
+  expiration_date: 2017-01-01
+  effective_date: 2017-01-01
+  review_date: 2017-01-01
   code: '001-2017-F'
   company: <%= Complaint.companies[:farmatech] %>
-  status: <%= Complaint.statuses[:open] %>
+  status: <%= Complaint.statuses[:closed] %>
 
 two:
   id: 2
@@ -25,10 +25,10 @@ two:
   employee_id: 2
   contact_employee_id: 2
   classification: 1
-  source: MyString
-  expiration_date: 2017-07-20
-  effective_date: 2017-07-20
-  review_date: 2017-07-20
+  source: MyString1
+  expiration_date: 2017-02-02
+  effective_date: 2017-02-02
+  review_date: 2017-02-02
   code: '002-2017-H'
   company: <%= Complaint.companies[:humax] %>
   status: <%= Complaint.statuses[:open] %>
@@ -40,12 +40,12 @@ three:
   description: MyString
   employee_id: 3
   contact_employee_id: 2
-  classification: 1
+  classification: 2
   source: MyString
   batch_number: MyString
-  expiration_date: 2017-07-20
-  effective_date: 2017-07-20
-  review_date: 2017-07-20
+  expiration_date: 2017-03-03
+  effective_date: 2017-03-03
+  review_date: 2017-03-03
   code: '003-2017-C'
   company: <%= Complaint.companies[:cambridge] %>
   status: <%= Complaint.statuses[:open] %>

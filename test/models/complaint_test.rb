@@ -4,81 +4,109 @@ class ComplaintTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
 
   test 'should not save without description' do
-    complaint = Complaint.new(employee_id: 1,
-                              classification: 1,
-                              source: 'Test',
-                              effective_date: Time.now,
-                              review_date: Time.now,
-                              contact_employee_id: 2,
-                              code: 'Test')
+    attributes = complaint_attributes
+    attributes[:description] = ''
+    complaint = Complaint.new(attributes)
     assert_not complaint.save
   end
 
   test 'should not save without source' do
-    complaint = Complaint.new(description: 'Test',
-                              employee_id: 1,
-                              classification: 1,
-                              effective_date: Time.now,
-                              review_date: Time.now,
-                              contact_employee_id: 2,
-                              code: 'Test')
+    attributes = complaint_attributes
+    attributes[:source] = ''
+    complaint = Complaint.new(attributes)
     assert_not complaint.save
   end
 
   test 'should not save without effective date' do
-    complaint = Complaint.new(description: 'Test',
-                              employee_id: 1,
-                              classification: 1,
-                              source: 'Test',
-                              review_date: Time.now,
-                              contact_employee_id: 2,
-                              code: 'Test')
+    attributes = complaint_attributes
+    attributes[:effective_date] = nil
+    complaint = Complaint.new(attributes)
     assert_not complaint.save
   end
 
   test 'should not save without review date' do
-    complaint = Complaint.new(description: 'Test',
-                              employee_id: 1,
-                              classification: 1,
-                              source: 'Test',
-                              effective_date: Time.now,
-                              contact_employee_id: 2,
-                              code: 'Test')
+    attributes = complaint_attributes
+    attributes[:review_date] = nil
+    complaint = Complaint.new(attributes)
     assert_not complaint.save
   end
 
   test 'should not save without code' do
-    complaint = Complaint.new(description: 'Test',
-                              employee_id: 1,
-                              classification: 1,
-                              source: 'Test',
-                              effective_date: Time.now,
-                              review_date: Time.now,
-                              contact_employee_id: 2)
+    attributes = complaint_attributes
+    attributes[:code] = ''
+    complaint = Complaint.new(attributes)
     assert_not complaint.save
   end
 
   test 'contact employee should be optional' do
-    complaint = Complaint.new(description: 'Test',
-                              employee_id: 1,
-                              classification: 1,
-                              source: 'Test',
-                              effective_date: Time.now,
-                              review_date: Time.now,
-                              code: 'Test')
+    attributes = complaint_attributes
+    attributes[:contact_employee_id] = nil
+    complaint = Complaint.new(attributes)
     assert complaint.save
   end
 
   test 'should save' do
-    complaint = Complaint.new(description: 'Test',
-                              employee_id: 1,
-                              classification: 1,
-                              source: 'Test',
-                              effective_date: Time.now,
-                              review_date: Time.now,
-                              contact_employee_id: 2,
-                              code: 'Test')
+    complaint = Complaint.new(complaint_attributes)
     assert complaint.save
+  end
+
+  test 'should filter by product' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.by_product(1).size
+  end
+
+  test 'should filter by employee' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.by_employee(1).size
+  end
+
+  test 'should filter by classification' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 2, Complaint.by_classification(1).size
+  end
+
+  test 'should filter by review date greater than' do
+    date = Date.new(2017, 2, 2)
+    assert_equal 3, Complaint.all.size
+    assert_equal 2, Complaint.review_date_gte(date).size
+  end
+
+  test 'should filter by review date less than' do
+    date = Date.new(2017, 2, 2)
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.review_date_lt(date).size
+  end
+
+  test 'should filter by effective date greater than' do
+    date = Date.new(2017, 2, 2)
+    assert_equal 3, Complaint.all.size
+    assert_equal 2, Complaint.effective_date_gte(date).size
+  end
+
+  test 'should filter by effective date less than' do
+    date = Date.new(2017, 2, 2)
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.effective_date_lt(date).size
+  end
+
+  test 'should filter by company' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.by_company(1).size
+  end
+
+  test 'should filter by status' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.by_status(Complaint.statuses[:closed]).size
+  end
+
+  test 'should filter by source' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 1, Complaint.by_source('1').size
+  end
+
+  test 'should filter by batch number' do
+    assert_equal 3, Complaint.all.size
+    assert_equal 2, Complaint.by_batch_number('MyString').size
   end
 
   test 'should get product name' do
@@ -175,5 +203,13 @@ class ComplaintTest < ActiveSupport::TestCase
     old_code = complaints(:one).code
     assert complaints(:one).update_and_notify(company: Complaint.companies[:farmatech])
     assert_equal old_code, complaints(:one).code
+  end
+
+  private
+
+  def complaint_attributes
+    { description: 'Test', employee_id: 1, classification: 1, source: 'Test',
+      effective_date: Time.now, review_date: Time.now, contact_employee_id: 2,
+      code: 'Test' }
   end
 end
