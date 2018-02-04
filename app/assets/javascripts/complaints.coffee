@@ -2,10 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 @extend_date = (id) ->
-  cancel = I18n.t('complaints.index.cancel')
-  ok = I18n.t('complaints.index.extend')
+  cancel = I18n.t('complaints.list.cancel')
+  ok = I18n.t('complaints.list.extend')
   swal({
-    title: I18n.t('complaints.index.title_extend_date_modal'),
+    title: I18n.t('complaints.list.title_extend_date_modal'),
     icon: 'warning',
     buttons: [cancel, ok],
     dangerMode: true

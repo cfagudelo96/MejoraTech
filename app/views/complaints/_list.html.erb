@@ -26,7 +26,7 @@
           <td><%= complaint.source %></td>
           <td><%= complaint.review_date %></td>
           <td><%= Complaint.human_enum_name(:status, complaint.status) %>
-            <%if complaint.review_date < Time.now%>
+            <%if complaint.review_date < Time.now && complaint.open? && current_employee.admin %>
               <br>
               <button type="button" class="btn btn-warning pull-right" onclick="extend_date(<%= complaint.id %>)"><%=t('.extend_date')%></button>
             <%end%>
@@ -35,7 +35,7 @@
           <span class="pull-right">
             <%= link_to t('.show'), complaint, class: 'btn btn-default' %>
             <% if current_employee.admin %>
-              <%= link_to t('.edit'), edit_complaint_path(complaint), class: 'btn btn-default' %>
+              <%= link_to t('.edit'), edit_complaint_path(complaint,current_employee), class: 'btn btn-default' %>
               <%= link_to t('.destroy'), complaint, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
             <% end %>
           </span>
