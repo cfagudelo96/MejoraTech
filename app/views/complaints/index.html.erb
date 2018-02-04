@@ -2,8 +2,16 @@
 
 <%= form_for_filterrific @filterrific do |form| %>
   <div class="row well">
-    <div class="col-md-12 col-xs-12">
+    <div class="col-md-10 col-xs-12">
       <h4>Filtrar por...</h4>
+    </div>
+    <div class="col-md-2 col-xs-12">
+      <div class="form-group">
+        <%= form.select :by_status,
+                        @filterrific.select_options[:by_status],
+                        { include_blank: 'Estado...' },
+                        class: 'form-control' %>
+      </div>
     </div>
     <div class="col-md-2 col-xs-12">
       <div class="form-group">
