@@ -30,4 +30,8 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal 2, Product.all.size
     assert_equal 1, Product.by_code('2').size
   end
+
+  test 'should get options for select' do
+    assert_equal Product.all.size, Product.options_for_select.size
+  end
 end

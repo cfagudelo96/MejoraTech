@@ -15,6 +15,10 @@ class Product < ApplicationRecord
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{filter}")
   end
 
+  def self.options_for_select
+    Product.all.map { |e| [e.name, e.id] }
+  end
+
   def to_s
     "#{name} (#{code})"
   end

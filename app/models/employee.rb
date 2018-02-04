@@ -14,6 +14,10 @@ class Employee < ApplicationRecord
   scope :by_identification, (->(identification) { where(identification: identification) })
   scope :by_position, (->(position) { where('position ilike ?', "%#{position}%") })
 
+  def self.options_for_select
+    Employee.all.map { |e| [e.name, e.id] }
+  end
+
   def self.humanize_filter(filter)
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{filter}")
   end

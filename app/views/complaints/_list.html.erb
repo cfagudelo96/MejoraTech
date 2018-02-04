@@ -1,0 +1,50 @@
+<div id="filterrific_results">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t('.code') %></th>
+        <th><%= t('.product') %></th>
+        <th><%= t('.batch_number') %></th>
+        <th><%= t('.effective_date') %></th>
+        <th><%= t('.classification') %></th>
+        <th><%= t('.source') %></th>
+        <th><%= t('.review_date') %></th>
+        <th><%= t('.status') %></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% complaints.each do |complaint| %>
+        <tr>
+          <td><%= complaint %></td>
+          <td><%= complaint.product_name %></td>
+          <td><%= complaint.batch_number %></td>
+          <td><%= complaint.effective_date %></td>
+          <td><%= Complaint.human_enum_name(:classification, complaint.classification)%></td>
+          <td><%= complaint.source %></td>
+          <td><%= complaint.review_date %></td>
+          <td><%= Complaint.human_enum_name(:status, complaint.status) %>
+            <%if complaint.review_date < Time.now%>
+              <br>
+              <button type="button" class="btn btn-warning pull-right" onclick="extend_date(<%= complaint.id %>)"><%=t('.extend_date')%></button>
+            <%end%>
+          </td>
+          <td>
+          <span class="pull-right">
+            <%= link_to t('.show'), complaint, class: 'btn btn-default' %>
+            <% if current_employee.admin %>
+              <%= link_to t('.edit'), edit_complaint_path(complaint), class: 'btn btn-default' %>
+              <%= link_to t('.destroy'), complaint, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
+            <% end %>
+          </span>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= will_paginate complaints %>
+</div>

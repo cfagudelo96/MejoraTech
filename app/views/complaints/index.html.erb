@@ -1,54 +1,121 @@
 <h1><%= t('.title') %></h1>
 
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th><%= t('.code') %></th>
-      <th><%= t('.product') %></th>
-      <th><%= t('.batch_number') %></th>
-      <th><%= t('.effective_date') %></th>
-      <th><%= t('.classification') %></th>
-      <th><%= t('.source') %></th>
-      <th><%= t('.review_date') %></th>
-      <th><%= t('.status') %></th>
-      <th></th>
-    </tr>
-    </thead>
+<%= form_for_filterrific @filterrific do |form| %>
+  <div class="row well">
+    <div class="col-md-12 col-xs-12">
+      <h4>Filtrar por...</h4>
+    </div>
+    <div class="col-md-2 col-xs-12">
+      <div class="form-group">
+        <%= form.text_field :by_source,
+                            placeholder: 'Fuente...',
+                            class: 'filterrific-periodically-observed form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.text_field :by_batch_number,
+                            placeholder: 'Lote...',
+                            class: 'filterrific-periodically-observed form-control' %>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <div class="form-group">
+        <div class="input-group date" id="effective_date_gte_picker">
+          <%= form.text_field :effective_date_gte,
+                              placeholder: 'Fecha efectiva después de...',
+                              id: :effective_date_gte,
+                              class: 'form-control filterrific-periodically-observed' %>
+          <span class="input-group-addon">
+          <%= fa_icon 'calendar' %>
+        </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group date" id="review_date_gte_picker">
+          <%= form.text_field :review_date_gte,
+                              placeholder: 'Fecha de revisión después de...',
+                              id: :review_date_gte,
+                              class: 'form-control filterrific-periodically-observed' %>
+          <span class="input-group-addon">
+          <%= fa_icon 'calendar' %>
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <div class="form-group">
+        <div class="input-group date" id="effective_date_lt_picker">
+          <%= form.text_field :effective_date_lt,
+                              placeholder: 'Fecha efectiva antes de...',
+                              id: :effective_date_lt,
+                              class: 'form-control filterrific-periodically-observed' %>
+          <span class="input-group-addon">
+          <%= fa_icon 'calendar' %>
+        </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group date" id="review_date_lt_picker">
+          <%= form.text_field :review_date_lt,
+                              placeholder: 'Fecha de revisión antes de...',
+                              id: :review_date_lt,
+                              class: 'form-control filterrific-periodically-observed' %>
+          <span class="input-group-addon">
+          <%= fa_icon 'calendar' %>
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+      <div class="form-group">
+        <%= form.select :by_classification,
+                        @filterrific.select_options[:by_classification],
+                        { include_blank: 'Clasificación...' },
+                        class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.select :by_product,
+                        @filterrific.select_options[:by_product],
+                        { include_blank: 'Producto...' },
+                        class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+      <div class="form-group">
+        <%= form.select :by_company,
+                        @filterrific.select_options[:by_company],
+                        { include_blank: 'Compañía...' },
+                        class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.select :by_employee,
+                        @filterrific.select_options[:by_employee],
+                        { include_blank: 'Empleado...' },
+                        class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <%= render_filterrific_spinner %>
+<% end %>
 
-    <tbody>
-    <% @complaints.each do |complaint| %>
-      <tr>
-        <td><%= complaint %></td>
-        <td><%= complaint.product_name %></td>
-        <td><%= complaint.batch_number %></td>
-        <td><%= complaint.effective_date %></td>
-        <td><%= Complaint.human_enum_name(:classification, complaint.classification)%></td>
-        <td><%= complaint.source %></td>
-        <td><%= complaint.review_date %></td>
-        <td><%= Complaint.human_enum_name(:status, complaint.status) %>
-          <%if complaint.review_date < Time.now%>
-              <br>
-              <button type="button" class="btn btn-warning pull-right" onclick="extend_date(<%= complaint.id %>)"><%=t('.extend_date')%></button>
-          <%end%>
-        </td>
-        <td>
-          <span class="pull-right">
-            <%= link_to t('.show'), complaint, class: 'btn btn-default' %>
-            <% if current_employee.admin %>
-              <%= link_to t('.edit'), edit_complaint_path(complaint), class: 'btn btn-default' %>
-              <%= link_to t('.destroy'), complaint, method: :delete, data: { confirm: t(:confirmation_question) }, class: 'btn btn-default' %>
-            <% end %>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
-
-<br>
+<%= render 'list', complaints: @complaints %>
 
 <% if current_employee.admin %>
   <%= link_to t('.new_complaint'), new_complaint_path, class: 'btn btn-default' %>
 <% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#effective_date_lt_picker').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#review_date_lt_picker').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#effective_date_gte_picker').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#review_date_gte_picker').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+    });
+</script>

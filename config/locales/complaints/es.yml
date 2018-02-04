@@ -1,7 +1,6 @@
 es:
   complaints:
-    index:
-      title: "Quejas"
+    list:
       code: "Código"
       product: "Producto"
       batch_number: "Número de lote"
@@ -14,11 +13,13 @@ es:
       show: "Ver"
       edit: "Editar"
       destroy: "Eliminar"
-      new_complaint: "Registrar queja"
       extend_date: "Extender fecha"
       title_extend_date_modal: "¿Quieres extender la fecha de revisión de la queja?"
       extend: "Extender"
       cancel: "Cancelar"
+    index:
+      title: "Quejas"
+      new_complaint: "Registrar queja"
     show:
       title: "Queja"
       description: "Descripción"

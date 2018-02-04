@@ -4,11 +4,11 @@ class ComplaintsController < ApplicationController
   before_action :restrict_access_to_employee, only: %i[show]
 
   def index
-    @complaints = if current_employee.admin
-                    Complaint.paginate(page: params[:page])
-                  else
-                    current_employee.complaints
-                  end
+    apply_filters
+    return unless @filterrific
+    @complaints = @filterrific.find
+    @complaints = @complaints.by_employee(current_employee.id) unless current_employee.admin
+    @complaints = @complaints.page(params[:page])
   end
 
   def show
@@ -61,6 +61,18 @@ class ComplaintsController < ApplicationController
   end
 
   private
+
+  def apply_filters
+    @filterrific = initialize_filterrific(
+      Complaint,
+      params[:filterrific],
+      select_options: {
+        by_product: Product.options_for_select, by_employee: Employee.options_for_select,
+        by_classification: Complaint.classifications_for_select,
+        by_company: Complaint.companies_for_select, by_status: Complaint.statuses_for_select
+      }
+    )
+  end
 
   def set_complaint
     @complaint = Complaint.find(params[:id])

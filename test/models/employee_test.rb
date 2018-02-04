@@ -15,4 +15,8 @@ class EmployeeTest < ActiveSupport::TestCase
     assert_equal 3, Employee.all.size
     assert_equal 2, Employee.by_position('MyString').size
   end
+
+  test 'should get options for select' do
+    assert_equal Employee.all.size, Employee.options_for_select.size
+  end
 end

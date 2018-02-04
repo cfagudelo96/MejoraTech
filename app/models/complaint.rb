@@ -1,32 +1,25 @@
 class Complaint < ApplicationRecord
-  enum classification: %i[complaint
-                          suggestion
-                          warranty
-                          audit_result
-                          deviation
-                          nonconforming_product]
-
+  enum classification: %i[complaint suggestion warranty audit_result
+                          deviation nonconforming_product]
   enum company: %i[farmatech humax cambridge]
-
   enum status: %i[open extended closed]
+
+  filterrific(
+    available_filters: %i[
+      by_product by_employee by_classification by_source by_batch_number review_date_gte
+      review_date_lt effective_date_gte effective_date_lt by_company by_status
+    ]
+  )
 
   scope :by_product, (->(product_id) { where(product_id: product_id) })
   scope :by_employee, (->(employee_id) { where(employee_id: employee_id) })
   scope :by_classification, (->(classification) { where(classification: classification) })
   scope :by_source, (->(source) { where('source ilike ?', "%#{source}%") })
   scope :by_batch_number, (->(batch_number) { where('batch_number ilike ?', "%#{batch_number}%") })
-  scope :review_date_gte, lambda { |review_date|
-    where('review_date >= ?', review_date)
-  }
-  scope :review_date_lt, lambda { |review_date|
-    where('review_date < ?', review_date)
-  }
-  scope :effective_date_gte, lambda { |effective_date|
-    where('effective_date >= ?', effective_date)
-  }
-  scope :effective_date_lt, lambda { |effective_date|
-    where('effective_date < ?', effective_date)
-  }
+  scope :review_date_gte, (->(date) { where('review_date >= ?', date) })
+  scope :review_date_lt, (->(date) { where('review_date < ?', date) })
+  scope :effective_date_gte, (->(date) { where('effective_date >= ?', date) })
+  scope :effective_date_lt, (->(date) { where('effective_date < ?', date) })
   scope :by_company, (->(company) { where(company: company) })
   scope :by_status, (->(status) { where(status: status) })
 
@@ -43,6 +36,18 @@ class Complaint < ApplicationRecord
   validates :review_date, presence: true
   validates :code, presence: true, uniqueness: true
   validates :extended_count, numericality: { greater_than_or_equal_to: 0 }
+
+  def self.classifications_for_select
+    Complaint.classifications.map { |c| [human_enum_name(:classification, c[0]), c[0]] }
+  end
+
+  def self.companies_for_select
+    Complaint.companies.map { |c| [c[0].humanize, c[0]] }
+  end
+
+  def self.statuses_for_select
+    Complaint.statuses.map { |c| [human_enum_name(:status, c[0]), c[0]] }
+  end
 
   def product_name
     product_id.present? ? Product.find(product_id).to_s : I18n.t(:does_not_apply)
@@ -102,7 +107,6 @@ class Complaint < ApplicationRecord
   end
 
   def redirection_mail_needed(old_employee_id)
-    old_employee_id.blank? ||
-      (old_employee_id.present? && old_employee_id != employee_id)
+    old_employee_id.blank? || (old_employee_id.present? && old_employee_id != employee_id)
   end
 end

@@ -109,6 +109,18 @@ class ComplaintTest < ActiveSupport::TestCase
     assert_equal 2, Complaint.by_batch_number('MyString').size
   end
 
+  test 'should get classifications for select' do
+    assert_equal 6, Complaint.classifications_for_select.size
+  end
+
+  test 'should get companies for select' do
+    assert_equal 3, Complaint.companies_for_select.size
+  end
+
+  test 'should get statuses for select' do
+    assert_equal 3, Complaint.statuses_for_select.size
+  end
+
   test 'should get product name' do
     complaint = complaints(:one)
     product = products(:one)
