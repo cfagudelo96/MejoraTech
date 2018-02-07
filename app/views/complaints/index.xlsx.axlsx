@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: 'Complaints') do |sheet|
-  sheet.add_row %w[Código Producto Número-de-Lote Fecha-Efectiva Clasificación Fuente Fecha-Revisión Estado]
+  sheet.add_row %w[Código Producto Número\ de\ Lote Fecha\ efectiva Clasificación Fuente Fecha\ de\ revisión Estado]
   @complaints.each do |complaint|
     sheet.add_row [complaint.code, complaint.product_name, complaint.batch_number, complaint.effective_date, complaint.classification, complaint.source, complaint.review_date, complaint.status]
   end
