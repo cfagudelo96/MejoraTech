@@ -26,10 +26,10 @@
           <td><%= complaint.source %></td>
           <td><%= complaint.review_date %></td>
           <td><%= Complaint.human_enum_name(:status, complaint.status) %>
-            <%if complaint.review_date < Time.now && complaint.open? && current_employee.admin %>
+            <% if complaint.review_date < Time.now && complaint.open? && current_employee.admin %>
               <br>
               <button type="button" class="btn btn-warning pull-right" onclick="extend_date(<%= complaint.id %>)"><%=t('.extend_date')%></button>
-            <%end%>
+            <% end %>
           </td>
           <td>
           <span class="pull-right">

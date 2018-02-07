@@ -57,9 +57,6 @@ class ComplaintsController < ApplicationController
 
   def extend_date
     @complaint.update(review_date: Time.now + 3.days, extended_count: @complaint.extended_count + 1)
-    same_employee = current_employee.id == @complaint.employee_id
-    return if current_employee.admin || same_employee
-    redirect_to complaints_path, alert: I18n.t(:access_restricted)
   end
 
   private
