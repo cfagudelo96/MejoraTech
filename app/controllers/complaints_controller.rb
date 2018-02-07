@@ -4,11 +4,11 @@ class ComplaintsController < ApplicationController
   before_action :restrict_access_to_employee, only: %i[show]
 
   def index
-    apply_filters
-    return unless @filterrific
-    @complaints = @filterrific.find
-    @complaints = @complaints.by_employee(current_employee.id) unless current_employee.admin
-    @complaints = @complaints.page(params[:page])
+    if request.format == 'xlsx'
+      index_response_to_xlsx
+    else
+      index_response
+    end
   end
 
   def show
@@ -63,6 +63,22 @@ class ComplaintsController < ApplicationController
   end
 
   private
+
+  def index_response_to_xlsx
+    @complaints = if current_employee.admin
+                    Complaint.all
+                  else
+                    current_employee.complaints
+                  end
+  end
+
+  def index_response
+    apply_filters
+    return unless @filterrific
+    @complaints = @filterrific.find
+    @complaints = @complaints.by_employee(current_employee.id) unless current_employee.admin
+    @complaints = @complaints.page(params[:page])
+  end
 
   def apply_filters
     @filterrific = initialize_filterrific(

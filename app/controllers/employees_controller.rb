@@ -3,8 +3,13 @@ class EmployeesController < ApplicationController
   before_action :restrict_access_to_admin, except: %i[edit_password update_password]
 
   def index
-    @filterrific = initialize_filterrific(Employee, params[:filterrific]) || return
-    @employees = @filterrific.find.page(params[:page])
+    if request.format == 'xlsx'
+      @employees = Employee.all
+    else
+      @filterrific = initialize_filterrific(Employee, params[:filterrific])
+      return unless @filterrific
+      @employees = @filterrific.find.page(params[:page])
+    end
   end
 
   def show

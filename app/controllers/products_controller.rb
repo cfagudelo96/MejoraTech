@@ -3,8 +3,13 @@ class ProductsController < ApplicationController
   before_action :restrict_access_to_admin
 
   def index
-    @filterrific = initialize_filterrific(Product, params[:filterrific]) || return
-    @products = @filterrific.find.page(params[:page])
+    if request.format == 'xlsx'
+      @products = Product.all
+    else
+      @filterrific = initialize_filterrific(Product, params[:filterrific])
+      return unless @filterrific
+      @products = @filterrific.find.page(params[:page])
+    end
   end
 
   def show
